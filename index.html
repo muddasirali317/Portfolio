@@ -1,424 +1,2209 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Muddasir Ali — GIS Analyst</title>
-<meta name="description" content="GIS Analyst specializing in zoning & parcel data, remote sensing, and geospatial QA — 2,000+ maps digitized at 95–100% spatial accuracy for clients in the USA and Canada." />
-<meta name="author" content="Muddasir Ali" />
-<meta name="theme-color" content="#0a0a0b" />
-<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="%23ff4b26"/><path d="M8 23V9l8 8 8-8v14" fill="none" stroke="%230a0a0b" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muddasir Ali — GIS Analyst</title>
+  <meta name="description"
+    content="GIS Analyst specializing in zoning & parcel data, remote sensing, and geospatial QA — 2,000+ maps digitized at 95–100% spatial accuracy for clients in the USA and Canada." />
+  <meta name="author" content="Muddasir Ali" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="icon"
+    href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="%23ff4b26"/><path d="M8 23V9l8 8 8-8v14" fill="none" stroke="%230a0a0b" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' />
 
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="Muddasir Ali" />
-<meta property="og:title" content="Muddasir Ali — GIS Analyst" />
-<meta property="og:description" content="Zoning & parcel data, remote sensing, and geospatial QA. 2,000+ maps digitized at 95–100% spatial accuracy for clients in the USA and Canada." />
-<meta property="og:url" content="./" />
-<meta property="og:image" content="assets/thumbs/study-area.jpg" />
-<meta property="og:image:alt" content="Awaran district earthquake study area and fault line map" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Muddasir Ali — GIS Analyst" />
-<meta name="twitter:description" content="Zoning & parcel data, remote sensing, and geospatial QA. 2,000+ maps digitized at 95–100% spatial accuracy." />
-<meta name="twitter:image" content="assets/thumbs/study-area.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Muddasir Ali" />
+  <meta property="og:title" content="Muddasir Ali — GIS Analyst" />
+  <meta property="og:description"
+    content="Zoning & parcel data, remote sensing, and geospatial QA. 2,000+ maps digitized at 95–100% spatial accuracy for clients in the USA and Canada." />
+  <meta property="og:url" content="./" />
+  <meta property="og:image" content="assets/thumbs/study-area.jpg" />
+  <meta property="og:image:alt" content="Awaran district earthquake study area and fault line map" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Muddasir Ali — GIS Analyst" />
+  <meta name="twitter:description"
+    content="Zoning & parcel data, remote sensing, and geospatial QA. 2,000+ maps digitized at 95–100% spatial accuracy." />
+  <meta name="twitter:image" content="assets/thumbs/study-area.jpg" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
-<style>
-  *,:before,:after{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --ink:#0a0a0b;--panel:#131316;--panel-2:#1a1a1e;
-    --paper:#f4f3ef;--muted:#8f8f95;--muted-2:#59595e;
-    --line:#ffffff14;--line-2:#ffffff0a;
-    --signal:#ff4b26;--signal-soft:#ff4b2620;--signal-line:#ff4b2650;
-    --serif:"Fraunces", serif;--sans:"Inter", sans-serif;--mono:"JetBrains Mono", monospace;
-    --ease:cubic-bezier(.16,1,.3,1);
-  }
-  html{scroll-behavior:smooth}
-  body{background:var(--ink);color:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-weight:300;overflow-x:hidden;cursor:default}
-  em{font-style:italic;color:var(--signal)}
-  a{color:inherit}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
+  <style>
+    *,
+    :before,
+    :after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-  /* ───────── atmosphere ───────── */
-  #bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
-    background-image:linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px);
-    background-size:64px 64px;
-    -webkit-mask-image:radial-gradient(ellipse 80% 55% at 50% 0%,#000 0%,transparent 75%);
-    mask-image:radial-gradient(ellipse 80% 55% at 50% 0%,#000 0%,transparent 75%);
-  }
-  #bg-blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  #bg-blobs .blob{position:absolute;border-radius:50%;filter:blur(100px);will-change:transform}
-  #bg-blobs .b1{width:44vw;height:44vw;background:var(--signal);opacity:.08;top:-12%;left:-6%;animation:drift1 36s ease-in-out infinite alternate}
-  #bg-blobs .b2{width:36vw;height:36vw;background:#ffffff;opacity:.03;bottom:-4%;right:-4%;animation:drift2 42s ease-in-out infinite alternate}
-  @keyframes drift1{0%{transform:translate(0,0)}100%{transform:translate(7vw,9vh) scale(1.1)}}
-  @keyframes drift2{0%{transform:translate(0,0)}100%{transform:translate(-8vw,-6vh) scale(1.08)}}
-  #grain{position:fixed;inset:0;z-index:150;pointer-events:none;opacity:.03;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+    :root {
+      --ink: #0a0a0b;
+      --panel: #131316;
+      --panel-2: #1a1a1e;
+      --paper: #f4f3ef;
+      --muted: #8f8f95;
+      --muted-2: #59595e;
+      --line: #ffffff14;
+      --line-2: #ffffff0a;
+      --signal: #ff4b26;
+      --signal-soft: #ff4b2620;
+      --signal-line: #ff4b2650;
+      --serif: "Fraunces", serif;
+      --sans: "Inter", sans-serif;
+      --mono: "JetBrains Mono", monospace;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
 
-  /* ───────── cursor: simple dot + reactive dot-grid field ───────── */
-  body.cursor-ready, body.cursor-ready *{cursor:none!important}
+    html {
+      scroll-behavior: smooth
+    }
 
-  /* dot-grid field that blooms around the pointer */
-  #cursor-dots{position:fixed;inset:0;z-index:900;pointer-events:none;
-    opacity:0;transition:opacity .45s ease}
-  body.cursor-ready #cursor-dots{opacity:1}
+    body {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: default
+    }
 
-  .pc-cursor{position:fixed;top:0;left:0;width:23px;height:23px;margin:-1px 0 0 -1px;
-    pointer-events:none;z-index:999;opacity:0;transition:opacity .3s;
-    filter:drop-shadow(0 1px 2px #00000066)}
-  body.cursor-ready .pc-cursor{opacity:1}
-  .pc-cursor svg{display:block;width:100%;height:100%;overflow:visible;
-    transform-origin:5% 5%;transition:transform .28s var(--ease)}
-  .pc-cursor path{fill:var(--paper);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round;
-    transition:fill .22s,stroke .22s}
-  body.cursor-hover .pc-cursor svg{transform:scale(1.28)}
-  body.cursor-hover .pc-cursor path{fill:var(--signal)}
-  body.cursor-down .pc-cursor svg{transform:scale(.84)}
+    em {
+      font-style: italic;
+      color: var(--signal)
+    }
 
-  @media (pointer:coarse){.pc-cursor,#cursor-dots{display:none}
-    body.cursor-ready, body.cursor-ready *{cursor:auto!important}}
+    a {
+      color: inherit
+    }
 
-  /* ───────── scan-sweep (photo / project shots) ───────── */
-  .scan-sweep{position:absolute;left:0;right:0;height:2px;top:-10%;pointer-events:none;z-index:3;
-    background:linear-gradient(90deg,transparent,var(--signal) 50%,transparent);
-    opacity:0;filter:blur(.4px) drop-shadow(0 0 4px var(--signal));animation:scanSweep 6.5s ease-in-out infinite}
-  @keyframes scanSweep{0%,84%,100%{top:-6%;opacity:0}6%{opacity:.9}46%{opacity:.9}52%{top:104%;opacity:0}}
-  @media (prefers-reduced-motion:reduce){.scan-sweep{display:none}}
+    /* ───────── atmosphere ───────── */
+    #bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: linear-gradient(#ffffff07 1px, transparent 1px), linear-gradient(90deg, #ffffff07 1px, transparent 1px);
+      background-size: 64px 64px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 0%, transparent 75%);
+      mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 0%, transparent 75%);
+    }
 
-  /* ───────── custom scrollbar ───────── */
-  ::-webkit-scrollbar{width:9px;height:9px}
-  ::-webkit-scrollbar-track{background:var(--ink)}
-  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--signal),#c73c1c);border:2px solid var(--ink);background-clip:padding-box}
-  ::-webkit-scrollbar-thumb:hover{background:linear-gradient(#ff6b4a,var(--signal));background-clip:padding-box}
-  html{scrollbar-width:thin;scrollbar-color:var(--signal) var(--ink)}
+    #bg-blobs {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden
+    }
 
-  #progress-line{z-index:200;height:2px;background:var(--signal);position:fixed;top:0;left:0;transform-origin:left;width:100%;transform:scaleX(0)}
+    #bg-blobs .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      will-change: transform
+    }
 
-  /* ───────── nav ───────── */
-  #site-nav{z-index:100;background:linear-gradient(#0a0a0bf2 0%,#0000 100%);justify-content:space-between;align-items:center;padding:22px 48px;transition:transform .4s var(--ease),opacity .4s;display:flex;position:fixed;top:0;left:0;right:0}
-  #site-nav.hidden{opacity:0;transform:translateY(-100%)}
-  .nav-mark{font-family:var(--serif);font-style:italic;letter-spacing:.01em;color:var(--paper);font-size:21px;text-decoration:none}
-  .nav-links{gap:30px;display:flex}
-  .nav-links a{font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-size:10px;text-decoration:none;transition:color .3s;display:flex;align-items:center;gap:7px;position:relative;padding-bottom:4px}
-  .nl-idx{color:var(--muted-2)}
-  .nav-links a:after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--signal);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
-  .nav-links a:hover,.nav-links a.active{color:var(--paper)}
-  .nav-links a:hover:after,.nav-links a.active:after{transform:scaleX(1);transform-origin:left}
-  #nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;padding:0;cursor:pointer;z-index:110;position:relative}
-  #nav-toggle span{display:block;width:100%;height:1px;background:var(--paper);transition:transform .35s var(--ease),opacity .25s}
-  #site-nav.nav-open #nav-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-  #site-nav.nav-open #nav-toggle span:nth-child(2){opacity:0}
-  #site-nav.nav-open #nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-  #nav-scrim{display:none}
-  @media (width<=860px){
-    #nav-toggle{display:flex}
-    #nav-scrim{display:block;position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .4s;z-index:103}
-    #site-nav.nav-open #nav-scrim{opacity:.5;pointer-events:auto}
-    .nav-links{position:fixed;top:0;right:0;bottom:0;width:min(80vw,340px);background:var(--panel);border-left:1px solid var(--line);
-      flex-direction:column;align-items:flex-start;justify-content:center;gap:0;padding:32px;
-      transform:translateX(100%);transition:transform .5s var(--ease);z-index:104}
-    #site-nav.nav-open .nav-links{transform:translateX(0)}
-    .nav-links a{width:100%;font-size:15px;padding:18px 0;border-bottom:1px solid var(--line);gap:14px}
-    .nl-idx{display:inline-block;color:var(--muted-2);font-size:11px}
-    .nav-links a:after{display:none}
-  }
+    #bg-blobs .b1 {
+      width: 44vw;
+      height: 44vw;
+      background: var(--signal);
+      opacity: .08;
+      top: -12%;
+      left: -6%;
+      animation: drift1 36s ease-in-out infinite alternate
+    }
 
-  /* ───────── layout ───────── */
-  .section{align-items:center;min-height:100vh;padding:130px 48px 110px;display:flex;position:relative;z-index:1}
-  .section:not(.hero-section){border-top:1px solid var(--line)}
-  .container{width:100%;max-width:1080px;margin:0 auto}
-  .fade-up{opacity:0;filter:blur(6px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease),filter 1.1s var(--ease);transform:translateY(30px)}
-  .fade-up.visible{opacity:1;filter:blur(0);transform:translateY(0)}
-  .chapter-tag{font-family:var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:22px;font-size:10px;display:flex;align-items:center;gap:10px}
-  .chapter-tag:before{content:"";width:20px;height:1px;background:var(--signal)}
-  .section-title{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;color:var(--paper);margin-bottom:32px;font-size:clamp(40px,5.6vw,74px);line-height:1.03;
-    clip-path:inset(0 0 100% 0);transition:clip-path 1.15s var(--ease);transform:none!important}
-  .section-title.visible{clip-path:inset(0 0 0% 0)}
-  .section-sub{color:var(--muted);max-width:600px;font-size:15px;font-weight:300;line-height:1.85}
+    #bg-blobs .b2 {
+      width: 36vw;
+      height: 36vw;
+      background: #ffffff;
+      opacity: .03;
+      bottom: -4%;
+      right: -4%;
+      animation: drift2 42s ease-in-out infinite alternate
+    }
 
-  /* ───────── hero ───────── */
-  .hero-section{background:var(--ink);align-items:center;min-height:100vh;overflow:hidden}
-  .hero-section .container{position:relative;z-index:2}
-  .hero-label{font-family:var(--mono);letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-bottom:30px;font-size:10px;display:flex;align-items:center;gap:10px}
-  .live-dot{width:6px;height:6px;border-radius:50%;background:var(--signal);box-shadow:0 0 8px #ff4b26;animation:pulse 2s ease-in-out infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-  .hero-name{font-family:var(--serif);line-height:.94;margin-bottom:30px;overflow:hidden}
-  .hero-name .line{overflow:hidden}
-  .name-mud{color:var(--paper);font-weight:400;font-size:clamp(50px,9.4vw,120px);display:block;transform:translateY(105%);transition:transform 1s var(--ease)}
-  .name-ali{color:var(--signal);font-weight:400;font-style:italic;font-size:clamp(50px,9.4vw,120px);display:block;transform:translateY(105%);transition:transform 1s .12s var(--ease)}
-  .hero-name.visible .name-mud,.hero-name.visible .name-ali{transform:translateY(0)}
-  .hero-role{font-family:var(--mono);letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:34px;font-size:11px;min-height:14px}
-  .hero-role .type-cursor{display:inline-block;width:7px;height:11px;background:var(--signal);margin-left:2px;vertical-align:-1px;animation:blink 1s step-end infinite}
-  @keyframes blink{50%{opacity:0}}
-  .hero-divider{background:var(--signal);opacity:.9;width:0;height:2px;margin-bottom:34px;transition:width 1s .4s var(--ease)}
-  .fade-up.visible .hero-divider{width:44px}
-  .hero-lead{font-family:var(--serif);font-weight:400;color:var(--paper);line-height:1.08;margin-bottom:30px;font-size:clamp(26px,4vw,50px);max-width:640px}
-  .hero-lead em{font-style:italic;color:var(--signal)}
-  .hero-statement{color:var(--muted);max-width:560px;margin-bottom:50px;font-size:14px;font-weight:300;line-height:1.85}
-  .hero-statement em{font-style:normal;color:var(--paper);font-family:var(--mono);letter-spacing:.08em;margin-top:12px;font-size:11px;display:block}
-  .hero-stats{border-top:1px solid var(--line);border-left:1px solid var(--line);gap:0;display:flex;flex-wrap:wrap}
-  .h-stat{border-bottom:1px solid var(--line);border-right:1px solid var(--line);flex:1 1 20%;min-width:118px;padding:20px 22px;transition:background .3s}
-  .h-stat:hover{background:#ffffff05}
-  .h-num{font-family:var(--serif);font-weight:400;color:var(--paper);margin-bottom:6px;font-size:30px;line-height:1;display:block;font-variant-numeric:tabular-nums}
-  .h-label{font-family:var(--mono);letter-spacing:.1em;color:var(--muted);text-transform:uppercase;font-size:9px}
+    @keyframes drift1 {
+      0% {
+        transform: translate(0, 0)
+      }
 
-  #globe-stage{position:absolute;inset:8% 0 0 0;z-index:1;opacity:.24;pointer-events:none;transition:opacity .8s var(--ease)}
-  #globe-stage canvas{display:block;width:100%!important;height:100%!important}
-  @media (min-width:1000px){
-    #globe-stage{inset:auto -7% auto auto;top:50%;width:54%;height:82%;transform:translateY(-50%);opacity:0;pointer-events:auto}
-    #globe-stage.ready{opacity:1}
-  }
-  #globe-tooltip{position:fixed;z-index:60;pointer-events:none;background:#131316f2;border:1px solid var(--signal);padding:9px 14px;opacity:0;transform:translate(-50%,-130%);transition:opacity .25s;white-space:nowrap}
-  #globe-tooltip .tt-title{color:var(--signal);display:block;margin-bottom:2px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
-  #globe-tooltip .tt-sub{color:var(--muted);font-family:var(--mono);font-size:9px}
+      100% {
+        transform: translate(7vw, 9vh) scale(1.1)
+      }
+    }
 
-  #topo-canvas{position:absolute;inset:0;z-index:1;opacity:.28;pointer-events:none;transition:opacity .8s var(--ease)}
-  #topo-canvas canvas{display:block;width:100%!important;height:100%!important}
-  @media (pointer:coarse){#topo-canvas{display:none}}
-  @media (prefers-reduced-motion:reduce){#topo-canvas{display:none}}
+    @keyframes drift2 {
+      0% {
+        transform: translate(0, 0)
+      }
 
-  .scroll-cue{position:absolute;bottom:36px;left:48px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;transition:opacity 1s 1.2s}
-  .scroll-cue.visible{opacity:.6}
-  .scroll-cue .sc-line{width:1px;height:34px;background:linear-gradient(var(--signal),transparent);position:relative;overflow:hidden}
-  .scroll-cue .sc-line:after{content:"";position:absolute;left:0;top:-100%;width:100%;height:100%;background:var(--paper);animation:scdrop 2.2s ease-in-out infinite}
-  @keyframes scdrop{0%{top:-100%}100%{top:100%}}
-  .scroll-cue span{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;writing-mode:vertical-rl}
-  @media (width<=768px){.scroll-cue{display:none}}
+      100% {
+        transform: translate(-8vw, -6vh) scale(1.08)
+      }
+    }
 
-  /* ───────── about ───────── */
-  .about-grid{display:grid;grid-template-columns:270px 1fr;gap:60px;align-items:start}
-  .about-portrait{position:relative;border:1px solid var(--line);border-radius:4px 46px 4px 4px;overflow:hidden;background:var(--panel);
-    box-shadow:0 30px 70px -36px #00000090;transition:border-color .5s,box-shadow .6s}
-  .about-portrait:hover{border-color:var(--signal-line);box-shadow:0 30px 70px -30px #ff4b2635}
-  .about-portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.9) contrast(1.04);transition:transform .7s var(--ease),filter .5s}
-  .about-portrait:hover img{transform:scale(1.03);filter:saturate(1) contrast(1.06)}
-  .about-portrait figcaption{position:absolute;left:0;right:0;bottom:0;padding:10px 14px;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;color:var(--paper);
-    background:linear-gradient(0deg,#0a0a0bea,transparent);text-transform:uppercase}
-  .about-metrics{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-top:20px}
-  .am-item{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0 14px 16px;border-bottom:1px solid var(--line-2)}
-  .am-item:before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:8px;height:1px;background:var(--signal)}
-  .am-item .h-num{font-size:22px}
-  .am-item .h-label{font-size:9px;text-align:right;line-height:1.5}
+    #grain {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      pointer-events: none;
+      opacity: .03;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")
+    }
 
-  .about-lede{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--paper);max-width:640px;font-size:clamp(18px,2.6vw,22px);line-height:1.5;margin-top:6px}
+    /* ───────── cursor: simple dot + reactive dot-grid field ───────── */
+    body.cursor-ready,
+    body.cursor-ready * {
+      cursor: none !important
+    }
 
-  .pipeline{margin:36px 0 40px;border:1px solid var(--line)}
-  .pipeline-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:14px 18px;border-bottom:1px solid var(--line)}
-  .pipeline-steps{display:grid;grid-template-columns:repeat(5,1fr)}
-  .pipe-step{padding:20px 14px;border-right:1px solid var(--line);border-top:2px solid transparent;position:relative;transition:background .3s,border-color .3s}
-  .pipe-step:last-child{border-right:none}
-  .pipe-step:hover{background:#ffffff04;border-top-color:var(--signal)}
-  .pipe-no{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;
-    border:1px solid var(--signal-line);font-family:var(--mono);font-size:11px;color:var(--signal);
-    margin-bottom:14px;line-height:1;transition:background .3s var(--ease),color .3s,transform .3s var(--ease)}
-  .pipe-step:hover .pipe-no{background:var(--signal);color:var(--ink);transform:scale(1.08)}
-  .pipe-title{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);margin-bottom:8px}
-  .pipe-desc{display:block;font-size:12px;color:var(--muted);line-height:1.6}
+    /* dot-grid field that blooms around the pointer */
+    #cursor-dots {
+      position: fixed;
+      inset: 0;
+      z-index: 900;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .45s ease
+    }
 
-  .about-body{color:var(--muted);max-width:700px;font-size:14px;line-height:1.9}
-  .about-body p{margin-bottom:16px}
-  .about-body strong{color:var(--paper);font-weight:500}
-  .about-closing{color:var(--paper)!important;padding-left:16px;border-left:2px solid var(--signal-line)}
-  @media (width<=980px){
-    .about-grid{grid-template-columns:1fr;gap:36px}
-    .about-portrait{max-width:280px}
-    .about-metrics{max-width:340px}
-    .pipeline-steps{grid-template-columns:1fr}
-    .pipe-step{border-right:none;border-bottom:1px solid var(--line)}
-    .pipe-step:last-child{border-bottom:none}
-  }
-  @media (width<=768px){
-    .pipeline-steps{grid-template-columns:1fr}
-    .pipe-step{border-right:none;border-bottom:1px solid var(--line);border-top:none;border-left:2px solid transparent}
-    .pipe-step:last-child{border-bottom:none}
-    .pipe-step:hover{border-left-color:var(--signal);border-top:none}
-    .pipe-step{display:grid;grid-template-columns:32px 1fr;column-gap:14px;align-items:center;padding:16px 14px}
-    .pipe-no{grid-row:1/3;margin-bottom:0}
-  }
+    body.cursor-ready #cursor-dots {
+      opacity: 1
+    }
 
-  /* ───────── tools ───────── */
-  .tool-groups{margin-top:52px;display:flex;flex-direction:column;gap:34px}
-  .tg-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:16px}
-  .tool-badges{display:flex;flex-wrap:wrap;gap:12px}
-  .tool-badge{position:relative;font-family:var(--serif);font-size:16px;color:var(--paper);border:1px solid var(--line);
-    padding:13px 22px;overflow:hidden;display:inline-block;
-    transition:border-color .4s,transform .4s var(--ease),box-shadow .4s var(--ease)}
-  .tool-badge:before{content:"";position:absolute;inset:0;pointer-events:none;
-    background:radial-gradient(160px circle at var(--mx,50%) var(--my,50%),#ff4b2624,transparent 70%);
-    opacity:0;transition:opacity .35s}
-  .tool-badge:hover{border-color:var(--signal-line);transform:translateY(-4px);box-shadow:0 16px 34px -18px #ff4b2650}
-  .tool-badge:hover:before{opacity:1}
+    .pc-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 23px;
+      height: 23px;
+      margin: -1px 0 0 -1px;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0;
+      transition: opacity .3s;
+      filter: drop-shadow(0 1px 2px #00000066)
+    }
 
-  .tools-divider{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin:64px 0 32px;padding-top:36px;border-top:1px solid var(--line)}
-  .tools-divider h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1;margin:0;color:var(--paper)}
-  .tools-divider p{max-width:400px;margin:0;text-align:right;font-size:12px;line-height:1.7;color:var(--muted)}
-  .custom-tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-  .custom-tool{position:relative;padding:26px 24px;background:var(--ink);overflow:hidden;transition:background .4s}
-  .custom-tool:before{content:"";position:absolute;inset:0;pointer-events:none;
-    background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),#ff4b261c,transparent 68%);
-    opacity:0;transition:opacity .4s}
-  .custom-tool:hover:before{opacity:1}
-  .tool-purpose{font-family:var(--mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
-  .custom-tool h4{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.1;margin-bottom:12px;color:var(--paper)}
-  .custom-tool p{font-size:12px;line-height:1.7;color:var(--muted);margin-bottom:18px}
-  .tool-status{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal)}
-  .tool-status:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--signal);box-shadow:0 0 6px var(--signal)}
-  .custom-tool.building{border-style:dashed}
-  .custom-tool.building .tool-status{color:var(--muted)}
-  .custom-tool.building .tool-status:before{background:var(--muted);box-shadow:none;animation:pulse 1.6s ease-in-out infinite}
-  @media (width<=860px){.custom-tools-grid{grid-template-columns:repeat(2,1fr)}}
-  @media (width<=560px){.custom-tools-grid{grid-template-columns:1fr}.tools-divider{flex-direction:column;align-items:flex-start}.tools-divider p{text-align:left}}
+    body.cursor-ready .pc-cursor {
+      opacity: 1
+    }
 
-  /* ───────── experience ───────── */
-  .exp-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:36px 0 0}
-  .exp-stat{padding:16px 18px;background:var(--ink)}
-  .exp-stat strong{display:block;font-family:var(--serif);font-size:26px;font-weight:400;color:var(--signal);line-height:1}
-  .exp-stat span{display:block;margin-top:6px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .timeline{margin-top:44px}
-  .tl-item{position:relative;border:1px solid var(--line);border-radius:8px;padding:34px 36px;margin-bottom:18px;
-    background:linear-gradient(160deg,#ffffff05,#ffffff01);display:grid;grid-template-columns:56px 1fr;gap:24px;
-    overflow:hidden;transform-style:preserve-3d;transition:border-color .5s,box-shadow .6s}
-  .tl-item:last-child{margin-bottom:0}
-  .tl-item:before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:8px;
-    background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),#ff4b2624,transparent 68%);
-    opacity:0;transition:opacity .45s}
-  .tl-item:hover:before{opacity:1}
-  .tl-item.in-view{border-color:var(--line);box-shadow:0 24px 60px -30px #00000090}
-  .tl-item.in-view.active{border-color:var(--signal-line);box-shadow:0 0 0 1px var(--signal-line),0 0 50px -14px #ff4b2645}
-  .tl-idx{font-family:var(--serif);font-size:15px;color:var(--muted-2);padding-top:4px;transition:color .3s}
-  .tl-item.active .tl-idx{color:var(--signal)}
-  .tl-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:14px}
-  .tl-org{font-family:var(--serif);font-size:23px;font-weight:400;color:var(--paper)}
-  .tl-period{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
-  .tl-role{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);border:1px solid var(--signal-line);padding:4px 10px;margin-bottom:18px}
-  .tl-desc{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px 30px;max-width:760px;margin-bottom:18px}
-  .tl-desc li{color:var(--muted);font-size:13px;line-height:1.7;padding-left:15px;position:relative}
-  .tl-desc li:before{content:"";position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--muted-2)}
-  .tl-tools{flex-wrap:wrap;gap:8px;display:flex}
-  .tl-tools span{font-family:var(--mono);letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);padding:3px 10px;font-size:9px}
-  @media (width<=768px){
-    .tl-item{grid-template-columns:1fr;gap:10px;padding:26px 22px}
-    .tl-desc{grid-template-columns:1fr}
-    .exp-summary{grid-template-columns:1fr}
-  }
+    .pc-cursor svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      transform-origin: 5% 5%;
+      transition: transform .28s var(--ease)
+    }
 
-  /* ───────── projects ───────── */
-  .proj-card{position:relative;border:1px solid var(--line);margin-top:32px;overflow:hidden;
-    transition:border-color .5s,box-shadow .6s;box-shadow:0 30px 70px -40px #00000090}
-  .proj-card:first-of-type{margin-top:52px}
-  .proj-card:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-    background:radial-gradient(460px circle at var(--mx,50%) var(--my,50%),#ff4b2618,transparent 68%);
-    opacity:0;transition:opacity .5s}
-  .proj-card:hover:before{opacity:1}
-  .proj-card:hover{border-color:var(--signal-line);box-shadow:0 30px 70px -30px #ff4b2635}
-  .proj-media{display:flex;gap:1px;background:var(--line)}
-  .proj-shot{position:relative;flex:1;display:block;aspect-ratio:4/3;overflow:hidden;background:var(--panel)}
-  .proj-shot img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.95);transition:transform .6s var(--ease),filter .4s}
-  .proj-shot:hover img{transform:scale(1.05);filter:saturate(1) brightness(1)}
-  .proj-shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:8px 12px;font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;color:var(--paper);
-    background:linear-gradient(0deg,#0a0a0be3,transparent);text-transform:uppercase}
-  .card-arrow{position:absolute;right:12px;top:12px;width:32px;height:32px;border-radius:50%;background:var(--signal);
-    display:flex;align-items:center;justify-content:center;transform:scale(0) rotate(-40deg);opacity:0;
-    transition:transform .45s var(--ease),opacity .3s;z-index:2;pointer-events:none}
-  .proj-shot:hover .card-arrow{transform:scale(1) rotate(0deg);opacity:1}
-  .card-arrow svg{width:14px;height:14px}
-  .proj-copy{padding:34px 36px}
-  .proj-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
-  .proj-num{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--signal)}
-  .proj-type{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:5px 10px}
-  .proj-title{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.6vw,32px);line-height:1.15;color:var(--paper);margin-bottom:14px}
-  .proj-desc{color:var(--muted);font-size:13px;line-height:1.85;margin-bottom:20px;max-width:680px}
-  .proj-outcome{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:baseline;padding:13px 15px;margin-bottom:20px;
-    border-left:2px solid var(--signal);background:#ff4b2609;font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--muted)}
-  .proj-outcome strong{color:var(--signal);text-transform:uppercase;letter-spacing:.1em;font-weight:500}
-  .proj-stack{flex-wrap:wrap;gap:7px;display:flex;margin-bottom:18px}
-  .proj-stack span{font-family:var(--mono);letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);padding:3px 9px;font-size:9px}
-  .proj-archive{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--signal);text-decoration:none;border-bottom:1px solid var(--signal-line);padding-bottom:3px;transition:border-color .3s,gap .3s}
-  .proj-archive:hover{gap:12px;border-color:var(--signal)}
-  .proj-note{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2)}
-  @media (width<=768px){.proj-media{flex-direction:column}.proj-copy{padding:26px 24px}}
+    .pc-cursor path {
+      fill: var(--paper);
+      stroke: var(--ink);
+      stroke-width: 1.3;
+      stroke-linejoin: round;
+      transition: fill .22s, stroke .22s
+    }
 
-  /* ───────── skills ───────── */
-  .skills-wrap{display:grid;grid-template-columns:repeat(2,1fr);margin-top:52px}
-  .skill-group{border-top:1px solid var(--line);padding:24px 0}
-  .skill-group:nth-child(odd){padding-right:44px}
-  .skill-group:nth-child(even){padding-left:44px;border-left:1px solid var(--line)}
-  .sg-label{font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--signal);margin-bottom:10px;font-size:10px}
-  .sg-items{color:var(--muted);font-size:14px;line-height:1.9}
-  @media (width<=768px){
-    .skills-wrap{grid-template-columns:1fr}
-    .skill-group:nth-child(even){padding-left:0;border-left:none}
-    .skill-group:nth-child(odd){padding-right:0}
-  }
+    body.cursor-hover .pc-cursor svg {
+      transform: scale(1.28)
+    }
 
-  .education-block{margin-top:56px;padding-top:36px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
-  .edu-degree{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--paper);font-size:27px}
-  .edu-school{color:var(--muted);font-family:var(--mono);font-size:11px;margin-top:8px;letter-spacing:.03em}
-  .edu-elect{font-family:var(--mono);color:var(--muted-2);font-size:9px;letter-spacing:.05em;text-align:right}
-  @media (width<=560px){.education-block{align-items:flex-start}.edu-elect{text-align:left}}
+    body.cursor-hover .pc-cursor path {
+      fill: var(--signal)
+    }
 
-  /* ───────── contact ───────── */
-  .contact-section{min-height:80vh}
-  .contact-inner{max-width:700px}
-  .availability-pill{display:inline-flex;align-items:center;gap:9px;margin-bottom:24px;padding:8px 14px;border:1px solid var(--signal-line);
-    font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal)}
-  .availability-pill i{width:6px;height:6px;border-radius:50%;background:var(--signal);box-shadow:0 0 8px var(--signal);animation:pulse 2s ease-in-out infinite;font-style:normal}
-  .contact-heading{font-family:var(--serif);font-weight:400;color:var(--paper);margin-bottom:24px;font-size:clamp(42px,6vw,74px);line-height:1.05;
-    clip-path:inset(0 0 100% 0);transition:clip-path 1.15s .1s var(--ease)}
-  .fade-up.visible .contact-heading{clip-path:inset(0 0 0% 0)}
-  .contact-sub{color:var(--muted);max-width:520px;margin-bottom:40px;font-size:14px;line-height:1.9}
-  .contact-links{flex-wrap:wrap;gap:16px;margin-bottom:52px;display:flex}
-  .cta-link{font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:15px 34px;font-size:11px;text-decoration:none;transition:transform .25s var(--ease),box-shadow .3s,background .3s,color .3s,border-color .3s;display:inline-block;position:relative}
-  .cta-link:not(.outline){background:var(--signal);color:var(--ink)}
-  .cta-link:not(.outline):hover{box-shadow:0 10px 32px -10px #ff4b2680}
-  .cta-link.outline{color:var(--muted);border:1px solid var(--line)}
-  .cta-link.outline:hover{border-color:var(--signal);color:var(--paper)}
-  .contact-social{display:flex;gap:22px;margin-bottom:44px}
-  .contact-social a{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);text-decoration:none;text-transform:uppercase;border-bottom:1px solid transparent;transition:color .25s,border-color .25s;padding-bottom:2px}
-  .contact-social a:hover{color:var(--paper);border-color:var(--signal)}
-  .contact-meta{display:flex;flex-wrap:wrap;gap:10px 24px}
-  .contact-coord,.contact-time{font-family:var(--mono);letter-spacing:.1em;color:var(--muted-2);font-size:10px}
+    body.cursor-down .pc-cursor svg {
+      transform: scale(.84)
+    }
 
-  /* ───────── footer ───────── */
-  .site-footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:72px 48px 0;overflow:hidden}
-  .site-footer:before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--signal),transparent);opacity:.6}
-  .footer-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px}
-  .footer-brand .nav-mark{font-size:26px;margin-bottom:16px;display:inline-block}
-  .footer-tag{color:var(--muted);font-size:13px;line-height:1.8;max-width:280px;margin-bottom:20px}
-  .footer-coord{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted-2)}
-  .footer-col-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:18px}
-  .footer-col a{display:block;color:var(--muted);text-decoration:none;font-size:13px;line-height:2.3;transition:color .25s,transform .25s var(--ease);width:fit-content}
-  .footer-col a:hover{color:var(--paper);transform:translateX(4px)}
-  .footer-bottom{max-width:1080px;margin:0 auto;padding:26px 0 30px;border-top:1px solid var(--line);
-    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-  .footer-copy{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--muted-2);text-transform:uppercase}
-  #back-to-top{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
-    background:none;border:1px solid var(--line);padding:9px 16px;cursor:pointer;transition:border-color .3s,color .3s,transform .3s var(--ease)}
-  #back-to-top:hover{border-color:var(--signal);color:var(--paper);transform:translateY(-3px)}
-  @media (width<=860px){
-    .site-footer{padding:56px 24px 0}
-    .footer-grid{grid-template-columns:1fr 1fr;gap:36px 24px}
-    .footer-brand{grid-column:1/3}
-  }
-  @media (width<=520px){.footer-grid{grid-template-columns:1fr}.footer-brand{grid-column:auto}}
+    @media (pointer:coarse) {
 
-  @media (width<=768px){
-    .section{padding:110px 24px 90px}
-    #site-nav{padding:16px 24px}
-    .h-stat{flex:1 1 50%}
-  }
-  @media (width<=480px){.h-stat{flex:1 1 100%}}
-  @media (prefers-reduced-motion:reduce){
-    .fade-up{opacity:1;transition:none;transform:none;filter:none}
-    .section-title,.contact-heading{clip-path:none!important;transition:none}
-    .name-mud,.name-ali,.hero-divider{transform:none!important;transition:none!important;width:auto!important}
-    #bg-blobs .blob{animation:none}
-    *{transition-duration:.01ms!important;animation-duration:.01ms!important}
-  }
-</style>
+      .pc-cursor,
+      #cursor-dots {
+        display: none
+      }
+
+      body.cursor-ready,
+      body.cursor-ready * {
+        cursor: auto !important
+      }
+    }
+
+    /* ───────── scan-sweep (photo / project shots) ───────── */
+    .scan-sweep {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      top: -10%;
+      pointer-events: none;
+      z-index: 3;
+      background: linear-gradient(90deg, transparent, var(--signal) 50%, transparent);
+      opacity: 0;
+      filter: blur(.4px) drop-shadow(0 0 4px var(--signal));
+      animation: scanSweep 6.5s ease-in-out infinite
+    }
+
+    @keyframes scanSweep {
+
+      0%,
+      84%,
+      100% {
+        top: -6%;
+        opacity: 0
+      }
+
+      6% {
+        opacity: .9
+      }
+
+      46% {
+        opacity: .9
+      }
+
+      52% {
+        top: 104%;
+        opacity: 0
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .scan-sweep {
+        display: none
+      }
+    }
+
+    /* ───────── custom scrollbar ───────── */
+    ::-webkit-scrollbar {
+      width: 9px;
+      height: 9px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--ink)
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--signal), #c73c1c);
+      border: 2px solid var(--ink);
+      background-clip: padding-box
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(#ff6b4a, var(--signal));
+      background-clip: padding-box
+    }
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--signal) var(--ink)
+    }
+
+    #progress-line {
+      z-index: 200;
+      height: 2px;
+      background: var(--signal);
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform-origin: left;
+      width: 100%;
+      transform: scaleX(0)
+    }
+
+    /* ───────── nav ───────── */
+    #site-nav {
+      z-index: 100;
+      background: linear-gradient(#0a0a0bf2 0%, #0000 100%);
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 48px;
+      transition: transform .4s var(--ease), opacity .4s;
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0
+    }
+
+    #site-nav.hidden {
+      opacity: 0;
+      transform: translateY(-100%)
+    }
+
+    .nav-mark {
+      font-family: var(--serif);
+      font-style: italic;
+      letter-spacing: .01em;
+      color: var(--paper);
+      font-size: 21px;
+      text-decoration: none
+    }
+
+    .nav-links {
+      gap: 30px;
+      display: flex
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-size: 10px;
+      text-decoration: none;
+      transition: color .3s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      position: relative;
+      padding-bottom: 4px
+    }
+
+    .nl-idx {
+      color: var(--muted-2)
+    }
+
+    .nav-links a:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--signal);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .4s var(--ease)
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--paper)
+    }
+
+    .nav-links a:hover:after,
+    .nav-links a.active:after {
+      transform: scaleX(1);
+      transform-origin: left
+    }
+
+    #nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      z-index: 110;
+      position: relative
+    }
+
+    #nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: var(--paper);
+      transition: transform .35s var(--ease), opacity .25s
+    }
+
+    #site-nav.nav-open #nav-toggle span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg)
+    }
+
+    #site-nav.nav-open #nav-toggle span:nth-child(2) {
+      opacity: 0
+    }
+
+    #site-nav.nav-open #nav-toggle span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg)
+    }
+
+    #nav-scrim {
+      display: none
+    }
+
+    @media (width<=860px) {
+      #nav-toggle {
+        display: flex
+      }
+
+      #nav-scrim {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: #000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .4s;
+        z-index: 103
+      }
+
+      #site-nav.nav-open #nav-scrim {
+        opacity: .5;
+        pointer-events: auto
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(80vw, 340px);
+        background: var(--panel);
+        border-left: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0;
+        padding: 32px;
+        transform: translateX(100%);
+        transition: transform .5s var(--ease);
+        z-index: 104
+      }
+
+      #site-nav.nav-open .nav-links {
+        transform: translateX(0)
+      }
+
+      .nav-links a {
+        width: 100%;
+        font-size: 15px;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+        gap: 14px
+      }
+
+      .nl-idx {
+        display: inline-block;
+        color: var(--muted-2);
+        font-size: 11px
+      }
+
+      .nav-links a:after {
+        display: none
+      }
+    }
+
+    /* ───────── layout ───────── */
+    .section {
+      align-items: center;
+      min-height: 100vh;
+      padding: 130px 48px 110px;
+      display: flex;
+      position: relative;
+      z-index: 1
+    }
+
+    .section:not(.hero-section) {
+      border-top: 1px solid var(--line)
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto
+    }
+
+    .fade-up {
+      opacity: 0;
+      filter: blur(6px);
+      transition: opacity 1.1s var(--ease), transform 1.1s var(--ease), filter 1.1s var(--ease);
+      transform: translateY(30px)
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0)
+    }
+
+    .chapter-tag {
+      font-family: var(--mono);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 22px;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .chapter-tag:before {
+      content: "";
+      width: 20px;
+      height: 1px;
+      background: var(--signal)
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      letter-spacing: -.01em;
+      color: var(--paper);
+      margin-bottom: 32px;
+      font-size: clamp(40px, 5.6vw, 74px);
+      line-height: 1.03;
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 1.15s var(--ease);
+      transform: none !important
+    }
+
+    .section-title.visible {
+      clip-path: inset(0 0 0% 0)
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 600px;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85
+    }
+
+    /* ───────── hero ───────── */
+    .hero-section {
+      background: var(--ink);
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden
+    }
+
+    .hero-section .container {
+      position: relative;
+      z-index: 2
+    }
+
+    .hero-label {
+      font-family: var(--mono);
+      letter-spacing: .16em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 8px #ff4b26;
+      animation: pulse 2s ease-in-out infinite
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      line-height: .94;
+      margin-bottom: 30px;
+      overflow: hidden
+    }
+
+    .hero-name .line {
+      overflow: hidden
+    }
+
+    .name-mud {
+      color: var(--paper);
+      font-weight: 400;
+      font-size: clamp(50px, 9.4vw, 120px);
+      display: block;
+      transform: translateY(105%);
+      transition: transform 1s var(--ease)
+    }
+
+    .name-ali {
+      color: var(--signal);
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(50px, 9.4vw, 120px);
+      display: block;
+      transform: translateY(105%);
+      transition: transform 1s .12s var(--ease)
+    }
+
+    .hero-name.visible .name-mud,
+    .hero-name.visible .name-ali {
+      transform: translateY(0)
+    }
+
+    .hero-role {
+      font-family: var(--mono);
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 34px;
+      font-size: 11px;
+      min-height: 14px
+    }
+
+    .hero-role .type-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 11px;
+      background: var(--signal);
+      margin-left: 2px;
+      vertical-align: -1px;
+      animation: blink 1s step-end infinite
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0
+      }
+    }
+
+    .hero-divider {
+      background: var(--signal);
+      opacity: .9;
+      width: 0;
+      height: 2px;
+      margin-bottom: 34px;
+      transition: width 1s .4s var(--ease)
+    }
+
+    .fade-up.visible .hero-divider {
+      width: 44px
+    }
+
+    .hero-lead {
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--paper);
+      line-height: 1.08;
+      margin-bottom: 30px;
+      font-size: clamp(26px, 4vw, 50px);
+      max-width: 640px
+    }
+
+    .hero-lead em {
+      font-style: italic;
+      color: var(--signal)
+    }
+
+    .hero-statement {
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 50px;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.85
+    }
+
+    .hero-statement em {
+      font-style: normal;
+      color: var(--paper);
+      font-family: var(--mono);
+      letter-spacing: .08em;
+      margin-top: 12px;
+      font-size: 11px;
+      display: block
+    }
+
+    .hero-stats {
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      gap: 0;
+      display: flex;
+      flex-wrap: wrap
+    }
+
+    .h-stat {
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      flex: 1 1 20%;
+      min-width: 118px;
+      padding: 20px 22px;
+      transition: background .3s
+    }
+
+    .h-stat:hover {
+      background: #ffffff05
+    }
+
+    .h-num {
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--paper);
+      margin-bottom: 6px;
+      font-size: 30px;
+      line-height: 1;
+      display: block;
+      font-variant-numeric: tabular-nums
+    }
+
+    .h-label {
+      font-family: var(--mono);
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 9px
+    }
+
+    #globe-stage {
+      position: absolute;
+      inset: 8% 0 0 0;
+      z-index: 1;
+      opacity: .24;
+      pointer-events: none;
+      transition: opacity .8s var(--ease)
+    }
+
+    #globe-stage canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important
+    }
+
+    @media (min-width:1000px) {
+      #globe-stage {
+        inset: auto -7% auto auto;
+        top: 50%;
+        width: 54%;
+        height: 82%;
+        transform: translateY(-50%);
+        opacity: 0;
+        pointer-events: auto
+      }
+
+      #globe-stage.ready {
+        opacity: 1
+      }
+    }
+
+    #globe-tooltip {
+      position: fixed;
+      z-index: 60;
+      pointer-events: none;
+      background: #131316f2;
+      border: 1px solid var(--signal);
+      padding: 9px 14px;
+      opacity: 0;
+      transform: translate(-50%, -130%);
+      transition: opacity .25s;
+      white-space: nowrap
+    }
+
+    #globe-tooltip .tt-title {
+      color: var(--signal);
+      display: block;
+      margin-bottom: 2px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase
+    }
+
+    #globe-tooltip .tt-sub {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 9px
+    }
+
+    #topo-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: .28;
+      pointer-events: none;
+      transition: opacity .8s var(--ease)
+    }
+
+    #topo-canvas canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important
+    }
+
+    @media (pointer:coarse) {
+      #topo-canvas {
+        display: none
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      #topo-canvas {
+        display: none
+      }
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 36px;
+      left: 48px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 1s 1.2s
+    }
+
+    .scroll-cue.visible {
+      opacity: .6
+    }
+
+    .scroll-cue .sc-line {
+      width: 1px;
+      height: 34px;
+      background: linear-gradient(var(--signal), transparent);
+      position: relative;
+      overflow: hidden
+    }
+
+    .scroll-cue .sc-line:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--paper);
+      animation: scdrop 2.2s ease-in-out infinite
+    }
+
+    @keyframes scdrop {
+      0% {
+        top: -100%
+      }
+
+      100% {
+        top: 100%
+      }
+    }
+
+    .scroll-cue span {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      writing-mode: vertical-rl
+    }
+
+    @media (width<=768px) {
+      .scroll-cue {
+        display: none
+      }
+    }
+
+    /* ───────── about ───────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      gap: 60px;
+      align-items: start
+    }
+
+    .about-portrait {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 4px 46px 4px 4px;
+      overflow: hidden;
+      background: var(--panel);
+      box-shadow: 0 30px 70px -36px #00000090;
+      transition: border-color .5s, box-shadow .6s
+    }
+
+    .about-portrait:hover {
+      border-color: var(--signal-line);
+      box-shadow: 0 30px 70px -30px #ff4b2635
+    }
+
+    .about-portrait img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      filter: saturate(.9) contrast(1.04);
+      transition: transform .7s var(--ease), filter .5s
+    }
+
+    .about-portrait:hover img {
+      transform: scale(1.03);
+      filter: saturate(1) contrast(1.06)
+    }
+
+    .about-portrait figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px 14px;
+      font-family: var(--mono);
+      font-size: 8.5px;
+      letter-spacing: .08em;
+      color: var(--paper);
+      background: linear-gradient(0deg, #0a0a0bea, transparent);
+      text-transform: uppercase
+    }
+
+    .about-metrics {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--line);
+      margin-top: 20px
+    }
+
+    .am-item {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 14px 0 14px 16px;
+      border-bottom: 1px solid var(--line-2)
+    }
+
+    .am-item:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 1px;
+      background: var(--signal)
+    }
+
+    .am-item .h-num {
+      font-size: 22px
+    }
+
+    .am-item .h-label {
+      font-size: 9px;
+      text-align: right;
+      line-height: 1.5
+    }
+
+    .about-lede {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--paper);
+      max-width: 640px;
+      font-size: clamp(18px, 2.6vw, 22px);
+      line-height: 1.5;
+      margin-top: 6px
+    }
+
+    .pipeline {
+      margin: 36px 0 40px;
+      border: 1px solid var(--line)
+    }
+
+    .pipeline-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .pipeline-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr)
+    }
+
+    .pipe-step {
+      padding: 20px 14px;
+      border-right: 1px solid var(--line);
+      border-top: 2px solid transparent;
+      position: relative;
+      transition: background .3s, border-color .3s
+    }
+
+    .pipe-step:last-child {
+      border-right: none
+    }
+
+    .pipe-step:hover {
+      background: #ffffff04;
+      border-top-color: var(--signal)
+    }
+
+    .pipe-no {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--signal-line);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--signal);
+      margin-bottom: 14px;
+      line-height: 1;
+      transition: background .3s var(--ease), color .3s, transform .3s var(--ease)
+    }
+
+    .pipe-step:hover .pipe-no {
+      background: var(--signal);
+      color: var(--ink);
+      transform: scale(1.08)
+    }
+
+    .pipe-title {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--paper);
+      margin-bottom: 8px
+    }
+
+    .pipe-desc {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6
+    }
+
+    .about-body {
+      color: var(--muted);
+      max-width: 700px;
+      font-size: 14px;
+      line-height: 1.9
+    }
+
+    .about-body p {
+      margin-bottom: 16px
+    }
+
+    .about-body strong {
+      color: var(--paper);
+      font-weight: 500
+    }
+
+    .about-closing {
+      color: var(--paper) !important;
+      padding-left: 16px;
+      border-left: 2px solid var(--signal-line)
+    }
+
+    @media (width<=980px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px
+      }
+
+      .about-portrait {
+        max-width: 280px
+      }
+
+      .about-metrics {
+        max-width: 340px
+      }
+
+      .pipeline-steps {
+        grid-template-columns: 1fr
+      }
+
+      .pipe-step {
+        border-right: none;
+        border-bottom: 1px solid var(--line)
+      }
+
+      .pipe-step:last-child {
+        border-bottom: none
+      }
+    }
+
+    @media (width<=768px) {
+      .pipeline-steps {
+        grid-template-columns: 1fr
+      }
+
+      .pipe-step {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        border-top: none;
+        border-left: 2px solid transparent
+      }
+
+      .pipe-step:last-child {
+        border-bottom: none
+      }
+
+      .pipe-step:hover {
+        border-left-color: var(--signal);
+        border-top: none
+      }
+
+      .pipe-step {
+        display: grid;
+        grid-template-columns: 32px 1fr;
+        column-gap: 14px;
+        align-items: center;
+        padding: 16px 14px
+      }
+
+      .pipe-no {
+        grid-row: 1/3;
+        margin-bottom: 0
+      }
+    }
+
+    /* ───────── tools ───────── */
+    .tool-groups {
+      margin-top: 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 34px
+    }
+
+    .tg-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 16px
+    }
+
+    .tool-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    .tool-badge {
+      position: relative;
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--paper);
+      border: 1px solid var(--line);
+      padding: 13px 22px;
+      overflow: hidden;
+      display: inline-block;
+      transition: border-color .4s, transform .4s var(--ease), box-shadow .4s var(--ease)
+    }
+
+    .tool-badge:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(160px circle at var(--mx, 50%) var(--my, 50%), #ff4b2624, transparent 70%);
+      opacity: 0;
+      transition: opacity .35s
+    }
+
+    .tool-badge:hover {
+      border-color: var(--signal-line);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 34px -18px #ff4b2650
+    }
+
+    .tool-badge:hover:before {
+      opacity: 1
+    }
+
+    .tools-divider {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      margin: 64px 0 32px;
+      padding-top: 36px;
+      border-top: 1px solid var(--line)
+    }
+
+    .tools-divider h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height: 1;
+      margin: 0;
+      color: var(--paper)
+    }
+
+    .tools-divider p {
+      max-width: 400px;
+      margin: 0;
+      text-align: right;
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--muted)
+    }
+
+    .custom-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line)
+    }
+
+    .custom-tool {
+      position: relative;
+      padding: 26px 24px;
+      background: var(--ink);
+      overflow: hidden;
+      transition: background .4s
+    }
+
+    .custom-tool:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), #ff4b261c, transparent 68%);
+      opacity: 0;
+      transition: opacity .4s
+    }
+
+    .custom-tool:hover:before {
+      opacity: 1
+    }
+
+    .tool-purpose {
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px
+    }
+
+    .custom-tool h4 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      color: var(--paper)
+    }
+
+    .custom-tool p {
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 18px
+    }
+
+    .tool-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--signal)
+    }
+
+    .tool-status:before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 6px var(--signal)
+    }
+
+    .custom-tool.building {
+      border-style: dashed
+    }
+
+    .custom-tool.building .tool-status {
+      color: var(--muted)
+    }
+
+    .custom-tool.building .tool-status:before {
+      background: var(--muted);
+      box-shadow: none;
+      animation: pulse 1.6s ease-in-out infinite
+    }
+
+    @media (width<=860px) {
+      .custom-tools-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media (width<=560px) {
+      .custom-tools-grid {
+        grid-template-columns: 1fr
+      }
+
+      .tools-divider {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .tools-divider p {
+        text-align: left
+      }
+    }
+
+    /* ───────── experience ───────── */
+    .exp-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin: 36px 0 0
+    }
+
+    .exp-stat {
+      padding: 16px 18px;
+      background: var(--ink)
+    }
+
+    .exp-stat strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--signal);
+      line-height: 1
+    }
+
+    .exp-stat span {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted)
+    }
+
+    .timeline {
+      margin-top: 44px
+    }
+
+    .tl-item {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 34px 36px;
+      margin-bottom: 18px;
+      background: linear-gradient(160deg, #ffffff05, #ffffff01);
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: border-color .5s, box-shadow .6s
+    }
+
+    .tl-item:last-child {
+      margin-bottom: 0
+    }
+
+    .tl-item:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: 8px;
+      background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), #ff4b2624, transparent 68%);
+      opacity: 0;
+      transition: opacity .45s
+    }
+
+    .tl-item:hover:before {
+      opacity: 1
+    }
+
+    .tl-item.in-view {
+      border-color: var(--line);
+      box-shadow: 0 24px 60px -30px #00000090
+    }
+
+    .tl-item.in-view.active {
+      border-color: var(--signal-line);
+      box-shadow: 0 0 0 1px var(--signal-line), 0 0 50px -14px #ff4b2645
+    }
+
+    .tl-idx {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: var(--muted-2);
+      padding-top: 4px;
+      transition: color .3s
+    }
+
+    .tl-item.active .tl-idx {
+      color: var(--signal)
+    }
+
+    .tl-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 14px
+    }
+
+    .tl-org {
+      font-family: var(--serif);
+      font-size: 23px;
+      font-weight: 400;
+      color: var(--paper)
+    }
+
+    .tl-period {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      color: var(--muted);
+      text-transform: uppercase
+    }
+
+    .tl-role {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--signal);
+      border: 1px solid var(--signal-line);
+      padding: 4px 10px;
+      margin-bottom: 18px
+    }
+
+    .tl-desc {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px 30px;
+      max-width: 760px;
+      margin-bottom: 18px
+    }
+
+    .tl-desc li {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      padding-left: 15px;
+      position: relative
+    }
+
+    .tl-desc li:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 1px;
+      background: var(--muted-2)
+    }
+
+    .tl-tools {
+      flex-wrap: wrap;
+      gap: 8px;
+      display: flex
+    }
+
+    .tl-tools span {
+      font-family: var(--mono);
+      letter-spacing: .04em;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 3px 10px;
+      font-size: 9px
+    }
+
+    @media (width<=768px) {
+      .tl-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 26px 22px
+      }
+
+      .tl-desc {
+        grid-template-columns: 1fr
+      }
+
+      .exp-summary {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ───────── projects ───────── */
+    .proj-card {
+      position: relative;
+      border: 1px solid var(--line);
+      margin-top: 32px;
+      overflow: hidden;
+      transition: border-color .5s, box-shadow .6s;
+      box-shadow: 0 30px 70px -40px #00000090
+    }
+
+    .proj-card:first-of-type {
+      margin-top: 52px
+    }
+
+    .proj-card:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(460px circle at var(--mx, 50%) var(--my, 50%), #ff4b2618, transparent 68%);
+      opacity: 0;
+      transition: opacity .5s
+    }
+
+    .proj-card:hover:before {
+      opacity: 1
+    }
+
+    .proj-card:hover {
+      border-color: var(--signal-line);
+      box-shadow: 0 30px 70px -30px #ff4b2635
+    }
+
+    .proj-media {
+      display: flex;
+      gap: 1px;
+      background: var(--line)
+    }
+
+    .proj-shot {
+      position: relative;
+      flex: 1;
+      display: block;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--panel)
+    }
+
+    .proj-shot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.9) brightness(.95);
+      transition: transform .6s var(--ease), filter .4s
+    }
+
+    .proj-shot:hover img {
+      transform: scale(1.05);
+      filter: saturate(1) brightness(1)
+    }
+
+    .proj-shot figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 8px 12px;
+      font-family: var(--mono);
+      font-size: 8.5px;
+      letter-spacing: .05em;
+      color: var(--paper);
+      background: linear-gradient(0deg, #0a0a0be3, transparent);
+      text-transform: uppercase
+    }
+
+    .card-arrow {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--signal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: scale(0) rotate(-40deg);
+      opacity: 0;
+      transition: transform .45s var(--ease), opacity .3s;
+      z-index: 2;
+      pointer-events: none
+    }
+
+    .proj-shot:hover .card-arrow {
+      transform: scale(1) rotate(0deg);
+      opacity: 1
+    }
+
+    .card-arrow svg {
+      width: 14px;
+      height: 14px
+    }
+
+    .proj-copy {
+      padding: 34px 36px
+    }
+
+    .proj-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px
+    }
+
+    .proj-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      color: var(--signal)
+    }
+
+    .proj-type {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 5px 10px
+    }
+
+    .proj-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(22px, 2.6vw, 32px);
+      line-height: 1.15;
+      color: var(--paper);
+      margin-bottom: 14px
+    }
+
+    .proj-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+      margin-bottom: 20px;
+      max-width: 680px
+    }
+
+    .proj-outcome {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      align-items: baseline;
+      padding: 13px 15px;
+      margin-bottom: 20px;
+      border-left: 2px solid var(--signal);
+      background: #ff4b2609;
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 1.6;
+      color: var(--muted)
+    }
+
+    .proj-outcome strong {
+      color: var(--signal);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 500
+    }
+
+    .proj-stack {
+      flex-wrap: wrap;
+      gap: 7px;
+      display: flex;
+      margin-bottom: 18px
+    }
+
+    .proj-stack span {
+      font-family: var(--mono);
+      letter-spacing: .04em;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 3px 9px;
+      font-size: 9px
+    }
+
+    .proj-archive {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--signal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--signal-line);
+      padding-bottom: 3px;
+      transition: border-color .3s, gap .3s
+    }
+
+    .proj-archive:hover {
+      gap: 12px;
+      border-color: var(--signal)
+    }
+
+    .proj-note {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted-2)
+    }
+
+    @media (width<=768px) {
+      .proj-media {
+        flex-direction: column
+      }
+
+      .proj-copy {
+        padding: 26px 24px
+      }
+    }
+
+    /* ───────── skills ───────── */
+    .skills-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 52px
+    }
+
+    .skill-group {
+      border-top: 1px solid var(--line);
+      padding: 24px 0
+    }
+
+    .skill-group:nth-child(odd) {
+      padding-right: 44px
+    }
+
+    .skill-group:nth-child(even) {
+      padding-left: 44px;
+      border-left: 1px solid var(--line)
+    }
+
+    .sg-label {
+      font-family: var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 10px;
+      font-size: 10px
+    }
+
+    .sg-items {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9
+    }
+
+    @media (width<=768px) {
+      .skills-wrap {
+        grid-template-columns: 1fr
+      }
+
+      .skill-group:nth-child(even) {
+        padding-left: 0;
+        border-left: none
+      }
+
+      .skill-group:nth-child(odd) {
+        padding-right: 0
+      }
+    }
+
+    .education-block {
+      margin-top: 56px;
+      padding-top: 36px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px
+    }
+
+    .edu-degree {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--paper);
+      font-size: 27px
+    }
+
+    .edu-school {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 11px;
+      margin-top: 8px;
+      letter-spacing: .03em
+    }
+
+    .edu-elect {
+      font-family: var(--mono);
+      color: var(--muted-2);
+      font-size: 9px;
+      letter-spacing: .05em;
+      text-align: right
+    }
+
+    @media (width<=560px) {
+      .education-block {
+        align-items: flex-start
+      }
+
+      .edu-elect {
+        text-align: left
+      }
+    }
+
+    /* ───────── contact ───────── */
+    .contact-section {
+      min-height: 80vh
+    }
+
+    .contact-inner {
+      max-width: 700px
+    }
+
+    .availability-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 24px;
+      padding: 8px 14px;
+      border: 1px solid var(--signal-line);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--signal)
+    }
+
+    .availability-pill i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 8px var(--signal);
+      animation: pulse 2s ease-in-out infinite;
+      font-style: normal
+    }
+
+    .contact-heading {
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--paper);
+      margin-bottom: 24px;
+      font-size: clamp(42px, 6vw, 74px);
+      line-height: 1.05;
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 1.15s .1s var(--ease)
+    }
+
+    .fade-up.visible .contact-heading {
+      clip-path: inset(0 0 0% 0)
+    }
+
+    .contact-sub {
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 40px;
+      font-size: 14px;
+      line-height: 1.9
+    }
+
+    .contact-links {
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 52px;
+      display: flex
+    }
+
+    .cta-link {
+      font-family: var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 15px 34px;
+      font-size: 11px;
+      text-decoration: none;
+      transition: transform .25s var(--ease), box-shadow .3s, background .3s, color .3s, border-color .3s;
+      display: inline-block;
+      position: relative
+    }
+
+    .cta-link:not(.outline) {
+      background: var(--signal);
+      color: var(--ink)
+    }
+
+    .cta-link:not(.outline):hover {
+      box-shadow: 0 10px 32px -10px #ff4b2680
+    }
+
+    .cta-link.outline {
+      color: var(--muted);
+      border: 1px solid var(--line)
+    }
+
+    .cta-link.outline:hover {
+      border-color: var(--signal);
+      color: var(--paper)
+    }
+
+    .contact-social {
+      display: flex;
+      gap: 22px;
+      margin-bottom: 44px
+    }
+
+    .contact-social a {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 1px solid transparent;
+      transition: color .25s, border-color .25s;
+      padding-bottom: 2px
+    }
+
+    .contact-social a:hover {
+      color: var(--paper);
+      border-color: var(--signal)
+    }
+
+    .contact-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px
+    }
+
+    .contact-coord,
+    .contact-time {
+      font-family: var(--mono);
+      letter-spacing: .1em;
+      color: var(--muted-2);
+      font-size: 10px
+    }
+
+    /* ───────── footer ───────── */
+    .site-footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--line);
+      padding: 72px 48px 0;
+      overflow: hidden
+    }
+
+    .site-footer:before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--signal), transparent);
+      opacity: .6
+    }
+
+    .footer-grid {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 56px
+    }
+
+    .footer-brand .nav-mark {
+      font-size: 26px;
+      margin-bottom: 16px;
+      display: inline-block
+    }
+
+    .footer-tag {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      max-width: 280px;
+      margin-bottom: 20px
+    }
+
+    .footer-coord {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      color: var(--muted-2)
+    }
+
+    .footer-col-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 18px
+    }
+
+    .footer-col a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      line-height: 2.3;
+      transition: color .25s, transform .25s var(--ease);
+      width: fit-content
+    }
+
+    .footer-col a:hover {
+      color: var(--paper);
+      transform: translateX(4px)
+    }
+
+    .footer-bottom {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 26px 0 30px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px
+    }
+
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .08em;
+      color: var(--muted-2);
+      text-transform: uppercase
+    }
+
+    #back-to-top {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--line);
+      padding: 9px 16px;
+      cursor: pointer;
+      transition: border-color .3s, color .3s, transform .3s var(--ease)
+    }
+
+    #back-to-top:hover {
+      border-color: var(--signal);
+      color: var(--paper);
+      transform: translateY(-3px)
+    }
+
+    @media (width<=860px) {
+      .site-footer {
+        padding: 56px 24px 0
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px 24px
+      }
+
+      .footer-brand {
+        grid-column: 1/3
+      }
+    }
+
+    @media (width<=520px) {
+      .footer-grid {
+        grid-template-columns: 1fr
+      }
+
+      .footer-brand {
+        grid-column: auto
+      }
+    }
+
+    @media (width<=768px) {
+      .section {
+        padding: 110px 24px 90px
+      }
+
+      #site-nav {
+        padding: 16px 24px
+      }
+
+      .h-stat {
+        flex: 1 1 50%
+      }
+    }
+
+    @media (width<=480px) {
+      .h-stat {
+        flex: 1 1 100%
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .fade-up {
+        opacity: 1;
+        transition: none;
+        transform: none;
+        filter: none
+      }
+
+      .section-title,
+      .contact-heading {
+        clip-path: none !important;
+        transition: none
+      }
+
+      .name-mud,
+      .name-ali,
+      .hero-divider {
+        transform: none !important;
+        transition: none !important;
+        width: auto !important
+      }
+
+      #bg-blobs .blob {
+        animation: none
+      }
+
+      * {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important
+      }
+    }
+  </style>
 </head>
+
 <body>
 
   <div id="bg-grid"></div>
@@ -426,13 +2211,16 @@
   <div id="grain"></div>
   <canvas id="cursor-dots" aria-hidden="true"></canvas>
   <span class="pc-cursor" aria-hidden="true">
-    <svg viewBox="0 0 20 20"><path d="M1 1 17 8.6 9.2 9.2 8.6 17Z"/></svg>
+    <svg viewBox="0 0 20 20">
+      <path d="M1 1 17 8.6 9.2 9.2 8.6 17Z" />
+    </svg>
   </span>
   <div id="progress-line"></div>
 
   <nav id="site-nav">
     <a href="#top" class="nav-mark">Muddasir Ali</a>
-    <button id="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button id="nav-toggle" aria-label="Toggle menu"
+      aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="nav-links" id="nav-links">
       <a href="#about"><span class="nl-idx">01</span><span class="nl-txt">About</span></a>
       <a href="#tools"><span class="nl-idx">02</span><span class="nl-txt">Tools</span></a>
@@ -449,10 +2237,13 @@
     <canvas id="topo-canvas" aria-hidden="true"></canvas>
     <div id="globe-stage" aria-hidden="true"></div>
     <div id="globe-tooltip"><span class="tt-title"></span><span class="tt-sub"></span></div>
-    <div class="scroll-cue" id="scroll-cue"><span>Scroll</span><div class="sc-line"></div></div>
+    <div class="scroll-cue" id="scroll-cue"><span>Scroll</span>
+      <div class="sc-line"></div>
+    </div>
 
     <div class="container">
-      <div class="hero-label fade-up"><span class="live-dot"></span>34.0151° N · 71.5249° E · Peshawar, Pakistan — Open to Remote Work</div>
+      <div class="hero-label fade-up"><span class="live-dot"></span>34.0151° N · 71.5249° E · Peshawar, Pakistan — Open
+        to Remote Work</div>
       <h1 class="hero-name fade-up delay-1">
         <span class="line"><span class="name-mud">Muddasir</span></span>
         <span class="line"><span class="name-ali">Ali</span></span>
@@ -466,11 +2257,16 @@
         <em style="color:var(--paper)">BS Geomatics (GIS &amp; Remote Sensing) · University of Peshawar · 2020–2024</em>
       </p>
       <div class="hero-stats fade-up delay-6">
-        <div class="h-stat"><span class="h-num" data-count="2000" data-suffix="+">0</span><span class="h-label">Maps Digitized</span></div>
-        <div class="h-stat"><span class="h-num" data-static="95–100%">0</span><span class="h-label">Spatial Accuracy</span></div>
-        <div class="h-stat"><span class="h-num" data-count="7000" data-suffix="+">0</span><span class="h-label">Cities Sourced</span></div>
-        <div class="h-stat"><span class="h-num" data-count="92" data-suffix="%">0</span><span class="h-label">Annual KPI</span></div>
-        <div class="h-stat"><span class="h-num" data-count="3" data-suffix="×">0</span><span class="h-label">Employee of Month</span></div>
+        <div class="h-stat"><span class="h-num" data-count="2000" data-suffix="+">0</span><span class="h-label">Maps
+            Digitized</span></div>
+        <div class="h-stat"><span class="h-num" data-static="95–100%">0</span><span class="h-label">Spatial
+            Accuracy</span></div>
+        <div class="h-stat"><span class="h-num" data-count="7000" data-suffix="+">0</span><span class="h-label">Cities
+            Sourced</span></div>
+        <div class="h-stat"><span class="h-num" data-count="92" data-suffix="%">0</span><span class="h-label">Annual
+            KPI</span></div>
+        <div class="h-stat"><span class="h-num" data-count="3" data-suffix="×">0</span><span class="h-label">Employee of
+            Month</span></div>
       </div>
     </div>
   </section>
@@ -481,37 +2277,57 @@
 
       <aside class="about-aside fade-up delay-1">
         <figure class="about-portrait">
-          <img src="assets/thumbs/muddasir-portrait.jpg" alt="Portrait of Muddasir Ali" width="640" height="800" decoding="async">
+          <img src="assets/thumbs/muddasir-portrait.jpg" alt="Portrait of Muddasir Ali" width="640" height="800"
+            decoding="async">
           <span class="scan-sweep" aria-hidden="true"></span>
           <figcaption>Peshawar, Pakistan</figcaption>
         </figure>
         <div class="about-metrics">
-          <div class="am-item"><span class="h-num" data-count="2000" data-suffix="+">0</span><span class="h-label">Maps Digitized</span></div>
-          <div class="am-item"><span class="h-num" data-count="7000" data-suffix="+">0</span><span class="h-label">Cities Sourced</span></div>
-          <div class="am-item"><span class="h-num" data-static="95–100%">0</span><span class="h-label">Spatial Accuracy</span></div>
+          <div class="am-item"><span class="h-num" data-count="2000" data-suffix="+">0</span><span class="h-label">Maps
+              Digitized</span></div>
+          <div class="am-item"><span class="h-num" data-count="7000" data-suffix="+">0</span><span
+              class="h-label">Cities Sourced</span></div>
+          <div class="am-item"><span class="h-num" data-static="95–100%">0</span><span class="h-label">Spatial
+              Accuracy</span></div>
         </div>
       </aside>
 
       <div class="about-main">
         <div class="chapter-tag fade-up">01 · About</div>
         <h2 class="section-title fade-up delay-1">I Make Messy Spatial<br>Data <em>Defensible</em>.</h2>
-        <p class="about-lede fade-up delay-2">I work where municipal source maps, parcel geometry, and rigorous QA meet — turning fragmented zoning sources into clean, audit-ready datasets used across the USA, Canada, and other international regions.</p>
+        <p class="about-lede fade-up delay-2">I work where municipal source maps, parcel geometry, and rigorous QA meet
+          — turning fragmented zoning sources into clean, audit-ready datasets used across the USA, Canada, and other
+          international regions.</p>
 
         <div class="pipeline fade-up delay-3">
           <div class="pipeline-label">The Zoning Data Workflow — Nook Office Solutions</div>
           <div class="pipeline-steps">
-            <div class="pipe-step"><span class="pipe-no">01</span><span class="pipe-title">Source</span><span class="pipe-desc">Scrape municipal &amp; county GIS portals for the latest zoning data</span></div>
-            <div class="pipe-step"><span class="pipe-no">02</span><span class="pipe-title">Georeference</span><span class="pipe-desc">Align raw sources to spatial reference, minimal RMS error</span></div>
-            <div class="pipe-step"><span class="pipe-no">03</span><span class="pipe-title">Digitize</span><span class="pipe-desc">Update parcel &amp; zoning shapefiles against current sources</span></div>
-            <div class="pipe-step"><span class="pipe-no">04</span><span class="pipe-title">QA</span><span class="pipe-desc">Catch topology errors, slivers, gaps &amp; overlaps</span></div>
-            <div class="pipe-step"><span class="pipe-no">05</span><span class="pipe-title">Sustain</span><span class="pipe-desc">92% KPI · 7K+ cities tracked · 3× Employee of the Month</span></div>
+            <div class="pipe-step"><span class="pipe-no">01</span><span class="pipe-title">Source</span><span
+                class="pipe-desc">Scrape municipal &amp; county GIS portals for the latest zoning data</span></div>
+            <div class="pipe-step"><span class="pipe-no">02</span><span class="pipe-title">Georeference</span><span
+                class="pipe-desc">Align raw sources to spatial reference, minimal RMS error</span></div>
+            <div class="pipe-step"><span class="pipe-no">03</span><span class="pipe-title">Digitize</span><span
+                class="pipe-desc">Update parcel &amp; zoning shapefiles against current sources</span></div>
+            <div class="pipe-step"><span class="pipe-no">04</span><span class="pipe-title">QA</span><span
+                class="pipe-desc">Catch topology errors, slivers, gaps &amp; overlaps</span></div>
+            <div class="pipe-step"><span class="pipe-no">05</span><span class="pipe-title">Sustain</span><span
+                class="pipe-desc">92% KPI · 7K+ cities tracked · 3× Employee of the Month</span></div>
           </div>
         </div>
 
         <div class="about-body fade-up delay-4">
-          <p>This builds on a strong remote-sensing and field-mapping foundation from earlier roles in Pakistan: disaster mapping with PDMA (flood/landslide hazard maps, damage assessment), crop classification and time-series NDVI analysis with the Directorate of Agriculture, and GPS/field data collection with the Excise &amp; Taxation Department — all of which sharpened my eye for spatial accuracy and my ability to work independently against tight timelines.</p>
-          <p>Independent research projects reflect the same skill set applied more broadly: earthquake precursor detection (Awaran), Sentinel-2-based flood and crop damage mapping (Sindh 2022), landfill site suitability analysis (Peshawar), and species-distribution cartography for a postdoctoral research collaboration in China.</p>
-          <p class="about-closing">I'm comfortable working async, managing my own QA pipeline, and hitting accuracy/KPI targets without close supervision — and I'm currently open to remote zoning, parcel, or land-use data roles.</p>
+          <p>This builds on a strong remote-sensing and field-mapping foundation from earlier roles in Pakistan:
+            disaster mapping with PDMA (flood/landslide hazard maps, damage assessment), crop classification and
+            time-series NDVI analysis with the Directorate of Agriculture, and GPS/field data collection with the Excise
+            &amp; Taxation Department — all of which sharpened my eye for spatial accuracy and my ability to work
+            independently against tight timelines.</p>
+          <p>Independent research projects reflect the same skill set applied more broadly: earthquake precursor
+            detection (Awaran), Sentinel-2-based flood and crop damage mapping (Sindh 2022), landfill site suitability
+            analysis (Peshawar), and species-distribution cartography for a postdoctoral research collaboration in
+            China.</p>
+          <p class="about-closing">I'm comfortable working async, managing my own QA pipeline, and hitting accuracy/KPI
+            targets without close supervision — and I'm currently open to remote zoning, parcel, or land-use data roles.
+          </p>
         </div>
       </div>
 
@@ -523,7 +2339,8 @@
     <div class="container">
       <div class="chapter-tag fade-up">02 · Toolbelt</div>
       <h2 class="section-title fade-up delay-1">What I <em>Reach</em><br>For, Daily.</h2>
-      <p class="section-sub fade-up delay-2">The software and platforms behind every map, model, and dataset — from field survey to final deliverable.</p>
+      <p class="section-sub fade-up delay-2">The software and platforms behind every map, model, and dataset — from
+        field survey to final deliverable.</p>
 
       <div class="tool-groups fade-up delay-3">
         <div class="tool-group">
@@ -567,17 +2384,56 @@
       </div>
 
       <div class="tools-divider fade-up delay-4">
-        <div><div class="chapter-tag" style="margin-bottom:8px">Purpose-Built Systems</div><h3>Zoning Tools.</h3></div>
-        <p>Focused utilities I've built to accelerate zoning QA, locate source data, recover map information, and cut repetitive production work.</p>
+        <div>
+          <div class="chapter-tag" style="margin-bottom:8px">Purpose-Built Systems</div>
+          <h3>Zoning Tools.</h3>
+        </div>
+        <p>Focused utilities I've built to accelerate zoning QA, locate source data, recover map information, and cut
+          repetitive production work.</p>
       </div>
       <div class="custom-tools-grid fade-up delay-5">
-        <article class="custom-tool"><div class="tool-purpose">Zoning QA · Geometry Integrity</div><h4>Sliver Identification</h4><p>Finds narrow, unintended polygon fragments that can appear during digitization, editing, or boundary reconciliation.</p><span class="tool-status">Operational</span></article>
-        <article class="custom-tool"><div class="tool-purpose">Zoning QA · Topology</div><h4>Overlap Detection</h4><p>Flags zoning polygons that occupy the same space so conflicting coverage can be reviewed and corrected efficiently.</p><span class="tool-status">Operational</span></article>
-        <article class="custom-tool"><div class="tool-purpose">Zoning QA · Coverage</div><h4>Gap Detection</h4><p>Locates uncovered spaces between adjoining zoning polygons to verify continuous, complete geographic coverage.</p><span class="tool-status">Operational</span></article>
-        <article class="custom-tool"><div class="tool-purpose">REST Services · Acquisition</div><h4>Data Downloader</h4><p>Downloads available layers from REST services and turns discovered service endpoints into reusable local source data.</p><span class="tool-status">Operational</span></article>
-        <article class="custom-tool"><div class="tool-purpose">MapGeo · Source Recovery</div><h4>GeoMap Scraper</h4><p>Collects zoning map information from MapGeo sources when conventional downloads are unavailable or incomplete.</p><span class="tool-status">Operational</span></article>
-        <article class="custom-tool"><div class="tool-purpose">Directories · Structured Extraction</div><h4>Data Extraction Engine</h4><p>Extracts useful zoning and source information from directory-style datasets and organizes it for downstream GIS workflows.</p><span class="tool-status">Operational</span></article>
-        <article class="custom-tool building"><div class="tool-purpose">Auto Digitizing · Active Development</div><h4>Zone Digitizer</h4><p>An assisted auto-digitizing system in development to convert zoning source maps into editable spatial boundaries.</p><span class="tool-status">In Progress</span></article>
+        <article class="custom-tool">
+          <div class="tool-purpose">Zoning QA · Geometry Integrity</div>
+          <h4>Sliver Identification</h4>
+          <p>Finds narrow, unintended polygon fragments that can appear during digitization, editing, or boundary
+            reconciliation.</p><span class="tool-status">Operational</span>
+        </article>
+        <article class="custom-tool">
+          <div class="tool-purpose">Zoning QA · Topology</div>
+          <h4>Overlap Detection</h4>
+          <p>Flags zoning polygons that occupy the same space so conflicting coverage can be reviewed and corrected
+            efficiently.</p><span class="tool-status">Operational</span>
+        </article>
+        <article class="custom-tool">
+          <div class="tool-purpose">Zoning QA · Coverage</div>
+          <h4>Gap Detection</h4>
+          <p>Locates uncovered spaces between adjoining zoning polygons to verify continuous, complete geographic
+            coverage.</p><span class="tool-status">Operational</span>
+        </article>
+        <article class="custom-tool">
+          <div class="tool-purpose">REST Services · Acquisition</div>
+          <h4>Data Downloader</h4>
+          <p>Downloads available layers from REST services and turns discovered service endpoints into reusable local
+            source data.</p><span class="tool-status">Operational</span>
+        </article>
+        <article class="custom-tool">
+          <div class="tool-purpose">MapGeo · Source Recovery</div>
+          <h4>GeoMap Scraper</h4>
+          <p>Collects zoning map information from MapGeo sources when conventional downloads are unavailable or
+            incomplete.</p><span class="tool-status">Operational</span>
+        </article>
+        <article class="custom-tool">
+          <div class="tool-purpose">Directories · Structured Extraction</div>
+          <h4>Data Extraction Engine</h4>
+          <p>Extracts useful zoning and source information from directory-style datasets and organizes it for downstream
+            GIS workflows.</p><span class="tool-status">Operational</span>
+        </article>
+        <article class="custom-tool building">
+          <div class="tool-purpose">Auto Digitizing · Active Development</div>
+          <h4>Zone Digitizer</h4>
+          <p>An assisted auto-digitizing system in development to convert zoning source maps into editable spatial
+            boundaries.</p><span class="tool-status">In Progress</span>
+        </article>
       </div>
     </div>
   </section>
@@ -587,7 +2443,8 @@
     <div class="container">
       <div class="chapter-tag fade-up">03 · Experience</div>
       <h2 class="section-title fade-up delay-1">Five Years, One<br>Spatial <em>Journey</em>.</h2>
-      <p class="section-sub fade-up delay-2">From provincial disaster response to international zoning pipelines — each role sharpened the same core skill: accurate, defensible spatial data under real deadlines.</p>
+      <p class="section-sub fade-up delay-2">From provincial disaster response to international zoning pipelines — each
+        role sharpened the same core skill: accurate, defensible spatial data under real deadlines.</p>
       <div class="exp-summary fade-up delay-2">
         <div class="exp-stat"><strong>6</strong><span>Assignments</span></div>
         <div class="exp-stat"><strong>2K+</strong><span>Maps Digitized</span></div>
@@ -598,26 +2455,35 @@
         <div class="tl-item active">
           <div class="tl-idx">01</div>
           <div class="tl-main">
-            <div class="tl-head"><span class="tl-org">Nook Office Solutions</span><span class="tl-period">September 2025 – Present</span></div>
+            <div class="tl-head"><span class="tl-org">Nook Office Solutions</span><span class="tl-period">September 2025
+                – Present</span></div>
             <span class="tl-role">GIS Analyst</span>
             <ul class="tl-desc">
-              <li>Digitize, update, and QA parcel and zoning shapefiles across international regions including the USA and Canada, maintaining 95–100% spatial accuracy</li>
+              <li>Digitize, update, and QA parcel and zoning shapefiles across international regions including the USA
+                and Canada, maintaining 95–100% spatial accuracy</li>
               <li>Georeference source maps and imagery, ensuring minimal RMS error before digitization begins</li>
-              <li>Build and maintain QA workflows to detect topology errors, geometry slivers, gaps, and overlays across large parcel/zoning datasets</li>
-              <li>Audit new team members' digitization output for accuracy and consistency as part of internal QA checks</li>
-              <li>Source the most current zoning and parcel maps by researching and scraping authoritative municipal/county GIS portals (e.g., MapGeo) and REST feature services</li>
+              <li>Build and maintain QA workflows to detect topology errors, geometry slivers, gaps, and overlays across
+                large parcel/zoning datasets</li>
+              <li>Audit new team members' digitization output for accuracy and consistency as part of internal QA checks
+              </li>
+              <li>Source the most current zoning and parcel maps by researching and scraping authoritative
+                municipal/county GIS portals (e.g., MapGeo) and REST feature services</li>
               <li>Identify and log updated data source links for 7,000+ cities, maintaining a 92% KPI over one year</li>
-              <li>Digitized and QA'd 2,000+ maps to date; recognized as Employee of the Month three times for accuracy and output</li>
-              <li>Collaborate cross-functionally with the broader data science and GIS team to align on zoning data standards and workflow improvements</li>
+              <li>Digitized and QA'd 2,000+ maps to date; recognized as Employee of the Month three times for accuracy
+                and output</li>
+              <li>Collaborate cross-functionally with the broader data science and GIS team to align on zoning data
+                standards and workflow improvements</li>
             </ul>
-            <div class="tl-tools"><span>Zoning &amp; Parcel Data</span><span>Topology QA</span><span>REST Services</span><span>Web Scraping</span></div>
+            <div class="tl-tools"><span>Zoning &amp; Parcel Data</span><span>Topology QA</span><span>REST
+                Services</span><span>Web Scraping</span></div>
           </div>
         </div>
 
         <div class="tl-item">
           <div class="tl-idx">02</div>
           <div class="tl-main">
-            <div class="tl-head"><span class="tl-org">Excise, Taxation &amp; Narcotics Control Department, KP</span><span class="tl-period">March 2025 – September 2025</span></div>
+            <div class="tl-head"><span class="tl-org">Excise, Taxation &amp; Narcotics Control Department,
+                KP</span><span class="tl-period">March 2025 – September 2025</span></div>
             <span class="tl-role">GIS Associate</span>
             <ul class="tl-desc">
               <li>Conducted field surveys using GPS and KoboCollect to capture property and land data</li>
@@ -632,30 +2498,41 @@
         <div class="tl-item">
           <div class="tl-idx">03</div>
           <div class="tl-main">
-            <div class="tl-head"><span class="tl-org">Crop Reporting Services, Directorate of Agriculture, KP</span><span class="tl-period">July 2024 – March 2025 <span style="opacity:.6">(earlier: June–October 2022)</span></span></div>
+            <div class="tl-head"><span class="tl-org">Crop Reporting Services, Directorate of Agriculture,
+                KP</span><span class="tl-period">July 2024 – March 2025 <span style="opacity:.6">(earlier: June–October
+                  2022)</span></span></div>
             <span class="tl-role">GIS Intern</span>
             <ul class="tl-desc">
-              <li>Performed supervised classification of crop lands across 7 merged districts, D.I. Khan, Charsadda, and surrounding areas of KP</li>
+              <li>Performed supervised classification of crop lands across 7 merged districts, D.I. Khan, Charsadda, and
+                surrounding areas of KP</li>
               <li>Digitized major crop classification layers and prepared final classification outputs</li>
-              <li>Compiled and mapped rainfall, minimum, and maximum temperature data from province-wide Excel datasets</li>
-              <li>Conducted time-series NDVI analysis using Google Earth Engine, ArcGIS Pro, and ArcMap for crop monitoring and image stacking</li>
-              <li>Led a land suitability analysis for tomato and pea cultivation using soil nitrogen content, pH level, and soil type as key parameters</li>
-              <li>(2022 stint) Digitized crop land boundaries for Bajaur district in support of provincial crop reporting</li>
+              <li>Compiled and mapped rainfall, minimum, and maximum temperature data from province-wide Excel datasets
+              </li>
+              <li>Conducted time-series NDVI analysis using Google Earth Engine, ArcGIS Pro, and ArcMap for crop
+                monitoring and image stacking</li>
+              <li>Led a land suitability analysis for tomato and pea cultivation using soil nitrogen content, pH level,
+                and soil type as key parameters</li>
+              <li>(2022 stint) Digitized crop land boundaries for Bajaur district in support of provincial crop
+                reporting</li>
             </ul>
-            <div class="tl-tools"><span>Google Earth Engine</span><span>NDVI</span><span>ArcGIS Pro</span><span>Supervised Classification</span></div>
+            <div class="tl-tools"><span>Google Earth Engine</span><span>NDVI</span><span>ArcGIS
+                Pro</span><span>Supervised Classification</span></div>
           </div>
         </div>
 
         <div class="tl-item">
           <div class="tl-idx">04</div>
           <div class="tl-main">
-            <div class="tl-head"><span class="tl-org">Provincial Disaster Management Authority (PDMA), KP</span><span class="tl-period">May 2023 – June 2024</span></div>
+            <div class="tl-head"><span class="tl-org">Provincial Disaster Management Authority (PDMA), KP</span><span
+                class="tl-period">May 2023 – June 2024</span></div>
             <span class="tl-role">GIS Intern</span>
             <ul class="tl-desc">
               <li>Produced hazard maps for landslide and flood risk assessment across affected districts</li>
-              <li>Digitized flood-affected areas, including damaged/destroyed bridges and damaged vs. undamaged housing structures</li>
+              <li>Digitized flood-affected areas, including damaged/destroyed bridges and damaged vs. undamaged housing
+                structures</li>
               <li>Mapped warehouse locations distributing relief aid to flood-affected communities</li>
-              <li>Supported emergency response planning through timely, accurate spatial data delivery during active disaster events</li>
+              <li>Supported emergency response planning through timely, accurate spatial data delivery during active
+                disaster events</li>
             </ul>
             <div class="tl-tools"><span>Hazard Mapping</span><span>ArcGIS Pro</span><span>Damage Assessment</span></div>
           </div>
@@ -664,7 +2541,8 @@
         <div class="tl-item">
           <div class="tl-idx">05</div>
           <div class="tl-main">
-            <div class="tl-head"><span class="tl-org">Survey of Pakistan (SOP), Peshawar</span><span class="tl-period">Early 2023 (through March 2023)</span></div>
+            <div class="tl-head"><span class="tl-org">Survey of Pakistan (SOP), Peshawar</span><span
+                class="tl-period">Early 2023 (through March 2023)</span></div>
             <span class="tl-role">GIS Intern</span>
             <ul class="tl-desc">
               <li>Supported ongoing GIS/survey operations under the department's technical team</li>
@@ -677,7 +2555,8 @@
         <div class="tl-item">
           <div class="tl-idx">06</div>
           <div class="tl-main">
-            <div class="tl-head"><span class="tl-org">Board of Revenue, KP</span><span class="tl-period">4th Semester, 2022 (6 months)</span></div>
+            <div class="tl-head"><span class="tl-org">Board of Revenue, KP</span><span class="tl-period">4th Semester,
+                2022 (6 months)</span></div>
             <span class="tl-role">GIS Intern</span>
             <ul class="tl-desc">
               <li>Assisted in GIS lab operations related to land records and revenue mapping</li>
@@ -695,84 +2574,137 @@
     <div class="container">
       <div class="chapter-tag fade-up">04 · Featured Projects</div>
       <h2 class="section-title fade-up delay-1">Selected Work,<br><em>Measured</em> Impact.</h2>
-      <p class="section-sub fade-up delay-2">Four case studies showing how I move from an open spatial question to a defensible method, clear evidence, and a decision-ready map.</p>
+      <p class="section-sub fade-up delay-2">Four case studies showing how I move from an open spatial question to a
+        defensible method, clear evidence, and a decision-ready map.</p>
 
       <article class="proj-card fade-up delay-3">
         <div class="proj-media">
-          <a class="proj-shot" href="assets/awara-results/combined-precursors.png" target="_blank" rel="noopener" data-cursor-label="View">
-            <img src="assets/thumbs/combined-precursors.jpg" alt="Combined multi-precursor analysis of the 2013 Awaran earthquake" width="884" height="1000" loading="lazy" decoding="async">
+          <a class="proj-shot" href="assets/awara-results/combined-precursors.png" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/thumbs/combined-precursors.jpg"
+              alt="Combined multi-precursor analysis of the 2013 Awaran earthquake" width="884" height="1000"
+              loading="lazy" decoding="async">
             <span class="scan-sweep" aria-hidden="true"></span>
             <figcaption>Combined analysis</figcaption>
-            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
           </a>
-          <a class="proj-shot" href="assets/awara-results/study-area.jpg" target="_blank" rel="noopener" data-cursor-label="View">
-            <img src="assets/thumbs/study-area.jpg" alt="Awaran district earthquake study area and fault line" width="1000" height="773" loading="lazy" decoding="async">
+          <a class="proj-shot" href="assets/awara-results/study-area.jpg" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/thumbs/study-area.jpg" alt="Awaran district earthquake study area and fault line"
+              width="1000" height="773" loading="lazy" decoding="async">
             <span class="scan-sweep" aria-hidden="true"></span>
             <figcaption>Study area</figcaption>
-            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
           </a>
-          <a class="proj-shot" href="assets/awara-results/lst-anomaly-map.jpg" target="_blank" rel="noopener" data-cursor-label="View">
-            <img src="assets/thumbs/lst-anomaly-map.jpg" alt="Pre-seismic land surface temperature anomaly map" width="773" height="1000" loading="lazy" decoding="async">
+          <a class="proj-shot" href="assets/awara-results/lst-anomaly-map.jpg" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/thumbs/lst-anomaly-map.jpg" alt="Pre-seismic land surface temperature anomaly map"
+              width="773" height="1000" loading="lazy" decoding="async">
             <span class="scan-sweep" aria-hidden="true"></span>
             <figcaption>LST anomaly</figcaption>
-            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
           </a>
         </div>
         <div class="proj-copy">
-          <div class="proj-head"><span class="proj-num">PROJECT 01</span><span class="proj-type">Seismic Intelligence</span></div>
+          <div class="proj-head"><span class="proj-num">PROJECT 01</span><span class="proj-type">Seismic
+              Intelligence</span></div>
           <h3 class="proj-title">Awaran Earthquake — Pre-Seismic Anomaly Detection</h3>
-          <p class="proj-desc">Investigated whether satellite-observed geophysical behaviour contained meaningful signals before the Mw 7.7 Awaran earthquake. Five parameters were evaluated through statistical, machine-learning, and time-series models to separate potential precursors from ordinary variation.</p>
-          <div class="proj-outcome"><strong>Outcome</strong><span>A comparative anomaly framework for identifying and communicating pre-seismic patterns across spatial maps and daily time series.</span></div>
-          <div class="proj-stack"><span>Remote Sensing</span><span>Anomaly Models</span><span>Google Earth Engine</span></div>
-          <a class="proj-archive" href="awaran-results.html" target="_blank" rel="noopener">Explore all 23 research outputs →</a>
+          <p class="proj-desc">Investigated whether satellite-observed geophysical behaviour contained meaningful
+            signals before the Mw 7.7 Awaran earthquake. Five parameters were evaluated through statistical,
+            machine-learning, and time-series models to separate potential precursors from ordinary variation.</p>
+          <div class="proj-outcome"><strong>Outcome</strong><span>A comparative anomaly framework for identifying and
+              communicating pre-seismic patterns across spatial maps and daily time series.</span></div>
+          <div class="proj-stack"><span>Remote Sensing</span><span>Anomaly Models</span><span>Google Earth Engine</span>
+          </div>
+          <a class="proj-archive" href="awaran-results.html" target="_blank" rel="noopener">Explore all 23 research
+            outputs →</a>
         </div>
       </article>
 
       <article class="proj-card fade-up delay-3">
         <div class="proj-media">
-          <a class="proj-shot" href="assets/sindh-flood-results/flood-04.png" target="_blank" rel="noopener" data-cursor-label="View">
-            <img src="assets/thumbs/flood-04.jpg" alt="Sindh 2022 flood extent mapped from satellite imagery" width="1000" height="693" loading="lazy" decoding="async">
+          <a class="proj-shot" href="assets/sindh-flood-results/flood-04.png" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/thumbs/flood-04.jpg" alt="Sindh 2022 flood extent mapped from satellite imagery"
+              width="1000" height="693" loading="lazy" decoding="async">
             <span class="scan-sweep" aria-hidden="true"></span>
             <figcaption>Flood extent</figcaption>
-            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
           </a>
-          <a class="proj-shot" href="assets/sindh-flood-results/ndbi-04.png" target="_blank" rel="noopener" data-cursor-label="View">
-            <img src="assets/thumbs/ndbi-04.jpg" alt="NDBI change during the Sindh flood period" width="1000" height="638" loading="lazy" decoding="async">
+          <a class="proj-shot" href="assets/sindh-flood-results/ndbi-04.png" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/thumbs/ndbi-04.jpg" alt="NDBI change during the Sindh flood period" width="1000"
+              height="638" loading="lazy" decoding="async">
             <span class="scan-sweep" aria-hidden="true"></span>
             <figcaption>NDBI change</figcaption>
-            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
           </a>
-          <a class="proj-shot" href="assets/sindh-flood-results/ndvi-04.png" target="_blank" rel="noopener" data-cursor-label="View">
-            <img src="assets/thumbs/ndvi-04.jpg" alt="NDVI change during the Sindh flood period" width="1000" height="624" loading="lazy" decoding="async">
+          <a class="proj-shot" href="assets/sindh-flood-results/ndvi-04.png" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/thumbs/ndvi-04.jpg" alt="NDVI change during the Sindh flood period" width="1000"
+              height="624" loading="lazy" decoding="async">
             <span class="scan-sweep" aria-hidden="true"></span>
             <figcaption>NDVI change</figcaption>
-            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
           </a>
         </div>
         <div class="proj-copy">
-          <div class="proj-head"><span class="proj-num">PROJECT 02</span><span class="proj-type">Disaster Mapping</span></div>
+          <div class="proj-head"><span class="proj-num">PROJECT 02</span><span class="proj-type">Disaster Mapping</span>
+          </div>
           <h3 class="proj-title">Sindh Floods 2022 — Impact &amp; Damage Assessment</h3>
-          <p class="proj-desc">Combined Sentinel-2 imagery with NDVI, NDBI, and flood-extent mapping to trace environmental change from the pre-flood months through the 2022 event. The resulting sequence communicates shifting vegetation, built-up signatures, and inundation across Sindh.</p>
-          <div class="proj-outcome"><strong>Outcome</strong><span>A multi-temporal evidence set supporting damage assessment, land-cover classification, and future flood-susceptibility modelling.</span></div>
-          <div class="proj-stack"><span>Sentinel-2</span><span>NDVI</span><span>NDBI</span><span>Flood Mapping</span></div>
-          <a class="proj-archive" href="sindh-flood-results.html" target="_blank" rel="noopener">Explore all 22 flood outputs →</a>
+          <p class="proj-desc">Combined Sentinel-2 imagery with NDVI, NDBI, and flood-extent mapping to trace
+            environmental change from the pre-flood months through the 2022 event. The resulting sequence communicates
+            shifting vegetation, built-up signatures, and inundation across Sindh.</p>
+          <div class="proj-outcome"><strong>Outcome</strong><span>A multi-temporal evidence set supporting damage
+              assessment, land-cover classification, and future flood-susceptibility modelling.</span></div>
+          <div class="proj-stack"><span>Sentinel-2</span><span>NDVI</span><span>NDBI</span><span>Flood Mapping</span>
+          </div>
+          <a class="proj-archive" href="sindh-flood-results.html" target="_blank" rel="noopener">Explore all 22 flood
+            outputs →</a>
         </div>
       </article>
 
       <article class="proj-card fade-up delay-3">
         <div class="proj-media">
-          <a class="proj-shot" href="assets/landfill-results/landfill-site-selection.png" target="_blank" rel="noopener" data-cursor-label="View">
-            <img src="assets/landfill-results/landfill-site-selection.png" alt="Landfill site suitability selection map" width="850" height="1100" loading="lazy" decoding="async">
+          <a class="proj-shot" href="assets/landfill-results/landfill-site-selection.png" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/landfill-results/landfill-site-selection.png" alt="Landfill site suitability selection map"
+              width="850" height="1100" loading="lazy" decoding="async">
             <span class="scan-sweep" aria-hidden="true"></span>
             <figcaption>Suitability result</figcaption>
-            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
           </a>
         </div>
         <div class="proj-copy">
-          <div class="proj-head"><span class="proj-num">PROJECT 03</span><span class="proj-type">Site Intelligence</span></div>
+          <div class="proj-head"><span class="proj-num">PROJECT 03</span><span class="proj-type">Site
+              Intelligence</span></div>
           <h3 class="proj-title">Peshawar Landfill Site Suitability Study</h3>
-          <p class="proj-desc">Built a multi-criteria suitability model for responsible waste-disposal siting. Environmental and accessibility factors were weighted through AHP, normalized, and combined through weighted overlay.</p>
-          <div class="proj-outcome"><strong>Outcome</strong><span>A ranked suitability surface highlighting the strongest candidate zones for further assessment.</span></div>
+          <p class="proj-desc">Built a multi-criteria suitability model for responsible waste-disposal siting.
+            Environmental and accessibility factors were weighted through AHP, normalized, and combined through weighted
+            overlay.</p>
+          <div class="proj-outcome"><strong>Outcome</strong><span>A ranked suitability surface highlighting the
+              strongest candidate zones for further assessment.</span></div>
           <div class="proj-stack"><span>AHP</span><span>Weighted Overlay</span><span>ArcGIS Pro</span></div>
           <span class="proj-note">Select the map to open the full-resolution suitability layout</span>
         </div>
@@ -780,31 +2712,54 @@
 
       <article class="proj-card fade-up delay-3">
         <div class="proj-media">
-          <a class="proj-shot" href="assets/termite-results/species-distribution.png" target="_blank" rel="noopener" data-cursor-label="View">
-            <img src="assets/thumbs/species-distribution.jpg" alt="Distribution of four Reticulitermes species across China" width="1000" height="773" loading="lazy" decoding="async">
+          <a class="proj-shot" href="assets/termite-results/species-distribution.png" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/thumbs/species-distribution.jpg"
+              alt="Distribution of four Reticulitermes species across China" width="1000" height="773" loading="lazy"
+              decoding="async">
             <span class="scan-sweep" aria-hidden="true"></span>
             <figcaption>Four-species distribution</figcaption>
-            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
           </a>
-          <a class="proj-shot" href="assets/termite-results/r-flaviceps.png" target="_blank" rel="noopener" data-cursor-label="View">
-            <img src="assets/termite-results/r-flaviceps.png" alt="Reticulitermes flaviceps colonies in Sichuan and Shaanxi" width="1200" height="900" loading="lazy" decoding="async">
+          <a class="proj-shot" href="assets/termite-results/r-flaviceps.png" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/termite-results/r-flaviceps.png"
+              alt="Reticulitermes flaviceps colonies in Sichuan and Shaanxi" width="1200" height="900" loading="lazy"
+              decoding="async">
             <span class="scan-sweep" aria-hidden="true"></span>
             <figcaption>R. flaviceps</figcaption>
-            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
           </a>
-          <a class="proj-shot" href="assets/termite-results/r-aculabialis.png" target="_blank" rel="noopener" data-cursor-label="View">
-            <img src="assets/termite-results/r-aculabialis.png" alt="Asexual queen succession of Reticulitermes aculabialis" width="1200" height="900" loading="lazy" decoding="async">
+          <a class="proj-shot" href="assets/termite-results/r-aculabialis.png" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/termite-results/r-aculabialis.png"
+              alt="Asexual queen succession of Reticulitermes aculabialis" width="1200" height="900" loading="lazy"
+              decoding="async">
             <span class="scan-sweep" aria-hidden="true"></span>
             <figcaption>R. aculabialis</figcaption>
-            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
           </a>
         </div>
         <div class="proj-copy">
-          <div class="proj-head"><span class="proj-num">PROJECT 04</span><span class="proj-type">Species Distribution</span></div>
+          <div class="proj-head"><span class="proj-num">PROJECT 04</span><span class="proj-type">Species
+              Distribution</span></div>
           <h3 class="proj-title">Reticulitermes Species Distribution in China</h3>
-          <p class="proj-desc">Supported a Chinese postdoctoral researcher by converting documented records of <em>R. aculabialis</em>, <em>R. chinensis</em>, <em>R. flaviceps</em>, and <em>R. labralis</em> into a consistent spatial dataset and comparative distribution map.</p>
-          <div class="proj-outcome"><strong>Outcome</strong><span>Publication-ready research cartography revealing geographic overlap and separation among four termite species.</span></div>
-          <div class="proj-stack"><span>Biogeography</span><span>Species Records</span><span>China</span><span>Research Cartography</span></div>
+          <p class="proj-desc">Supported a Chinese postdoctoral researcher by converting documented records of <em>R.
+              aculabialis</em>, <em>R. chinensis</em>, <em>R. flaviceps</em>, and <em>R. labralis</em> into a consistent
+            spatial dataset and comparative distribution map.</p>
+          <div class="proj-outcome"><strong>Outcome</strong><span>Publication-ready research cartography revealing
+              geographic overlap and separation among four termite species.</span></div>
+          <div class="proj-stack"><span>Biogeography</span><span>Species Records</span><span>China</span><span>Research
+              Cartography</span></div>
           <span class="proj-note">Select any result map to open the full-resolution layout</span>
         </div>
       </article>
@@ -816,24 +2771,31 @@
     <div class="container">
       <div class="chapter-tag fade-up">05 · Full Capability Stack</div>
       <h2 class="section-title fade-up delay-1">Skills &amp;<br><em>Techniques</em>.</h2>
-      <p class="section-sub fade-up delay-2">The geospatial methods I use to turn complex source data into accurate, repeatable, and defensible spatial evidence.</p>
+      <p class="section-sub fade-up delay-2">The geospatial methods I use to turn complex source data into accurate,
+        repeatable, and defensible spatial evidence.</p>
 
       <div class="skills-wrap fade-up delay-3">
         <div class="skill-group">
           <div class="sg-label">GIS Platforms</div>
-          <div class="sg-items">ArcGIS Pro · ArcMap · QGIS · Google Earth Engine (GEE) · KoboCollect/KoboToolbox · GPS Field Data Collection</div>
+          <div class="sg-items">ArcGIS Pro · ArcMap · QGIS · Google Earth Engine (GEE) · KoboCollect/KoboToolbox · GPS
+            Field Data Collection</div>
         </div>
         <div class="skill-group">
           <div class="sg-label">Remote Sensing &amp; Spatial Analysis</div>
-          <div class="sg-items">Supervised Classification · Land Suitability Analysis (AHP, Weighted Overlay) · NDVI/NDBI/NDWI Analysis · Time-Series Image Analysis · Image Stacking · Sentinel-2 Imagery Processing · Random Forest Classification · Hazard &amp; Risk Mapping</div>
+          <div class="sg-items">Supervised Classification · Land Suitability Analysis (AHP, Weighted Overlay) ·
+            NDVI/NDBI/NDWI Analysis · Time-Series Image Analysis · Image Stacking · Sentinel-2 Imagery Processing ·
+            Random Forest Classification · Hazard &amp; Risk Mapping</div>
         </div>
         <div class="skill-group">
           <div class="sg-label">Data Digitization &amp; QA</div>
-          <div class="sg-items">Digitization · Georeferencing (RMS Error Minimization) · Topology Validation · Sliver/Gap/Overlap Detection · Shapefile Updates &amp; Maintenance · Parcel &amp; Zoning Data QA · Data Accuracy Auditing</div>
+          <div class="sg-items">Digitization · Georeferencing (RMS Error Minimization) · Topology Validation ·
+            Sliver/Gap/Overlap Detection · Shapefile Updates &amp; Maintenance · Parcel &amp; Zoning Data QA · Data
+            Accuracy Auditing</div>
         </div>
         <div class="skill-group">
           <div class="sg-label">Data Sourcing &amp; Automation</div>
-          <div class="sg-items">Web Scraping (Municipal/County GIS Portals, REST Feature Services) · Data Freshness Tracking · AI-Assisted Coding &amp; Automation · Workflow Automation for Data Pipelines</div>
+          <div class="sg-items">Web Scraping (Municipal/County GIS Portals, REST Feature Services) · Data Freshness
+            Tracking · AI-Assisted Coding &amp; Automation · Workflow Automation for Data Pipelines</div>
         </div>
         <div class="skill-group">
           <div class="sg-label">Web Mapping &amp; Development</div>
@@ -841,7 +2803,8 @@
         </div>
         <div class="skill-group">
           <div class="sg-label">Data &amp; Reporting</div>
-          <div class="sg-items">Excel Data Processing (Climate/Rainfall Datasets) · Spatial Data Linking to Official Records · KPI &amp; Accuracy Reporting</div>
+          <div class="sg-items">Excel Data Processing (Climate/Rainfall Datasets) · Spatial Data Linking to Official
+            Records · KPI &amp; Accuracy Reporting</div>
         </div>
       </div>
 
@@ -862,9 +2825,11 @@
         <div class="chapter-tag">06 · Start A Conversation</div>
         <div class="availability-pill"><i></i>Available for remote opportunities</div>
         <h2 class="contact-heading">Have spatial data?<br>Let's make it <em>matter.</em></h2>
-        <p class="contact-sub">Whether it's a zoning pipeline, a remote-sensing study, or a map that needs to hold up under scrutiny, I bring the careful spatial thinking that turns source data into confident decisions.</p>
+        <p class="contact-sub">Whether it's a zoning pipeline, a remote-sensing study, or a map that needs to hold up
+          under scrutiny, I bring the careful spatial thinking that turns source data into confident decisions.</p>
         <div class="contact-links">
-          <a href="https://www.linkedin.com/in/muddasir-ali317/" class="cta-link" target="_blank" rel="noopener">Message me on LinkedIn</a>
+          <a href="https://www.linkedin.com/in/muddasir-ali317/" class="cta-link" target="_blank" rel="noopener">Message
+            me on LinkedIn</a>
           <a href="assets/muddasir-ali-cv.pdf" class="cta-link outline" download="Muddasir-Ali-CV.pdf">Download CV</a>
         </div>
         <div class="contact-social">
@@ -884,7 +2849,8 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#top" class="nav-mark">Muddasir Ali</a>
-        <p class="footer-tag">GIS Analyst — zoning, parcel &amp; remote-sensing data, digitized and QA'd to a standard that holds up under scrutiny.</p>
+        <p class="footer-tag">GIS Analyst — zoning, parcel &amp; remote-sensing data, digitized and QA'd to a standard
+          that holds up under scrutiny.</p>
         <div class="footer-coord">34.0151° N · 71.5249° E · Peshawar, Pakistan</div>
       </div>
       <div class="footer-col">
@@ -915,698 +2881,699 @@
     </div>
   </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-<script>
-(function(){
-  "use strict";
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script>
+    (function () {
+      "use strict";
 
-  var progressLine = document.getElementById('progress-line');
-  var navLinks = document.querySelectorAll('#site-nav .nav-links a');
+      var progressLine = document.getElementById('progress-line');
+      var navLinks = document.querySelectorAll('#site-nav .nav-links a');
 
-  var sectionObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(!entry.isIntersecting) return;
-      navLinks.forEach(function(a){
-        a.classList.toggle('active', a.getAttribute('href') === '#'+entry.target.id);
+      var sectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        });
+      }, { threshold: .35 });
+      document.querySelectorAll('section[data-chapter]').forEach(function (s) { sectionObserver.observe(s); });
+
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: .08, rootMargin: '0px 0px -80px 0px' });
+
+      document.querySelectorAll('.fade-up').forEach(function (el) {
+        if (!el.style.transitionDelay) {
+          var parent = el.parentElement;
+          var siblings = parent ? Array.prototype.filter.call(parent.children, function (c) { return c.classList.contains('fade-up'); }) : [el];
+          el.style.transitionDelay = Math.min(siblings.indexOf(el) * 0.1, 0.5) + 's';
+        }
+        revealObserver.observe(el);
       });
-    });
-  }, {threshold:.35});
-  document.querySelectorAll('section[data-chapter]').forEach(function(s){ sectionObserver.observe(s); });
+      document.querySelectorAll('.hero-name, .section-title, .contact-heading').forEach(function (el) { revealObserver.observe(el); });
 
-  var revealObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    });
-  }, {threshold:.08, rootMargin:'0px 0px -80px 0px'});
-
-  document.querySelectorAll('.fade-up').forEach(function(el){
-    if(!el.style.transitionDelay){
-      var parent = el.parentElement;
-      var siblings = parent ? Array.prototype.filter.call(parent.children, function(c){return c.classList.contains('fade-up');}) : [el];
-      el.style.transitionDelay = Math.min(siblings.indexOf(el) * 0.1, 0.5) + 's';
-    }
-    revealObserver.observe(el);
-  });
-  document.querySelectorAll('.hero-name, .section-title, .contact-heading').forEach(function(el){ revealObserver.observe(el); });
-
-  // stagger reveal for grid children — soft perspective settle-in
-  [document.querySelectorAll('.tl-item'), document.querySelectorAll('.proj-card'), document.querySelectorAll('.skill-group'), document.querySelectorAll('.custom-tool')].forEach(function(list){
-    list.forEach(function(el, i){
-      el.style.opacity = '0';
-      el.style.filter = 'blur(8px)';
-      el.style.transform = 'perspective(1200px) rotateX(-6deg) scale(.97) translateY(26px)';
-      el.style.transformOrigin = 'top center';
-      el.style.transition = 'opacity 1s var(--ease), transform 1s var(--ease), filter 1s var(--ease)';
-      el.style.transitionDelay = Math.min(i*0.09,0.45)+'s';
-      var obs = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if(entry.isIntersecting){
-            entry.target.style.opacity='1';
-            entry.target.style.filter='blur(0px)';
-            entry.target.style.transform='perspective(1200px) rotateX(0) scale(1) translateY(0)';
-            entry.target.classList.add('in-view');
-            obs.unobserve(entry.target);
-          }
+      // stagger reveal for grid children — soft perspective settle-in
+      [document.querySelectorAll('.tl-item'), document.querySelectorAll('.proj-card'), document.querySelectorAll('.skill-group'), document.querySelectorAll('.custom-tool')].forEach(function (list) {
+        list.forEach(function (el, i) {
+          el.style.opacity = '0';
+          el.style.filter = 'blur(8px)';
+          el.style.transform = 'perspective(1200px) rotateX(-6deg) scale(.97) translateY(26px)';
+          el.style.transformOrigin = 'top center';
+          el.style.transition = 'opacity 1s var(--ease), transform 1s var(--ease), filter 1s var(--ease)';
+          el.style.transitionDelay = Math.min(i * 0.09, 0.45) + 's';
+          var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.filter = 'blur(0px)';
+                entry.target.style.transform = 'perspective(1200px) rotateX(0) scale(1) translateY(0)';
+                entry.target.classList.add('in-view');
+                obs.unobserve(entry.target);
+              }
+            });
+          }, { threshold: .12, rootMargin: '0px 0px -60px 0px' });
+          obs.observe(el);
         });
-      }, {threshold:.12, rootMargin:'0px 0px -60px 0px'});
-      obs.observe(el);
-    });
-  });
+      });
 
-  // lightweight cascade reveal for small repeated chips/tiles
-  [document.querySelectorAll('.h-stat'), document.querySelectorAll('.tool-badge'), document.querySelectorAll('.pipe-step'), document.querySelectorAll('.am-item'), document.querySelectorAll('.exp-stat')].forEach(function(list){
-    list.forEach(function(el, i){
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(14px) scale(.96)';
-      el.style.transition = 'opacity .6s var(--ease), transform .6s var(--ease)';
-      el.style.transitionDelay = Math.min(i*0.06, 0.4)+'s';
-      var obs = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if(entry.isIntersecting){
-            entry.target.style.opacity='1';
-            entry.target.style.transform='translateY(0) scale(1)';
-            obs.unobserve(entry.target);
-          }
+      // lightweight cascade reveal for small repeated chips/tiles
+      [document.querySelectorAll('.h-stat'), document.querySelectorAll('.tool-badge'), document.querySelectorAll('.pipe-step'), document.querySelectorAll('.am-item'), document.querySelectorAll('.exp-stat')].forEach(function (list) {
+        list.forEach(function (el, i) {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(14px) scale(.96)';
+          el.style.transition = 'opacity .6s var(--ease), transform .6s var(--ease)';
+          el.style.transitionDelay = Math.min(i * 0.06, 0.4) + 's';
+          var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0) scale(1)';
+                obs.unobserve(entry.target);
+              }
+            });
+          }, { threshold: .2 });
+          obs.observe(el);
         });
-      }, {threshold:.2});
-      obs.observe(el);
-    });
-  });
+      });
 
-  // smooth scroll (Lenis if available, native fallback)
-  var lenisInstance = null;
-  if(typeof Lenis !== 'undefined'){
-    try{
-      lenisInstance = new Lenis({ duration: 1.35, easing: function(t){ return t===1 ? 1 : 1 - Math.pow(2, -10*t); }, smoothWheel: true });
-      document.documentElement.style.scrollBehavior = 'auto';
-      requestAnimationFrame(function raf(time){ lenisInstance.raf(time); requestAnimationFrame(raf); });
-    } catch(err){ lenisInstance = null; }
-  }
-  function smoothScrollTo(target){
-    if(!target) return;
-    if(lenisInstance){ lenisInstance.scrollTo(target, {offset:0}); }
-    else target.scrollIntoView({behavior:'smooth', block:'start'});
-  }
-  window.smoothScrollTo = smoothScrollTo;
-
-  var nav = document.getElementById('site-nav');
-  var navToggle = document.getElementById('nav-toggle');
-  var navScrim = document.getElementById('nav-scrim');
-  function closeMenu(){
-    nav.classList.remove('nav-open');
-    if(navToggle) navToggle.setAttribute('aria-expanded','false');
-    document.documentElement.style.overflow = '';
-    if(lenisInstance) lenisInstance.start();
-  }
-  function openMenu(){
-    nav.classList.add('nav-open');
-    if(navToggle) navToggle.setAttribute('aria-expanded','true');
-    document.documentElement.style.overflow = 'hidden';
-    if(lenisInstance) lenisInstance.stop();
-  }
-  if(navToggle){
-    navToggle.addEventListener('click', function(){
-      nav.classList.contains('nav-open') ? closeMenu() : openMenu();
-    });
-  }
-  if(navScrim){ navScrim.addEventListener('click', closeMenu); }
-  window.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeMenu();
-  });
-
-  navLinks.forEach(function(a){
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      closeMenu();
-      smoothScrollTo(document.querySelector(a.getAttribute('href')));
-    });
-  });
-  document.querySelectorAll('.nav-mark').forEach(function(navMark){
-    navMark.addEventListener('click', function(e){
-      e.preventDefault();
-      closeMenu();
-      smoothScrollTo(document.getElementById('top'));
-    });
-  });
-  var backToTop = document.getElementById('back-to-top');
-  if(backToTop){
-    backToTop.addEventListener('click', function(){ smoothScrollTo(document.getElementById('top')); });
-  }
-  var footerYear = document.getElementById('footer-year');
-  if(footerYear){ footerYear.textContent = new Date().getFullYear(); }
-  var contactTime = document.getElementById('contact-time');
-  if(contactTime){
-    function updateClock(){
-      try{
-        var t = new Date().toLocaleTimeString('en-GB', {timeZone:'Asia/Karachi', hour:'2-digit', minute:'2-digit'});
-        contactTime.textContent = 'PKT · ' + t;
-      } catch(err){}
-    }
-    updateClock();
-    setInterval(updateClock, 30000);
-  }
-
-  // nav hide on scroll down, progress bar width, gentle background parallax
-  var lastY = 0;
-  var bgBlobs = document.getElementById('bg-blobs');
-  var bgGrid = document.getElementById('bg-grid');
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  window.addEventListener('scroll', function(){
-    var y = window.scrollY;
-    nav.classList.toggle('hidden', y > lastY && y > 100);
-    lastY = y;
-    var docH = document.documentElement.scrollHeight - window.innerHeight;
-    var pct = docH > 0 ? y / docH : 0;
-    progressLine.style.transform = 'scaleX(' + Math.min(pct,1) + ')';
-    if(!reduceMotion){
-      if(bgBlobs) bgBlobs.style.transform = 'translateY(' + (y*0.06) + 'px)';
-      if(bgGrid) bgGrid.style.transform = 'translateY(' + (y*0.03) + 'px)';
-    }
-  }, {passive:true});
-
-  var scrollCue = document.getElementById('scroll-cue');
-  if(scrollCue){
-    setTimeout(function(){ scrollCue.classList.add('visible'); }, 1400);
-    window.addEventListener('scroll', function(){
-      scrollCue.style.opacity = window.scrollY > 80 ? '0' : '';
-    }, {passive:true});
-  }
-
-  // count-up stats
-  var counters = document.querySelectorAll('.h-num[data-count]');
-  var countObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(!entry.isIntersecting) return;
-      var el = entry.target;
-      var target = parseInt(el.getAttribute('data-count'), 10);
-      var suffix = el.getAttribute('data-suffix') || '';
-      var start = null;
-      var duration = 1400;
-      function step(ts){
-        if(!start) start = ts;
-        var progress = Math.min((ts - start) / duration, 1);
-        var eased = 1 - Math.pow(1 - progress, 3);
-        var val = Math.floor(eased * target);
-        el.textContent = val.toLocaleString() + suffix;
-        if(progress < 1) requestAnimationFrame(step);
-        else el.textContent = target.toLocaleString() + suffix;
+      // smooth scroll (Lenis if available, native fallback)
+      var lenisInstance = null;
+      if (typeof Lenis !== 'undefined') {
+        try {
+          lenisInstance = new Lenis({ duration: 1.35, easing: function (t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }, smoothWheel: true });
+          document.documentElement.style.scrollBehavior = 'auto';
+          requestAnimationFrame(function raf(time) { lenisInstance.raf(time); requestAnimationFrame(raf); });
+        } catch (err) { lenisInstance = null; }
       }
-      requestAnimationFrame(step);
-      countObserver.unobserve(el);
-    });
-  }, {threshold:.4});
-  counters.forEach(function(c){ countObserver.observe(c); });
-  document.querySelectorAll('.h-num[data-static]').forEach(function(el){
-    el.textContent = el.getAttribute('data-static');
-  });
+      function smoothScrollTo(target) {
+        if (!target) return;
+        if (lenisInstance) { lenisInstance.scrollTo(target, { offset: 0 }); }
+        else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      window.smoothScrollTo = smoothScrollTo;
 
-  // hero role typing effect
-  var roles = ['GIS Analyst','Zoning & Parcel Data Specialist','Remote Sensing Analyst','Geospatial Data Scientist'];
-  var roleEl = document.getElementById('role-type');
-  if(reduceMotion){
-    roleEl.textContent = roles[0] + ' · Open to Remote Opportunities';
-  } else {
-    var ri = 0, ci = 0, deleting = false;
-    function typeLoop(){
-      var word = roles[ri];
-      if(!deleting){
-        ci++;
-        roleEl.innerHTML = word.slice(0,ci) + '<span class="type-cursor"></span>';
-        if(ci === word.length){ deleting = true; setTimeout(typeLoop, 1400); return; }
+      var nav = document.getElementById('site-nav');
+      var navToggle = document.getElementById('nav-toggle');
+      var navScrim = document.getElementById('nav-scrim');
+      function closeMenu() {
+        nav.classList.remove('nav-open');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+        document.documentElement.style.overflow = '';
+        if (lenisInstance) lenisInstance.start();
+      }
+      function openMenu() {
+        nav.classList.add('nav-open');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
+        document.documentElement.style.overflow = 'hidden';
+        if (lenisInstance) lenisInstance.stop();
+      }
+      if (navToggle) {
+        navToggle.addEventListener('click', function () {
+          nav.classList.contains('nav-open') ? closeMenu() : openMenu();
+        });
+      }
+      if (navScrim) { navScrim.addEventListener('click', closeMenu); }
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      navLinks.forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          closeMenu();
+          smoothScrollTo(document.querySelector(a.getAttribute('href')));
+        });
+      });
+      document.querySelectorAll('.nav-mark').forEach(function (navMark) {
+        navMark.addEventListener('click', function (e) {
+          e.preventDefault();
+          closeMenu();
+          smoothScrollTo(document.getElementById('top'));
+        });
+      });
+      var backToTop = document.getElementById('back-to-top');
+      if (backToTop) {
+        backToTop.addEventListener('click', function () { smoothScrollTo(document.getElementById('top')); });
+      }
+      var footerYear = document.getElementById('footer-year');
+      if (footerYear) { footerYear.textContent = new Date().getFullYear(); }
+      var contactTime = document.getElementById('contact-time');
+      if (contactTime) {
+        function updateClock() {
+          try {
+            var t = new Date().toLocaleTimeString('en-GB', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
+            contactTime.textContent = 'PKT · ' + t;
+          } catch (err) { }
+        }
+        updateClock();
+        setInterval(updateClock, 30000);
+      }
+
+      // nav hide on scroll down, progress bar width, gentle background parallax
+      var lastY = 0;
+      var bgBlobs = document.getElementById('bg-blobs');
+      var bgGrid = document.getElementById('bg-grid');
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.addEventListener('scroll', function () {
+        var y = window.scrollY;
+        nav.classList.toggle('hidden', y > lastY && y > 100);
+        lastY = y;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docH > 0 ? y / docH : 0;
+        progressLine.style.transform = 'scaleX(' + Math.min(pct, 1) + ')';
+        if (!reduceMotion) {
+          if (bgBlobs) bgBlobs.style.transform = 'translateY(' + (y * 0.06) + 'px)';
+          if (bgGrid) bgGrid.style.transform = 'translateY(' + (y * 0.03) + 'px)';
+        }
+      }, { passive: true });
+
+      var scrollCue = document.getElementById('scroll-cue');
+      if (scrollCue) {
+        setTimeout(function () { scrollCue.classList.add('visible'); }, 1400);
+        window.addEventListener('scroll', function () {
+          scrollCue.style.opacity = window.scrollY > 80 ? '0' : '';
+        }, { passive: true });
+      }
+
+      // count-up stats
+      var counters = document.querySelectorAll('.h-num[data-count]');
+      var countObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          var target = parseInt(el.getAttribute('data-count'), 10);
+          var suffix = el.getAttribute('data-suffix') || '';
+          var start = null;
+          var duration = 1400;
+          function step(ts) {
+            if (!start) start = ts;
+            var progress = Math.min((ts - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var val = Math.floor(eased * target);
+            el.textContent = val.toLocaleString() + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = target.toLocaleString() + suffix;
+          }
+          requestAnimationFrame(step);
+          countObserver.unobserve(el);
+        });
+      }, { threshold: .4 });
+      counters.forEach(function (c) { countObserver.observe(c); });
+      document.querySelectorAll('.h-num[data-static]').forEach(function (el) {
+        el.textContent = el.getAttribute('data-static');
+      });
+
+      // hero role typing effect
+      var roles = ['GIS Analyst', 'Zoning & Parcel Data Specialist', 'Remote Sensing Analyst', 'Geospatial Data Scientist'];
+      var roleEl = document.getElementById('role-type');
+      if (reduceMotion) {
+        roleEl.textContent = roles[0] + ' · Open to Remote Opportunities';
       } else {
-        ci--;
-        roleEl.innerHTML = word.slice(0,ci) + '<span class="type-cursor"></span>';
-        if(ci === 0){ deleting = false; ri = (ri+1) % roles.length; }
+        var ri = 0, ci = 0, deleting = false;
+        function typeLoop() {
+          var word = roles[ri];
+          if (!deleting) {
+            ci++;
+            roleEl.innerHTML = word.slice(0, ci) + '<span class="type-cursor"></span>';
+            if (ci === word.length) { deleting = true; setTimeout(typeLoop, 1400); return; }
+          } else {
+            ci--;
+            roleEl.innerHTML = word.slice(0, ci) + '<span class="type-cursor"></span>';
+            if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+          }
+          setTimeout(typeLoop, deleting ? 35 : 65);
+        }
+        typeLoop();
       }
-      setTimeout(typeLoop, deleting ? 35 : 65);
-    }
-    typeLoop();
-  }
 
-  // fine-pointer only interactions
-  var fine = window.matchMedia('(pointer: fine)').matches;
-  if(fine && !reduceMotion){
-    document.body.classList.add('cursor-ready');
-    var pcCursor = document.querySelector('.pc-cursor');
-    var mx = window.innerWidth/2, my = window.innerHeight/2;
-    window.addEventListener('mousemove', function(e){
-      mx = e.clientX; my = e.clientY;
-      pcCursor.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
-    });
-    window.addEventListener('mousedown', function(){ document.body.classList.add('cursor-down'); });
-    window.addEventListener('mouseup', function(){ document.body.classList.remove('cursor-down'); });
+      // fine-pointer only interactions
+      var fine = window.matchMedia('(pointer: fine)').matches;
+      if (fine && !reduceMotion) {
+        document.body.classList.add('cursor-ready');
+        var pcCursor = document.querySelector('.pc-cursor');
+        var mx = window.innerWidth / 2, my = window.innerHeight / 2;
+        window.addEventListener('mousemove', function (e) {
+          mx = e.clientX; my = e.clientY;
+          pcCursor.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+        });
+        window.addEventListener('mousedown', function () { document.body.classList.add('cursor-down'); });
+        window.addEventListener('mouseup', function () { document.body.classList.remove('cursor-down'); });
 
-    document.querySelectorAll('a, .tl-item, .skill-group, .h-stat, .tool-badge, .custom-tool').forEach(function(el){
-      el.addEventListener('mouseenter', function(){ document.body.classList.add('cursor-hover'); });
-      el.addEventListener('mouseleave', function(){ document.body.classList.remove('cursor-hover'); });
-    });
+        document.querySelectorAll('a, .tl-item, .skill-group, .h-stat, .tool-badge, .custom-tool').forEach(function (el) {
+          el.addEventListener('mouseenter', function () { document.body.classList.add('cursor-hover'); });
+          el.addEventListener('mouseleave', function () { document.body.classList.remove('cursor-hover'); });
+        });
 
-    /* ── reactive dot-grid field: dots swell + get pulled toward the pointer ── */
-    (function(){
-      var canvas = document.getElementById('cursor-dots');
-      if(!canvas) return;
-      var ctx = canvas.getContext('2d');
-      var dpr = Math.min(window.devicePixelRatio || 1, 2);
-      var vw = 0, vh = 0;
+        /* ── reactive dot-grid field: dots swell + get pulled toward the pointer ── */
+        (function () {
+          var canvas = document.getElementById('cursor-dots');
+          if (!canvas) return;
+          var ctx = canvas.getContext('2d');
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          var vw = 0, vh = 0;
 
-      function resize(){
-        vw = window.innerWidth; vh = window.innerHeight;
-        canvas.width  = Math.round(vw * dpr);
-        canvas.height = Math.round(vh * dpr);
-        canvas.style.width  = vw + 'px';
-        canvas.style.height = vh + 'px';
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-      window.addEventListener('resize', resize);
-      resize();
+          function resize() {
+            vw = window.innerWidth; vh = window.innerHeight;
+            canvas.width = Math.round(vw * dpr);
+            canvas.height = Math.round(vh * dpr);
+            canvas.style.width = vw + 'px';
+            canvas.style.height = vh + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          }
+          window.addEventListener('resize', resize);
+          resize();
 
-      var gx = -9999, gy = -9999;   // eased grid focus
-      var tx = -9999, ty = -9999;   // raw pointer target
-      var armed = false;
-      var strength = 0, targetStrength = 0;
+          var gx = -9999, gy = -9999;   // eased grid focus
+          var tx = -9999, ty = -9999;   // raw pointer target
+          var armed = false;
+          var strength = 0, targetStrength = 0;
 
-      window.addEventListener('mousemove', function(e){
-        tx = e.clientX; ty = e.clientY;
-        // first move, or a return after the field faded out: snap rather than sweep in
-        if(!armed || strength < 0.02){ gx = tx; gy = ty; }
-        armed = true;
-        targetStrength = 1;
-      });
-      document.addEventListener('mouseleave', function(){ targetStrength = 0; });
+          window.addEventListener('mousemove', function (e) {
+            tx = e.clientX; ty = e.clientY;
+            // first move, or a return after the field faded out: snap rather than sweep in
+            if (!armed || strength < 0.02) { gx = tx; gy = ty; }
+            armed = true;
+            targetStrength = 1;
+          });
+          document.addEventListener('mouseleave', function () { targetStrength = 0; });
 
-      var SPACING = 40, MAX_DIST = 160, PULL = 8;
+          var SPACING = 40, MAX_DIST = 100, PULL = 6;
 
-      function frame(){
-        requestAnimationFrame(frame);
-        ctx.clearRect(0, 0, vw, vh);
+          function frame() {
+            requestAnimationFrame(frame);
+            ctx.clearRect(0, 0, vw, vh);
 
-        // trail a touch behind the pointer, and fade the field in/out in place
-        gx += (tx - gx) * 0.15;
-        gy += (ty - gy) * 0.15;
-        strength += (targetStrength - strength) * 0.08;
-        if(!armed || strength < 0.01) return;
+            // trail a touch behind the pointer, and fade the field in/out in place
+            gx += (tx - gx) * 0.15;
+            gy += (ty - gy) * 0.15;
+            strength += (targetStrength - strength) * 0.08;
+            if (!armed || strength < 0.01) return;
 
-        // walk only the grid cells inside the influence square
-        var c0 = Math.max(0, Math.floor((gx - MAX_DIST) / SPACING));
-        var c1 = Math.min(Math.ceil(vw / SPACING), Math.ceil((gx + MAX_DIST) / SPACING));
-        var r0 = Math.max(0, Math.floor((gy - MAX_DIST) / SPACING));
-        var r1 = Math.min(Math.ceil(vh / SPACING), Math.ceil((gy + MAX_DIST) / SPACING));
+            // walk only the grid cells inside the influence square
+            var c0 = Math.max(0, Math.floor((gx - MAX_DIST) / SPACING));
+            var c1 = Math.min(Math.ceil(vw / SPACING), Math.ceil((gx + MAX_DIST) / SPACING));
+            var r0 = Math.max(0, Math.floor((gy - MAX_DIST) / SPACING));
+            var r1 = Math.min(Math.ceil(vh / SPACING), Math.ceil((gy + MAX_DIST) / SPACING));
 
-        for(var c = c0; c <= c1; c++){
-          for(var r = r0; r <= r1; r++){
-            var bx = c * SPACING, by = r * SPACING;
-            var dx = gx - bx, dy = gy - by;
-            var dist = Math.sqrt(dx*dx + dy*dy);
-            if(dist >= MAX_DIST || dist <= 0.1) continue;
+            for (var c = c0; c <= c1; c++) {
+              for (var r = r0; r <= r1; r++) {
+                var bx = c * SPACING, by = r * SPACING;
+                var dx = gx - bx, dy = gy - by;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist >= MAX_DIST || dist <= 0.1) continue;
 
-            var inf = (MAX_DIST - dist) / MAX_DIST;
+                var inf = (MAX_DIST - dist) / MAX_DIST;
 
-            // elastic pull toward the pointer
-            var px = bx + (dx / dist) * inf * PULL * strength;
-            var py = by + (dy / dist) * inf * PULL * strength;
+                // elastic pull toward the pointer
+                var px = bx + (dx / dist) * inf * PULL * strength;
+                var py = by + (dy / dist) * inf * PULL * strength;
 
-            // dots swell as they close in
-            var radius = (1 + inf * 3.5) * strength;
+                // dots swell as they close in
+                var radius = (0.8 + inf * 2.1) * strength;
 
-            // muted grey → signal orange, with a soft fade at the outer rim
-            var red   = Math.round(150 + (255 - 150) * inf);
-            var green = Math.round(150 + ( 90 - 150) * inf);
-            var blue  = Math.round(156 + ( 60 - 156) * inf);
-            var alpha = (0.14 + inf * 0.82) * Math.min(1, inf * 3.2) * strength;
+                // muted grey → signal orange, with a soft fade at the outer rim
+                var red = Math.round(150 + (255 - 150) * inf);
+                var green = Math.round(150 + (90 - 150) * inf);
+                var blue = Math.round(156 + (60 - 156) * inf);
+                var alpha = (0.14 + inf * 0.82) * Math.min(1, inf * 3.2) * strength;
 
-            // soft halo on the closest dots, matching the site's glow language
-            if(inf > 0.5){
-              ctx.beginPath();
-              ctx.arc(px, py, radius * 2.6, 0, Math.PI * 2);
-              ctx.fillStyle = 'rgba(' + red + ',' + green + ',' + blue + ',' +
-                (alpha * 0.13 * (inf - 0.5) * 2) + ')';
-              ctx.fill();
+                // soft halo on the closest dots, matching the site's glow language
+                if (inf > 0.5) {
+                  ctx.beginPath();
+                  ctx.arc(px, py, radius * 2.6, 0, Math.PI * 2);
+                  ctx.fillStyle = 'rgba(' + red + ',' + green + ',' + blue + ',' +
+                    (alpha * 0.13 * (inf - 0.5) * 2) + ')';
+                  ctx.fill();
+                }
+
+                ctx.beginPath();
+                ctx.arc(px, py, radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(' + red + ',' + green + ',' + blue + ',' + alpha + ')';
+                ctx.fill();
+              }
             }
-
-            ctx.beginPath();
-            ctx.arc(px, py, radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(' + red + ',' + green + ',' + blue + ',' + alpha + ')';
-            ctx.fill();
           }
+          requestAnimationFrame(frame);
+        })();
+
+        // magnetic buttons
+        document.querySelectorAll('.cta-link, #back-to-top').forEach(function (btn) {
+          btn.addEventListener('mousemove', function (e) {
+            var r = btn.getBoundingClientRect();
+            var relX = e.clientX - r.left - r.width / 2;
+            var relY = e.clientY - r.top - r.height / 2;
+            btn.style.transform = 'translate(' + (relX * 0.25) + 'px,' + (relY * 0.35) + 'px)';
+          });
+          btn.addEventListener('mouseleave', function () { btn.style.transform = 'translate(0,0)'; });
+        });
+
+        // glow-tracking cards (experience, project cards, about portrait, tool groups)
+        document.querySelectorAll('.tl-item, .proj-card, .custom-tool, .tool-badge').forEach(function (card) {
+          card.addEventListener('mousemove', function (e) {
+            var r = card.getBoundingClientRect();
+            var px = (e.clientX - r.left) / r.width;
+            var py = (e.clientY - r.top) / r.height;
+            card.style.setProperty('--mx', (px * 100) + '%');
+            card.style.setProperty('--my', (py * 100) + '%');
+            if (card.classList.contains('tl-item')) {
+              card.style.transform = 'perspective(1200px) rotateX(' + ((py - 0.5) * -5) + 'deg) rotateY(' + ((px - 0.5) * 5) + 'deg)';
+            }
+          });
+          if (card.classList.contains('tl-item')) {
+            card.addEventListener('mouseleave', function () { card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0)'; });
+          }
+        });
+
+        // about portrait subtle tilt
+        var portrait = document.querySelector('.about-portrait');
+        if (portrait) {
+          portrait.addEventListener('mousemove', function (e) {
+            var r = portrait.getBoundingClientRect();
+            var px = (e.clientX - r.left) / r.width - 0.5;
+            var py = (e.clientY - r.top) / r.height - 0.5;
+            portrait.style.transform = 'perspective(900px) rotateY(' + (px * 5) + 'deg) rotateX(' + (-py * 5) + 'deg)';
+          });
+          portrait.addEventListener('mouseleave', function () { portrait.style.transform = 'perspective(900px) rotateY(0) rotateX(0)'; });
         }
       }
-      requestAnimationFrame(frame);
     })();
+  </script>
 
-    // magnetic buttons
-    document.querySelectorAll('.cta-link, #back-to-top').forEach(function(btn){
-      btn.addEventListener('mousemove', function(e){
-        var r = btn.getBoundingClientRect();
-        var relX = e.clientX - r.left - r.width/2;
-        var relY = e.clientY - r.top - r.height/2;
-        btn.style.transform = 'translate(' + (relX*0.25) + 'px,' + (relY*0.35) + 'px)';
+  <script type="module">
+    import * as THREE from 'three';
+    (function () {
+      "use strict";
+      var stage = document.getElementById('globe-stage');
+      if (!stage) return;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) { stage.style.display = 'none'; return; }
+
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+      camera.position.set(0, 0.15, 6.4);
+
+      var renderer;
+      try {
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      } catch (err) { return; }
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      stage.appendChild(renderer.domElement);
+
+      function resize() {
+        var w = stage.clientWidth, h = stage.clientHeight;
+        if (!w || !h) return;
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+
+      var globeGroup = new THREE.Group();
+      scene.add(globeGroup);
+      var R = 2;
+
+      globeGroup.add(new THREE.Mesh(
+        new THREE.SphereGeometry(R * 0.985, 30, 22),
+        new THREE.MeshBasicMaterial({ color: 0x0d0d10, transparent: true, opacity: .6 })
+      ));
+      globeGroup.add(new THREE.Mesh(
+        new THREE.SphereGeometry(R, 30, 22),
+        new THREE.MeshBasicMaterial({ color: 0xf4f3ef, wireframe: true, transparent: true, opacity: .14 })
+      ));
+      globeGroup.add(new THREE.Mesh(
+        new THREE.SphereGeometry(R * 1.14, 30, 22),
+        new THREE.MeshBasicMaterial({ color: 0xff4b26, transparent: true, opacity: .05, side: THREE.BackSide })
+      ));
+
+      function latLngToVec3(lat, lng, radius) {
+        var phi = (90 - lat) * (Math.PI / 180);
+        var theta = (lng + 180) * (Math.PI / 180);
+        return new THREE.Vector3(
+          -radius * Math.sin(phi) * Math.cos(theta),
+          radius * Math.cos(phi),
+          radius * Math.sin(phi) * Math.sin(theta)
+        );
+      }
+
+      function glowTexture(hex) {
+        var c = document.createElement('canvas'); c.width = c.height = 128;
+        var ctx = c.getContext('2d');
+        var g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+        g.addColorStop(0, hex + 'ff');
+        g.addColorStop(.4, hex + 'aa');
+        g.addColorStop(1, hex + '00');
+        ctx.fillStyle = g; ctx.fillRect(0, 0, 128, 128);
+        return new THREE.CanvasTexture(c);
+      }
+      var dotTex = glowTexture('#ff4b26');
+
+      var LOCATIONS = [
+        { name: 'Peshawar, Pakistan', desc: 'Home base — where the maps begin', lat: 34.0151, lng: 71.5249, targetId: 'about' },
+        { name: 'United States', desc: 'Zoning & parcel data — Nook Office Solutions', lat: 39.8283, lng: -98.5795, targetId: 'experience' },
+        { name: 'Canada', desc: 'Zoning & parcel data — Nook Office Solutions', lat: 51.2538, lng: -85.3232, targetId: 'experience' }
+      ];
+
+      var markers = [];
+      LOCATIONS.forEach(function (loc) {
+        var pos = latLngToVec3(loc.lat, loc.lng, R * 1.015);
+        var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: dotTex, transparent: true, depthWrite: false }));
+        sprite.scale.set(.34, .34, 1);
+        sprite.position.copy(pos);
+        sprite.userData = loc;
+        globeGroup.add(sprite);
+        markers.push(sprite);
+
+        var dot = new THREE.Mesh(
+          new THREE.SphereGeometry(.032, 10, 10),
+          new THREE.MeshBasicMaterial({ color: 0xf4f3ef })
+        );
+        dot.position.copy(pos);
+        globeGroup.add(dot);
       });
-      btn.addEventListener('mouseleave', function(){ btn.style.transform = 'translate(0,0)'; });
-    });
 
-    // glow-tracking cards (experience, project cards, about portrait, tool groups)
-    document.querySelectorAll('.tl-item, .proj-card, .custom-tool, .tool-badge').forEach(function(card){
-      card.addEventListener('mousemove', function(e){
-        var r = card.getBoundingClientRect();
-        var px = (e.clientX - r.left)/r.width;
-        var py = (e.clientY - r.top)/r.height;
-        card.style.setProperty('--mx', (px*100)+'%');
-        card.style.setProperty('--my', (py*100)+'%');
-        if(card.classList.contains('tl-item')){
-          card.style.transform = 'perspective(1200px) rotateX(' + ((py-0.5)*-5) + 'deg) rotateY(' + ((px-0.5)*5) + 'deg)';
+      var origin = latLngToVec3(LOCATIONS[0].lat, LOCATIONS[0].lng, R);
+      [LOCATIONS[1], LOCATIONS[2]].forEach(function (loc) {
+        var dest = latLngToVec3(loc.lat, loc.lng, R);
+        var mid = origin.clone().add(dest).multiplyScalar(.5).normalize().multiplyScalar(R * 1.55);
+        var curve = new THREE.QuadraticBezierCurve3(origin, mid, dest);
+        var geo = new THREE.BufferGeometry().setFromPoints(curve.getPoints(80));
+        var line = new THREE.Line(geo, new THREE.LineDashedMaterial({
+          color: 0xff4b26, dashSize: .12, gapSize: .08, transparent: true, opacity: .8
+        }));
+        line.computeLineDistances();
+        line.userData.flow = true;
+        globeGroup.add(line);
+      });
+
+      resize();
+      window.addEventListener('resize', resize);
+
+      var raycaster = new THREE.Raycaster();
+      var pointerNDC = new THREE.Vector2(-10, -10);
+      var tooltip = document.getElementById('globe-tooltip');
+      var ttTitle = tooltip ? tooltip.querySelector('.tt-title') : null;
+      var ttSub = tooltip ? tooltip.querySelector('.tt-sub') : null;
+      var hovered = null;
+
+      stage.addEventListener('pointermove', function (e) {
+        var r = stage.getBoundingClientRect();
+        pointerNDC.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+        pointerNDC.y = -((e.clientY - r.top) / r.height) * 2 + 1;
+      });
+      stage.addEventListener('pointerleave', function () { pointerNDC.set(-10, -10); });
+      stage.addEventListener('click', function () {
+        if (hovered && hovered.userData.targetId) {
+          var el = document.getElementById(hovered.userData.targetId);
+          if (el) { if (window.smoothScrollTo) window.smoothScrollTo(el); else el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         }
       });
-      if(card.classList.contains('tl-item')){
-        card.addEventListener('mouseleave', function(){ card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0)'; });
-      }
-    });
 
-    // about portrait subtle tilt
-    var portrait = document.querySelector('.about-portrait');
-    if(portrait){
-      portrait.addEventListener('mousemove', function(e){
-        var r = portrait.getBoundingClientRect();
-        var px = (e.clientX - r.left)/r.width - 0.5;
-        var py = (e.clientY - r.top)/r.height - 0.5;
-        portrait.style.transform = 'perspective(900px) rotateY(' + (px*5) + 'deg) rotateX(' + (-py*5) + 'deg)';
+      var mouseX = 0, mouseY = 0;
+      window.addEventListener('mousemove', function (e) {
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = (e.clientY / window.innerHeight) * 2 - 1;
       });
-      portrait.addEventListener('mouseleave', function(){ portrait.style.transform = 'perspective(900px) rotateY(0) rotateX(0)'; });
-    }
-  }
-})();
-</script>
 
-<script type="module">
-import * as THREE from 'three';
-(function(){
-  "use strict";
-  var stage = document.getElementById('globe-stage');
-  if(!stage) return;
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduceMotion){ stage.style.display = 'none'; return; }
+      var worldPos = new THREE.Vector3();
+      var clock = new THREE.Clock();
+      setTimeout(function () { stage.classList.add('ready'); }, 300);
 
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
-  camera.position.set(0, 0.15, 6.4);
+      function animate() {
+        requestAnimationFrame(animate);
+        var dt = Math.min(clock.getDelta(), .05);
+        var t = clock.elapsedTime;
 
-  var renderer;
-  try{
-    renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
-  } catch(err){ return; }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  stage.appendChild(renderer.domElement);
+        globeGroup.rotation.y += dt * .09;
+        globeGroup.rotation.x += (mouseY * .12 - globeGroup.rotation.x) * .02;
 
-  function resize(){
-    var w = stage.clientWidth, h = stage.clientHeight;
-    if(!w || !h) return;
-    renderer.setSize(w, h);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  }
+        markers.forEach(function (m) {
+          var s = .3 + Math.sin(t * 2 + m.position.x) * .05;
+          m.scale.set(s, s, 1);
+        });
+        globeGroup.children.forEach(function (child) {
+          if (child.userData && child.userData.flow) { child.material.dashOffset -= dt * .6; }
+        });
 
-  var globeGroup = new THREE.Group();
-  scene.add(globeGroup);
-  var R = 2;
+        raycaster.setFromCamera(pointerNDC, camera);
+        var hits = raycaster.intersectObjects(markers);
+        if (hits.length && tooltip) {
+          hovered = hits[0].object;
+          hovered.getWorldPosition(worldPos);
+          var proj = worldPos.clone().project(camera);
+          var r = stage.getBoundingClientRect();
+          tooltip.style.left = (r.left + (proj.x * .5 + .5) * r.width) + 'px';
+          tooltip.style.top = (r.top + (-proj.y * .5 + .5) * r.height) + 'px';
+          tooltip.style.opacity = '1';
+          if (ttTitle) ttTitle.textContent = hovered.userData.name;
+          if (ttSub) ttSub.textContent = hovered.userData.desc;
+          stage.style.cursor = 'pointer';
+        } else {
+          hovered = null;
+          if (tooltip) tooltip.style.opacity = '0';
+          stage.style.cursor = 'default';
+        }
 
-  globeGroup.add(new THREE.Mesh(
-    new THREE.SphereGeometry(R * 0.985, 30, 22),
-    new THREE.MeshBasicMaterial({ color: 0x0d0d10, transparent:true, opacity:.6 })
-  ));
-  globeGroup.add(new THREE.Mesh(
-    new THREE.SphereGeometry(R, 30, 22),
-    new THREE.MeshBasicMaterial({ color: 0xf4f3ef, wireframe:true, transparent:true, opacity:.14 })
-  ));
-  globeGroup.add(new THREE.Mesh(
-    new THREE.SphereGeometry(R * 1.14, 30, 22),
-    new THREE.MeshBasicMaterial({ color: 0xff4b26, transparent:true, opacity:.05, side: THREE.BackSide })
-  ));
-
-  function latLngToVec3(lat, lng, radius){
-    var phi = (90 - lat) * (Math.PI / 180);
-    var theta = (lng + 180) * (Math.PI / 180);
-    return new THREE.Vector3(
-      -radius * Math.sin(phi) * Math.cos(theta),
-      radius * Math.cos(phi),
-      radius * Math.sin(phi) * Math.sin(theta)
-    );
-  }
-
-  function glowTexture(hex){
-    var c = document.createElement('canvas'); c.width = c.height = 128;
-    var ctx = c.getContext('2d');
-    var g = ctx.createRadialGradient(64,64,0,64,64,64);
-    g.addColorStop(0, hex + 'ff');
-    g.addColorStop(.4, hex + 'aa');
-    g.addColorStop(1, hex + '00');
-    ctx.fillStyle = g; ctx.fillRect(0,0,128,128);
-    return new THREE.CanvasTexture(c);
-  }
-  var dotTex = glowTexture('#ff4b26');
-
-  var LOCATIONS = [
-    { name:'Peshawar, Pakistan', desc:'Home base — where the maps begin', lat:34.0151, lng:71.5249, targetId:'about' },
-    { name:'United States', desc:'Zoning & parcel data — Nook Office Solutions', lat:39.8283, lng:-98.5795, targetId:'experience' },
-    { name:'Canada', desc:'Zoning & parcel data — Nook Office Solutions', lat:51.2538, lng:-85.3232, targetId:'experience' }
-  ];
-
-  var markers = [];
-  LOCATIONS.forEach(function(loc){
-    var pos = latLngToVec3(loc.lat, loc.lng, R * 1.015);
-    var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map:dotTex, transparent:true, depthWrite:false }));
-    sprite.scale.set(.34, .34, 1);
-    sprite.position.copy(pos);
-    sprite.userData = loc;
-    globeGroup.add(sprite);
-    markers.push(sprite);
-
-    var dot = new THREE.Mesh(
-      new THREE.SphereGeometry(.032, 10, 10),
-      new THREE.MeshBasicMaterial({ color: 0xf4f3ef })
-    );
-    dot.position.copy(pos);
-    globeGroup.add(dot);
-  });
-
-  var origin = latLngToVec3(LOCATIONS[0].lat, LOCATIONS[0].lng, R);
-  [LOCATIONS[1], LOCATIONS[2]].forEach(function(loc){
-    var dest = latLngToVec3(loc.lat, loc.lng, R);
-    var mid = origin.clone().add(dest).multiplyScalar(.5).normalize().multiplyScalar(R * 1.55);
-    var curve = new THREE.QuadraticBezierCurve3(origin, mid, dest);
-    var geo = new THREE.BufferGeometry().setFromPoints(curve.getPoints(80));
-    var line = new THREE.Line(geo, new THREE.LineDashedMaterial({
-      color:0xff4b26, dashSize:.12, gapSize:.08, transparent:true, opacity:.8
-    }));
-    line.computeLineDistances();
-    line.userData.flow = true;
-    globeGroup.add(line);
-  });
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  var raycaster = new THREE.Raycaster();
-  var pointerNDC = new THREE.Vector2(-10, -10);
-  var tooltip = document.getElementById('globe-tooltip');
-  var ttTitle = tooltip ? tooltip.querySelector('.tt-title') : null;
-  var ttSub = tooltip ? tooltip.querySelector('.tt-sub') : null;
-  var hovered = null;
-
-  stage.addEventListener('pointermove', function(e){
-    var r = stage.getBoundingClientRect();
-    pointerNDC.x = ((e.clientX - r.left) / r.width) * 2 - 1;
-    pointerNDC.y = -((e.clientY - r.top) / r.height) * 2 + 1;
-  });
-  stage.addEventListener('pointerleave', function(){ pointerNDC.set(-10,-10); });
-  stage.addEventListener('click', function(){
-    if(hovered && hovered.userData.targetId){
-      var el = document.getElementById(hovered.userData.targetId);
-      if(el){ if(window.smoothScrollTo) window.smoothScrollTo(el); else el.scrollIntoView({behavior:'smooth', block:'start'}); }
-    }
-  });
-
-  var mouseX = 0, mouseY = 0;
-  window.addEventListener('mousemove', function(e){
-    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-    mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-  });
-
-  var worldPos = new THREE.Vector3();
-  var clock = new THREE.Clock();
-  setTimeout(function(){ stage.classList.add('ready'); }, 300);
-
-  function animate(){
-    requestAnimationFrame(animate);
-    var dt = Math.min(clock.getDelta(), .05);
-    var t = clock.elapsedTime;
-
-    globeGroup.rotation.y += dt * .09;
-    globeGroup.rotation.x += (mouseY * .12 - globeGroup.rotation.x) * .02;
-
-    markers.forEach(function(m){
-      var s = .3 + Math.sin(t * 2 + m.position.x) * .05;
-      m.scale.set(s, s, 1);
-    });
-    globeGroup.children.forEach(function(child){
-      if(child.userData && child.userData.flow){ child.material.dashOffset -= dt * .6; }
-    });
-
-    raycaster.setFromCamera(pointerNDC, camera);
-    var hits = raycaster.intersectObjects(markers);
-    if(hits.length && tooltip){
-      hovered = hits[0].object;
-      hovered.getWorldPosition(worldPos);
-      var proj = worldPos.clone().project(camera);
-      var r = stage.getBoundingClientRect();
-      tooltip.style.left = (r.left + (proj.x * .5 + .5) * r.width) + 'px';
-      tooltip.style.top = (r.top + (-proj.y * .5 + .5) * r.height) + 'px';
-      tooltip.style.opacity = '1';
-      if(ttTitle) ttTitle.textContent = hovered.userData.name;
-      if(ttSub) ttSub.textContent = hovered.userData.desc;
-      stage.style.cursor = 'pointer';
-    } else {
-      hovered = null;
-      if(tooltip) tooltip.style.opacity = '0';
-      stage.style.cursor = 'default';
-    }
-
-    renderer.render(scene, camera);
-  }
-  animate();
-})();
-</script>
-
-<script type="module">
-import * as THREE from 'three';
-(function(){
-  "use strict";
-  var canvasHost = document.getElementById('topo-canvas');
-  if(!canvasHost) return;
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fine = window.matchMedia('(pointer: fine)').matches;
-  if(reduceMotion || !fine){ canvasHost.style.display = 'none'; return; }
-
-  var heroSection = document.getElementById('top');
-  var tctx, tw = 0, th = 0, cell = 16, cols = 0, rows = 0, field = null;
-  var canvas = document.createElement('canvas');
-  canvasHost.appendChild(canvas);
-  tctx = canvas.getContext('2d');
-  var tdpr = Math.min(window.devicePixelRatio || 1, 1.75);
-  var basePeaks = [];
-  var cursorPeak = { x:0, y:0, tx:0, ty:0, s:1, h:0, targetH:0 };
-
-  function layoutPeaks(){
-    var m = Math.min(tw, th);
-    basePeaks = [
-      { x: tw*0.30, y: th*0.42, s: m*0.24, h: 1.0 },
-      { x: tw*0.66, y: th*0.68, s: m*0.17, h: 0.68 },
-      { x: tw*0.58, y: th*0.20, s: m*0.13, h: 0.5 }
-    ];
-    cursorPeak.s = m*0.16;
-    if(!cursorPeak.x){ cursorPeak.x = cursorPeak.tx = tw*0.5; cursorPeak.y = cursorPeak.ty = th*0.5; }
-  }
-  function resizeTopo(){
-    var r = heroSection.getBoundingClientRect();
-    tw = r.width; th = r.height;
-    canvas.width = tw * tdpr;
-    canvas.height = th * tdpr;
-    tctx.setTransform(tdpr, 0, 0, tdpr, 0, 0);
-    cell = Math.max(13, Math.floor(Math.min(tw, th) / 46));
-    cols = Math.ceil(tw / cell) + 1;
-    rows = Math.ceil(th / cell) + 1;
-    field = new Float32Array(cols * rows);
-    layoutPeaks();
-  }
-  resizeTopo();
-  window.addEventListener('resize', resizeTopo);
-
-  heroSection.addEventListener('mousemove', function(e){
-    var r = heroSection.getBoundingClientRect();
-    cursorPeak.tx = e.clientX - r.left;
-    cursorPeak.ty = e.clientY - r.top;
-    cursorPeak.targetH = .8;
-  });
-  heroSection.addEventListener('mouseleave', function(){ cursorPeak.targetH = 0; });
-
-  function fieldAt(x, y){
-    var v = 0, i, p, dx, dy, d2;
-    for(i = 0; i < basePeaks.length; i++){
-      p = basePeaks[i];
-      dx = x - p.x; dy = y - p.y; d2 = dx*dx + dy*dy;
-      v += p.h * Math.exp(-d2 / (2*p.s*p.s));
-    }
-    dx = x - cursorPeak.x; dy = y - cursorPeak.y; d2 = dx*dx + dy*dy;
-    v += cursorPeak.h * Math.exp(-d2 / (2*cursorPeak.s*cursorPeak.s));
-    return v;
-  }
-
-  var EDGE_TABLE = {
-    1:[['L','T']], 14:[['L','T']],
-    2:[['T','R']], 13:[['T','R']],
-    3:[['L','R']], 12:[['L','R']],
-    4:[['R','B']], 11:[['R','B']],
-    6:[['T','B']], 9:[['T','B']],
-    7:[['L','B']], 8:[['L','B']],
-    5:[['L','T'],['R','B']],
-    10:[['T','R'],['L','B']]
-  };
-  var LEVELS = 15;
-
-  function edgePt(edge, x0, y0, v00, v10, v11, v01, t){
-    var px0 = x0*cell, py0 = y0*cell, px1 = px0+cell, py1 = py0+cell, f;
-    if(edge === 'T'){ f = (t-v00)/((v10-v00)||1e-6); return [px0+f*cell, py0]; }
-    if(edge === 'R'){ f = (t-v10)/((v11-v10)||1e-6); return [px1, py0+f*cell]; }
-    if(edge === 'B'){ f = (t-v01)/((v11-v01)||1e-6); return [px0+f*cell, py1]; }
-    f = (t-v00)/((v01-v00)||1e-6); return [px0, py0+f*cell];
-  }
-
-  function drawTopo(){
-    var i, x, y;
-    for(y = 0; y < rows; y++){
-      for(x = 0; x < cols; x++){
-        field[y*cols+x] = fieldAt(x*cell, y*cell);
+        renderer.render(scene, camera);
       }
-    }
-    tctx.clearRect(0, 0, tw, th);
-    for(var lvl = 0; lvl < LEVELS; lvl++){
-      var t = 0.05 + lvl * (1.15/LEVELS);
-      var accent = lvl > LEVELS*0.72;
-      var alpha = accent ? 0.16 + (lvl/LEVELS)*0.16 : 0.045 + (lvl/LEVELS)*0.09;
-      tctx.strokeStyle = accent ? 'rgba(255,75,38,'+alpha.toFixed(3)+')' : 'rgba(244,243,239,'+alpha.toFixed(3)+')';
-      tctx.lineWidth = 1;
-      tctx.beginPath();
-      for(y = 0; y < rows-1; y++){
-        for(x = 0; x < cols-1; x++){
-          var v00 = field[y*cols+x], v10 = field[y*cols+x+1],
-              v11 = field[(y+1)*cols+x+1], v01 = field[(y+1)*cols+x];
-          var idx = (v00>=t?1:0)|(v10>=t?2:0)|(v11>=t?4:0)|(v01>=t?8:0);
-          var segs = EDGE_TABLE[idx];
-          if(!segs) continue;
-          for(i = 0; i < segs.length; i++){
-            var a = edgePt(segs[i][0], x, y, v00, v10, v11, v01, t);
-            var b = edgePt(segs[i][1], x, y, v00, v10, v11, v01, t);
-            tctx.moveTo(a[0], a[1]);
-            tctx.lineTo(b[0], b[1]);
+      animate();
+    })();
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    (function () {
+      "use strict";
+      var canvasHost = document.getElementById('topo-canvas');
+      if (!canvasHost) return;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var fine = window.matchMedia('(pointer: fine)').matches;
+      if (reduceMotion || !fine) { canvasHost.style.display = 'none'; return; }
+
+      var heroSection = document.getElementById('top');
+      var tctx, tw = 0, th = 0, cell = 16, cols = 0, rows = 0, field = null;
+      var canvas = document.createElement('canvas');
+      canvasHost.appendChild(canvas);
+      tctx = canvas.getContext('2d');
+      var tdpr = Math.min(window.devicePixelRatio || 1, 1.75);
+      var basePeaks = [];
+      var cursorPeak = { x: 0, y: 0, tx: 0, ty: 0, s: 1, h: 0, targetH: 0 };
+
+      function layoutPeaks() {
+        var m = Math.min(tw, th);
+        basePeaks = [
+          { x: tw * 0.30, y: th * 0.42, s: m * 0.24, h: 1.0 },
+          { x: tw * 0.66, y: th * 0.68, s: m * 0.17, h: 0.68 },
+          { x: tw * 0.58, y: th * 0.20, s: m * 0.13, h: 0.5 }
+        ];
+        cursorPeak.s = m * 0.16;
+        if (!cursorPeak.x) { cursorPeak.x = cursorPeak.tx = tw * 0.5; cursorPeak.y = cursorPeak.ty = th * 0.5; }
+      }
+      function resizeTopo() {
+        var r = heroSection.getBoundingClientRect();
+        tw = r.width; th = r.height;
+        canvas.width = tw * tdpr;
+        canvas.height = th * tdpr;
+        tctx.setTransform(tdpr, 0, 0, tdpr, 0, 0);
+        cell = Math.max(13, Math.floor(Math.min(tw, th) / 46));
+        cols = Math.ceil(tw / cell) + 1;
+        rows = Math.ceil(th / cell) + 1;
+        field = new Float32Array(cols * rows);
+        layoutPeaks();
+      }
+      resizeTopo();
+      window.addEventListener('resize', resizeTopo);
+
+      heroSection.addEventListener('mousemove', function (e) {
+        var r = heroSection.getBoundingClientRect();
+        cursorPeak.tx = e.clientX - r.left;
+        cursorPeak.ty = e.clientY - r.top;
+        cursorPeak.targetH = .8;
+      });
+      heroSection.addEventListener('mouseleave', function () { cursorPeak.targetH = 0; });
+
+      function fieldAt(x, y) {
+        var v = 0, i, p, dx, dy, d2;
+        for (i = 0; i < basePeaks.length; i++) {
+          p = basePeaks[i];
+          dx = x - p.x; dy = y - p.y; d2 = dx * dx + dy * dy;
+          v += p.h * Math.exp(-d2 / (2 * p.s * p.s));
+        }
+        dx = x - cursorPeak.x; dy = y - cursorPeak.y; d2 = dx * dx + dy * dy;
+        v += cursorPeak.h * Math.exp(-d2 / (2 * cursorPeak.s * cursorPeak.s));
+        return v;
+      }
+
+      var EDGE_TABLE = {
+        1: [['L', 'T']], 14: [['L', 'T']],
+        2: [['T', 'R']], 13: [['T', 'R']],
+        3: [['L', 'R']], 12: [['L', 'R']],
+        4: [['R', 'B']], 11: [['R', 'B']],
+        6: [['T', 'B']], 9: [['T', 'B']],
+        7: [['L', 'B']], 8: [['L', 'B']],
+        5: [['L', 'T'], ['R', 'B']],
+        10: [['T', 'R'], ['L', 'B']]
+      };
+      var LEVELS = 15;
+
+      function edgePt(edge, x0, y0, v00, v10, v11, v01, t) {
+        var px0 = x0 * cell, py0 = y0 * cell, px1 = px0 + cell, py1 = py0 + cell, f;
+        if (edge === 'T') { f = (t - v00) / ((v10 - v00) || 1e-6); return [px0 + f * cell, py0]; }
+        if (edge === 'R') { f = (t - v10) / ((v11 - v10) || 1e-6); return [px1, py0 + f * cell]; }
+        if (edge === 'B') { f = (t - v01) / ((v11 - v01) || 1e-6); return [px0 + f * cell, py1]; }
+        f = (t - v00) / ((v01 - v00) || 1e-6); return [px0, py0 + f * cell];
+      }
+
+      function drawTopo() {
+        var i, x, y;
+        for (y = 0; y < rows; y++) {
+          for (x = 0; x < cols; x++) {
+            field[y * cols + x] = fieldAt(x * cell, y * cell);
           }
         }
+        tctx.clearRect(0, 0, tw, th);
+        for (var lvl = 0; lvl < LEVELS; lvl++) {
+          var t = 0.05 + lvl * (1.15 / LEVELS);
+          var accent = lvl > LEVELS * 0.72;
+          var alpha = accent ? 0.16 + (lvl / LEVELS) * 0.16 : 0.045 + (lvl / LEVELS) * 0.09;
+          tctx.strokeStyle = accent ? 'rgba(255,75,38,' + alpha.toFixed(3) + ')' : 'rgba(244,243,239,' + alpha.toFixed(3) + ')';
+          tctx.lineWidth = 1;
+          tctx.beginPath();
+          for (y = 0; y < rows - 1; y++) {
+            for (x = 0; x < cols - 1; x++) {
+              var v00 = field[y * cols + x], v10 = field[y * cols + x + 1],
+                v11 = field[(y + 1) * cols + x + 1], v01 = field[(y + 1) * cols + x];
+              var idx = (v00 >= t ? 1 : 0) | (v10 >= t ? 2 : 0) | (v11 >= t ? 4 : 0) | (v01 >= t ? 8 : 0);
+              var segs = EDGE_TABLE[idx];
+              if (!segs) continue;
+              for (i = 0; i < segs.length; i++) {
+                var a = edgePt(segs[i][0], x, y, v00, v10, v11, v01, t);
+                var b = edgePt(segs[i][1], x, y, v00, v10, v11, v01, t);
+                tctx.moveTo(a[0], a[1]);
+                tctx.lineTo(b[0], b[1]);
+              }
+            }
+          }
+          tctx.stroke();
+        }
       }
-      tctx.stroke();
-    }
-  }
 
-  var lastFrame = 0;
-  function topoLoop(ts){
-    requestAnimationFrame(topoLoop);
-    if(ts - lastFrame < 33) return;
-    lastFrame = ts;
-    cursorPeak.x += (cursorPeak.tx - cursorPeak.x) * 0.06;
-    cursorPeak.y += (cursorPeak.ty - cursorPeak.y) * 0.06;
-    cursorPeak.h += (cursorPeak.targetH - cursorPeak.h) * 0.08;
-    drawTopo();
-  }
-  topoLoop(0);
-})();
-</script>
+      var lastFrame = 0;
+      function topoLoop(ts) {
+        requestAnimationFrame(topoLoop);
+        if (ts - lastFrame < 33) return;
+        lastFrame = ts;
+        cursorPeak.x += (cursorPeak.tx - cursorPeak.x) * 0.06;
+        cursorPeak.y += (cursorPeak.ty - cursorPeak.y) * 0.06;
+        cursorPeak.h += (cursorPeak.targetH - cursorPeak.h) * 0.08;
+        drawTopo();
+      }
+      topoLoop(0);
+    })();
+  </script>
 </body>
+
 </html>
