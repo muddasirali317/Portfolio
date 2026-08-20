@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Muddasir Ali — GIS Analyst</title>
+<meta name="description" content="GIS Analyst specializing in zoning &amp; parcel data, remote sensing, and geospatial QA — 2,000+ maps digitized at 95–100% spatial accuracy for clients in the USA and Canada." />
+<meta name="author" content="Muddasir Ali" />
+<meta name="theme-color" content="#0a0a0b" />
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="%23ff4b26"/><path d="M8 23V9l8 8 8-8v14" fill="none" stroke="%230a0a0b" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' />
+
+<!-- Link previews. NOTE: LinkedIn/X require ABSOLUTE urls for og:url and og:image.
+     On deploy, prefix the two paths below with your live origin, e.g.
+     https://muddasirali317.github.io/portfolio/assets/thumbs/study-area.jpg -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Muddasir Ali" />
+<meta property="og:title" content="Muddasir Ali — GIS Analyst" />
+<meta property="og:description" content="Zoning &amp; parcel data, remote sensing, and geospatial QA. 2,000+ maps digitized at 95–100% spatial accuracy for clients in the USA and Canada." />
+<meta property="og:url" content="./" />
+<meta property="og:image" content="assets/thumbs/study-area.jpg" />
+<meta property="og:image:alt" content="Awaran district earthquake study area and fault line map" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Muddasir Ali — GIS Analyst" />
+<meta name="twitter:description" content="Zoning &amp; parcel data, remote sensing, and geospatial QA. 2,000+ maps digitized at 95–100% spatial accuracy." />
+<meta name="twitter:image" content="assets/thumbs/study-area.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,:before,:after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --earth:#0a0a0b;--terrain:#131316;--surface:#1a1a1e;
+    --sand:#f4f3ef;--sienna:#ff4b26;--moss:#ff4b26;--brass:#ff4b26;--flood:#ff4b26;
+    --paper:#f4f3ef;--mist:#8f8f95;--white:#f4f3ef;--trust:#ff4b26;--trust-soft:#ff4b261a;--trust-line:#ff4b2655;
+    --mono:"JetBrains Mono", monospace;--serif:"DM Serif Display", serif;--sans:"Inter", sans-serif;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  .hero-section{--accent:var(--brass)}
+  .about-section{--accent:var(--sienna)}
+  .experience-section{--accent:var(--flood)}
+  .projects-section{--accent:var(--moss)}
+  .skills-section{--accent:var(--brass)}
+  .contact-section{--accent:var(--paper)}
+  html{scroll-behavior:smooth}
+  body{background:var(--earth);color:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-weight:300;overflow-x:hidden;cursor:default}
+  /* Editorial display face for large text only */
+  h1,h2,h3,
+  .hero-name,.section-title,.about-title,.contact-heading,
+  .proj-title,.tl-org,.edu-degree,.contact-section:after,
+  .exp-stat strong,.h-num{font-family:"DM Serif Display",Georgia,serif!important}
+  .hero-name,.hero-name .kinetic-char{font-family:"Fraunces","DM Serif Display",Georgia,serif!important;font-optical-sizing:auto;font-weight:600}
+
+  /* ───────── atmosphere / background ───────── */
+  #bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 75%);
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 75%);
+  }
+  #bg-blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  #bg-blobs .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.16;mix-blend-mode:screen;will-change:transform}
+  #bg-blobs .b1{width:46vw;height:46vw;background:var(--brass);top:-10%;left:-8%;animation:drift1 34s ease-in-out infinite alternate}
+  #bg-blobs .b2{width:38vw;height:38vw;background:var(--flood);bottom:0%;right:-6%;animation:drift2 40s ease-in-out infinite alternate}
+  #bg-blobs .b3{width:30vw;height:30vw;background:var(--moss);top:45%;left:35%;animation:drift3 46s ease-in-out infinite alternate}
+  @keyframes drift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(8vw,10vh) scale(1.15)}}
+  @keyframes drift2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-10vw,-6vh) scale(1.1)}}
+  @keyframes drift3{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-6vw,8vh) scale(.9)}}
+  #grain{position:fixed;inset:0;z-index:150;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+  #contour-field{position:fixed;inset:-8%;width:116%;height:116%;z-index:90;pointer-events:none;opacity:.14;mix-blend-mode:screen;will-change:transform,opacity,filter;filter:hue-rotate(0deg) drop-shadow(0 0 4px #ff4b2645);animation:contourDrift 16s ease-in-out infinite alternate,contourColor 14s linear infinite,contourFade 8s ease-in-out infinite;mask-image:linear-gradient(90deg,#000 0%,#000b 22%,#0008 50%,#000c 78%,#000 100%)}
+  #contour-field path{fill:none;stroke:currentColor;stroke-width:1.45;vector-effect:non-scaling-stroke;stroke-linecap:round}
+  #contour-field .major{stroke-width:2;stroke-dasharray:none;opacity:1}#contour-field .minor{opacity:.8}
+  #contour-field .minor:first-child{animation:contourLayerA 11s ease-in-out infinite alternate;transform-origin:center}
+  #contour-field .major{animation:contourLayerB 15s ease-in-out infinite alternate;transform-origin:center}
+  #contour-field .minor:last-child{animation:contourLayerC 19s ease-in-out infinite alternate;transform-origin:center}
+  @keyframes contourDrift{from{transform:translate3d(-1.5%,-1%,0) scale(1)}to{transform:translate3d(1.5%,1.2%,0) scale(1.035)}}
+  @keyframes contourColor{0%,100%{color:#ff4b26;filter:hue-rotate(0deg) drop-shadow(0 0 2px #ff4b2630)}45%{color:#ff6b4a;filter:hue-rotate(8deg) drop-shadow(0 0 3px #ff6b4a28)}72%{color:#ff4b26;filter:hue-rotate(-8deg) drop-shadow(0 0 2px #ff4b2630)}}
+  @keyframes contourFade{0%,100%{opacity:.085}45%{opacity:.2}70%{opacity:.13}}
+  @keyframes contourLayerA{from{transform:translate(-22px,-9px) scale(1)}to{transform:translate(26px,14px) scale(1.018)}}
+  @keyframes contourLayerB{from{transform:translate(15px,-12px)}to{transform:translate(-20px,16px)}}
+  @keyframes contourLayerC{from{transform:translate(-12px,18px) scale(1.01)}to{transform:translate(22px,-15px) scale(.992)}}
+  /* Contour overlay removed; hero geometry remains jade-only */
+  #contour-field{display:none!important}
+
+  /* ───────── custom cursor (fine pointers only) ───────── */
+  #cur-dot,#cur-ring{position:fixed;top:0;left:0;z-index:999;pointer-events:none;transform:translate(-50%,-50%);opacity:0;transition:opacity .3s}
+  #cur-dot{width:5px;height:5px;border-radius:50%;background:var(--brass);box-shadow:0 0 10px #ff6b4acc}
+  #cur-ring{width:38px;height:38px;transition:opacity .3s,width .35s var(--ease),height .35s var(--ease),filter .35s var(--ease);filter:drop-shadow(0 0 5px #ff4b2655);background:radial-gradient(circle at 50% 2px,#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 93% 25%,#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 93% 75%,#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 50% calc(100% - 2px),#ff6b4a 0 1.8px,transparent 2.2px),radial-gradient(circle at 7% 75%,#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 7% 25%,#ff4b26 0 1.8px,transparent 2.2px)}
+  body.cursor-ready #cur-dot,body.cursor-ready #cur-ring{opacity:1}
+  body.cursor-hover #cur-ring{width:58px;height:58px;animation:cursorOrbit 3.2s linear infinite}
+  @keyframes cursorOrbit{to{rotate:360deg}}
+  @media (pointer:coarse){#cur-dot,#cur-ring{display:none}}
+
+  /* ───────── scroll progress ───────── */
+  #progress-line{z-index:200;height:2px;transition:background .6s;position:fixed;top:0;left:0;transform-origin:left;width:100%;transform:scaleX(0)}
+
+  /* ───────── nav ───────── */
+  #site-nav{z-index:100;background:linear-gradient(#090b11f2 0%,#0000 100%);justify-content:space-between;align-items:center;padding:20px 48px;transition:transform .4s var(--ease),opacity .4s;display:flex;position:fixed;top:0;left:0;right:0}
+  #site-nav.hidden{opacity:0;transform:translateY(-100%)}
+  .nav-mark{font-family:var(--serif);letter-spacing:.08em;font-size:22px;text-decoration:none;background:linear-gradient(120deg,var(--white) 40%,var(--brass));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav-links{gap:32px;display:flex}
+  .nav-links a{font-family:var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--mist);font-size:10px;text-decoration:none;transition:color .3s;position:relative;padding-bottom:4px}
+  .nav-links a:after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--brass);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+  .nav-links a:hover,.nav-links a.active{color:var(--paper)}
+  .nav-links a:hover:after,.nav-links a.active:after{transform:scaleX(1);transform-origin:left}
+
+  /* ───────── layout ───────── */
+  .section{align-items:center;min-height:100vh;padding:120px 48px 100px;display:flex;position:relative;z-index:1}
+  .container{width:100%;max-width:980px;margin:0 auto}
+  .fade-up{opacity:0;transition:opacity .9s var(--ease),transform .9s var(--ease);transform:translateY(30px)}
+  .fade-up.visible{opacity:1;transform:translateY(0)}
+  .chapter-tag{font-family:var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--mist);margin-bottom:20px;font-size:10px;display:flex;align-items:center;gap:10px}
+  .chapter-tag:before{content:"";width:22px;height:1px;background:var(--accent,var(--mist));opacity:.9;box-shadow:0 0 6px 0 var(--accent,transparent)}
+  .section-title{font-family:var(--serif);letter-spacing:.02em;color:var(--white);margin-bottom:32px;font-size:clamp(48px,7vw,92px);line-height:.94}
+  .section-sub{color:var(--mist);max-width:600px;font-size:15px;font-weight:300;line-height:1.85}
+
+  /* ───────── hero ───────── */
+  .hero-section{background:var(--earth);align-items:center;min-height:100vh;overflow:hidden}
+  .hero-label{font-family:var(--mono);letter-spacing:.2em;color:var(--sand);text-transform:uppercase;margin-bottom:28px;font-size:10px;display:flex;align-items:center;gap:10px}
+  .live-dot{width:6px;height:6px;border-radius:50%;background:var(--moss);box-shadow:0 0 8px #ff4b26;animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .hero-name{font-family:var(--serif);letter-spacing:.02em;margin-bottom:24px;line-height:.88;overflow:hidden}
+  .hero-name .line{overflow:hidden}
+  .name-mud{font-size:clamp(64px,12vw,158px);display:block;transform:translateY(105%);transition:transform 1s var(--ease);
+    background:linear-gradient(120deg,var(--white) 25%,var(--brass) 55%,var(--sienna) 85%);background-size:220% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 9s ease-in-out infinite}
+  @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .name-ali{color:transparent;-webkit-text-stroke:1.5px var(--sand);font-size:clamp(64px,12vw,158px);display:block;transform:translateY(105%);transition:transform 1s .12s var(--ease)}
+  .hero-name.visible .name-mud,.hero-name.visible .name-ali{transform:translateY(0)}
+  .hero-role{font-family:var(--mono);letter-spacing:.14em;color:var(--mist);text-transform:uppercase;margin-bottom:40px;font-size:11px;min-height:14px}
+  .hero-role .type-cursor{display:inline-block;width:7px;height:11px;background:var(--brass);margin-left:2px;vertical-align:-1px;animation:blink 1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
+  .hero-divider{background:var(--sand);opacity:.6;width:0;height:1px;margin-bottom:40px;transition:width 1s .4s var(--ease)}
+  .fade-up.visible .hero-divider{width:48px}
+  .hero-statement{color:var(--mist);max-width:580px;margin-bottom:56px;font-size:15px;font-weight:300;line-height:1.9}
+  .hero-statement em{color:var(--paper);font-style:normal;font-family:var(--mono);letter-spacing:.1em;margin-top:12px;font-size:11px;display:block}
+  .hero-stats{border-top:1px solid #ffffff0f;border-left:1px solid #ffffff0f;gap:0;display:flex;flex-wrap:wrap}
+  .h-stat{border-bottom:1px solid #ffffff0f;border-right:1px solid #ffffff0f;flex:1 1 20%;min-width:130px;padding:22px 24px;transition:background .3s}
+  .h-stat:hover{background:#ffffff05}
+  .h-num{font-family:var(--serif);color:var(--brass);margin-bottom:6px;font-size:34px;line-height:1;display:block;font-variant-numeric:tabular-nums}
+  .h-label{font-family:var(--mono);letter-spacing:.14em;color:var(--mist);text-transform:uppercase;font-size:9px}
+
+  #reticle{position:absolute;width:26px;height:26px;pointer-events:none;opacity:0;transition:opacity .3s;transform:translate(-50%,-50%);z-index:2}
+  .hero-section:hover #reticle{opacity:.85}
+  #reticle svg{width:100%;height:100%}
+  #coord-readout{position:absolute;bottom:32px;right:48px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--mist);opacity:0;transition:opacity .3s;z-index:2}
+  .hero-section:hover #coord-readout{opacity:.85}
+  @media (pointer:coarse){#reticle,#coord-readout{display:none}}
+
+  /* ───────── about ───────── */
+  .about-section{background:var(--terrain)}
+  .about-section .section-title{color:var(--white)}
+  .about-body{color:var(--mist);max-width:700px;font-size:15px;line-height:1.95;margin-top:32px}
+  .about-body p{margin-bottom:18px}
+  .about-body strong{color:var(--paper);font-weight:500}
+  .highlight-list{list-style:none;margin:28px 0;display:flex;flex-direction:column;gap:12px}
+  .highlight-list li{color:var(--mist);padding-left:24px;font-size:14px;line-height:1.6;position:relative}
+  .highlight-list li:before{content:"◆";color:var(--sienna);position:absolute;left:0;font-size:10px;top:3px}
+  .tools-row{margin-top:40px;padding-top:32px;border-top:1px solid #ffffff0d}
+  .tools-label{font-family:var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mist);margin-bottom:16px;font-size:10px}
+  .tools-tags{display:flex;flex-wrap:wrap;gap:9px}
+  .tools-tags span{font-family:var(--mono);letter-spacing:.08em;color:var(--sienna);background:#ff4b260d;border:1px solid #ff4b2635;padding:5px 12px;font-size:10px;transition:transform .25s var(--ease),background .25s,border-color .25s}
+  .tools-tags span:hover{transform:translateY(-3px);background:#ff4b261a;border-color:#ff4b2670}
+
+  /* ───────── experience ───────── */
+  .experience-section{background:#0a0a0c}
+  .experience-section .section-title{color:#f4f3ef}
+  .timeline{position:relative;margin-top:56px;padding-left:44px}
+  .timeline-track{position:absolute;left:3px;top:6px;bottom:6px;width:1px;background:#ff4b2626}
+  .timeline-fill{position:absolute;left:3px;top:6px;width:1px;height:0;background:linear-gradient(var(--flood),var(--brass));box-shadow:0 0 8px #ff4b2680;transition:height .1s linear}
+  .tl-item{padding:0 0 52px;position:relative}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item:before{content:"";background:var(--terrain);border:1px solid #ff4b2670;border-radius:50%;width:9px;height:9px;position:absolute;top:4px;left:-48px;transition:background .35s,box-shadow .35s,border-color .35s}
+  .tl-item.active:before{background:var(--brass);border-color:var(--brass);box-shadow:0 0 12px #ff6b4a90}
+  .tl-period{font-family:var(--mono);letter-spacing:.15em;color:var(--flood);text-transform:uppercase;margin-bottom:6px;font-size:10px}
+  .tl-item.active .tl-period{color:var(--brass)}
+  .tl-org{color:var(--white);letter-spacing:.01em;margin-bottom:4px;font-size:17px;font-weight:500}
+  .tl-role{color:var(--mist);font-size:12px;font-family:var(--mono);letter-spacing:.06em;margin-bottom:14px;text-transform:uppercase;opacity:.8}
+  .tl-desc{list-style:none;display:flex;flex-direction:column;gap:8px;max-width:660px;margin-bottom:16px}
+  .tl-desc li{color:var(--mist);font-size:13px;line-height:1.7;padding-left:18px;position:relative}
+  .tl-desc li:before{content:"—";color:var(--flood);opacity:.7;position:absolute;left:0}
+  .tl-tools{flex-wrap:wrap;gap:8px;display:flex}
+  .tl-tools span{font-family:var(--mono);letter-spacing:.08em;color:var(--flood);background:#ff4b260d;border:1px solid #ff4b2640;padding:3px 10px;font-size:9px}
+
+  /* ───────── projects ───────── */
+  .projects-section{background:#0a0a0c}
+  .projects-section .section-title{color:#f4f3ef}
+  .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ffffff0a;border:1px solid #ffffff0a;margin-top:52px}
+  .project{background:#0a0a0c;padding:36px 30px;perspective:900px;position:relative;overflow:hidden}
+  .project:before,.project:after,.skill-group:before,.skill-group:after{content:"";position:absolute;width:14px;height:14px;border-color:var(--accent);opacity:0;transition:opacity .35s,transform .35s var(--ease);pointer-events:none}
+  .project:before,.skill-group:before{top:8px;left:8px;border-top:1.5px solid;border-left:1.5px solid;transform:translate(6px,6px)}
+  .project:after,.skill-group:after{bottom:8px;right:8px;border-bottom:1.5px solid;border-right:1.5px solid;transform:translate(-6px,-6px)}
+  .project:hover:before,.project:hover:after,.skill-group:hover:before,.skill-group:hover:after{opacity:.9;transform:translate(0,0)}
+  .project-inner{transition:transform .4s var(--ease);transform-style:preserve-3d}
+  .proj-num{font-family:var(--serif);color:#ff4b2640;margin-bottom:22px;font-size:44px;line-height:1;transition:color .3s}
+  .project:hover .proj-num{color:#ff4b26a0}
+  .proj-title{color:var(--white);letter-spacing:.01em;margin-bottom:12px;font-size:16px;font-weight:500;line-height:1.35}
+  .proj-desc{color:var(--mist);margin-bottom:18px;font-size:13px;line-height:1.8}
+  .proj-stack{flex-wrap:wrap;gap:7px;display:flex}
+  .proj-stack span{font-family:var(--mono);letter-spacing:.06em;color:var(--moss);background:#ff4b260d;border:1px solid #ff4b2640;padding:3px 9px;font-size:9px}
+
+  /* ───────── skills ───────── */
+  .skills-section{background:var(--surface)}
+  .skills-section .section-title{color:var(--brass)}
+  .skills-wrap{grid-template-columns:repeat(2,1fr);gap:28px 56px;display:grid;margin-top:52px}
+  .skill-group{position:relative;padding:22px 24px;border:1px solid #ffffff0a;background:#ffffff03;transition:transform .3s var(--ease),border-color .3s,background .3s}
+  .skill-group:hover{transform:translateY(-4px);border-color:#ff6b4a40;background:#ff6b4a08}
+  .sg-label{font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:10px;font-size:10px}
+  .sg-items{color:var(--mist);font-size:13px;line-height:1.85}
+
+  .education-block{margin-top:56px;padding-top:40px;border-top:1px solid #ffffff0d;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
+  .edu-degree{font-family:var(--serif);color:var(--white);font-size:26px;letter-spacing:.01em}
+  .edu-school{color:var(--mist);font-size:13px;margin-top:6px}
+  .edu-elect{font-family:var(--mono);color:var(--mist);opacity:.7;font-size:10px;letter-spacing:.06em;text-align:right}
+
+  /* ───────── contact ───────── */
+  .contact-section{background:var(--earth);border-top:1px solid #ffffff0a;min-height:70vh}
+  .contact-inner{max-width:720px}
+  .contact-heading{font-family:var(--serif);letter-spacing:.02em;color:var(--white);margin-bottom:24px;font-size:clamp(48px,6.5vw,88px);line-height:.94}
+  .contact-sub{color:var(--mist);max-width:540px;margin-bottom:40px;font-size:14px;line-height:1.9}
+  .contact-links{flex-wrap:wrap;gap:16px;margin-bottom:52px;display:flex}
+  .cta-link{font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;padding:15px 34px;font-size:11px;text-decoration:none;transition:transform .25s var(--ease),box-shadow .3s,background .3s,color .3s,border-color .3s;display:inline-block;position:relative}
+  .cta-link:not(.outline){background:linear-gradient(120deg,var(--sienna),var(--brass));background-size:160% 100%;background-position:0% 0%;color:var(--earth)}
+  .cta-link:not(.outline):hover{background-position:100% 0%;box-shadow:0 10px 32px -10px #ff4b2680}
+  .cta-link.outline{color:var(--mist);border:1px solid #ffffff26}
+  .cta-link.outline:hover{border-color:var(--flood);color:var(--white);box-shadow:0 0 24px -10px #ff4b2680}
+  .contact-social{display:flex;gap:22px;margin-bottom:44px}
+  .contact-social a{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--mist);text-decoration:none;text-transform:uppercase;border-bottom:1px solid transparent;transition:color .25s,border-color .25s;padding-bottom:2px}
+  .contact-social a:hover{color:var(--paper);border-color:var(--paper)}
+  .contact-coord{font-family:var(--mono);letter-spacing:.12em;color:#93909e77;font-size:10px}
+  .contact-note{font-family:var(--mono);letter-spacing:.05em;color:#93909e55;font-size:9px;margin-top:18px}
+
+  footer{padding:28px 48px;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:#93909e55;position:relative;z-index:1;text-transform:uppercase}
+
+  @media (width<=768px){
+    .section{padding:100px 24px 80px}
+    #site-nav{padding:16px 24px}
+    .nav-links{gap:16px}
+    .nav-links a{font-size:9px}
+    .projects{grid-template-columns:1fr}
+    .skills-wrap{grid-template-columns:1fr}
+    .h-stat{flex:1 1 50%}
+    .timeline{padding-left:28px}
+    .tl-item:before{left:-32px}
+    #coord-readout{right:24px;bottom:24px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .fade-up{opacity:1;transition:none;transform:none}
+    .name-mud,.name-ali,.hero-divider{transform:none!important;transition:none!important;width:auto!important}
+    #bg-blobs .blob{animation:none}
+    *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  }
+
+  /* Fused animated hero */
+  #bg-blobs{display:none}
+  #bg-grid{background-size:54px 54px;opacity:.7;mask-image:linear-gradient(to bottom,#000 0%,transparent 92%)}
+  #site-nav{background:linear-gradient(#0a0a0bf2 0%,#0a0a0b00 100%);padding:22px 6vw}
+  .nav-mark{font-family:var(--serif);font-size:24px;letter-spacing:0;color:var(--white);background:none}
+  .nav-mark em{color:var(--brass);font-style:normal}
+  .section-title,.contact-heading,.edu-degree,.proj-num,.h-num{font-weight:400;letter-spacing:-.025em}
+  .hero-section{padding:112px 8vw 86px;background:radial-gradient(circle at 76% 43%,#1a1a1e55 0%,transparent 34%),var(--earth);isolation:isolate}
+  #hex-canvas{display:none}
+  .geo-object{position:absolute;right:4vw;top:50%;width:min(43vw,620px);aspect-ratio:1;transform:translateY(-50%);z-index:-1;opacity:.72;pointer-events:none;filter:drop-shadow(0 0 24px #ff4b2618)}
+  .geo-object .rim{fill:none;stroke:#ff4b2630;stroke-width:1;stroke-dasharray:3 9;transform-origin:300px 300px;animation:geoSpin 44s linear infinite}
+  .geo-object .core{fill:#ff4b2612;stroke:#ff4b26;stroke-width:1.5;transform-origin:300px 300px;animation:geoPulse 4s ease-in-out infinite}
+  .geo-object .pin{fill:#ff6b4a;filter:drop-shadow(0 0 6px #ff6b4a)}
+  .geo-object .ripple{fill:none;stroke:#ff4b26;stroke-width:1.4;transform-origin:300px 300px;opacity:0;animation:geoRipple 4.2s cubic-bezier(.22,.61,.36,1) infinite}
+  .geo-object .ripple-2{animation-delay:1.4s}
+  .geo-object .ripple-3{animation-delay:2.8s}
+  @keyframes geoSpin{to{transform:rotate(360deg)}}@keyframes geoSpinBack{to{transform:rotate(-360deg)}}
+  @keyframes geoTilt{from{transform:rotate(-9deg) scale(.93)}to{transform:rotate(13deg) scale(1.04)}}
+  @keyframes geoPulse{50%{transform:scale(1.05);stroke:#ff6b4a;fill:#ff4b261e}}
+  @keyframes geoRipple{0%{transform:scale(1);opacity:.55;stroke-width:1.6}70%{opacity:.08}100%{transform:scale(1.92);opacity:0;stroke-width:.5}}
+  .hero-shell{width:100%;max-width:1220px;margin:auto;position:relative;z-index:2}
+  .hero-label{opacity:0;transform:translateY(12px);animation:heroRise .65s .15s var(--ease) forwards;color:var(--moss);margin-bottom:28px}
+  .hero-name{overflow:visible;margin:0 0 22px;font-family:var(--serif);font-weight:400;line-height:.79;letter-spacing:-.045em;will-change:transform,opacity,filter;transform-origin:left center}
+  .kinetic-line{display:flex;overflow:visible;white-space:nowrap}
+  .kinetic-line:last-child{padding-left:0}
+  .kinetic-char{display:inline-block;font-size:clamp(52px,7.8vw,112px);color:var(--white);will-change:transform,color,text-shadow;opacity:0;transform:translateY(82px) rotate(7deg) scale(.88);animation:charIn 1s var(--ease) forwards,colorFlow 7s ease-in-out infinite;text-shadow:0 0 28px transparent}
+  .kinetic-line:last-child .kinetic-char{font-style:italic;animation-name:charIn,colorFlowAlt}
+  .fused-role{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);display:flex;gap:12px;align-items:center;margin:30px 0 22px;opacity:0;animation:heroRise .65s 1.05s var(--ease) forwards}
+  .fused-role strong{color:var(--moss);font-weight:500}.role-sep{width:18px;height:1px;background:#ff4b2680}
+  .hero-statement{max-width:570px;margin:0 0 34px;opacity:0;animation:heroRise .65s 1.2s var(--ease) forwards}
+  .hero-actions{display:flex;gap:12px;opacity:0;animation:heroRise .65s 1.35s var(--ease) forwards}
+  .hero-actions .cta-link{padding:13px 24px}.hero-actions .cta-link:not(.outline){background:var(--moss)}
+  .hero-stats{position:absolute;right:0;bottom:0;border:0;gap:38px;opacity:0;animation:heroRise .65s 1.45s var(--ease) forwards}
+  .h-stat{border:0;min-width:auto;padding:0;text-align:right;background:none!important}.h-num{font-size:38px}.h-label{font-size:8px}
+  .cursor-coord{position:absolute;left:8vw;bottom:28px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:#ff4b2680}
+  .elevation-line{position:absolute;left:0;right:0;bottom:0;width:100%;height:72px;opacity:.45;pointer-events:none}
+  @keyframes heroRise{to{opacity:1;transform:translateY(0)}}
+  @keyframes charIn{0%{opacity:0;transform:translateY(82px) rotate(7deg) scale(.88);filter:blur(8px)}55%{opacity:1;filter:blur(0)}100%{opacity:1;transform:translateY(0) rotate(0) scale(1);filter:blur(0)}}
+  @keyframes colorFlow{0%,100%{color:#f7f4ef;text-shadow:0 0 28px transparent}35%{color:#ff4b26;text-shadow:0 0 24px #ff4b2622}68%{color:#ff6b4a;text-shadow:0 0 28px #ff6b4a22}}
+  @keyframes colorFlowAlt{0%,100%{color:#ff6b4a;text-shadow:0 0 26px #ff6b4a18}38%{color:#f7f4ef;text-shadow:0 0 28px transparent}72%{color:#ff4b26;text-shadow:0 0 24px #ff4b2628}}
+  @media(max-width:900px){
+    .hero-section{padding:110px 24px 92px}.hero-shell{margin:0}.kinetic-line:last-child{padding-left:0}
+    .hero-stats{position:relative;margin-top:42px;justify-content:flex-start}.h-stat{text-align:left}.cursor-coord{display:none}
+    .geo-object{right:-14vw;width:76vw;opacity:.35}.fused-role{flex-wrap:wrap}.hero-statement{max-width:680px}
+  }
+  @media(max-width:560px){.kinetic-char{font-size:clamp(44px,13.5vw,68px)}.kinetic-line:last-child{padding-left:0}.hero-stats{gap:24px}.nav-links{display:none}}
+
+  /* One continuous forest / jade / gold colour story */
+  .about-section,.experience-section,.projects-section,.skills-section,.contact-section{background:var(--earth);border-top:1px solid #ff4b2612}
+  .about-section{background:linear-gradient(180deg,#0a0a0b,#0d0d0f)}
+  .experience-section{background:linear-gradient(180deg,#0d0d0f,#101012)}
+  .projects-section{background:radial-gradient(circle at 50% 30%,#1a1a1e55 0%,transparent 44%),linear-gradient(180deg,#101012,#0c0c0e);overflow:hidden}
+  .skills-section{background:linear-gradient(180deg,#0c0c0e,#0d0d0f)}
+  .contact-section{background:linear-gradient(180deg,#0d0d0f,#0a0a0b)}
+  .about-section .section-title,.experience-section .section-title,.projects-section .section-title,.skills-section .section-title{color:var(--white)}
+  .chapter-tag:before,.timeline-fill{background:linear-gradient(var(--moss),var(--brass));box-shadow:0 0 10px #ff4b2670}
+  .tl-period,.tl-item.active .tl-period,.sg-label,.proj-stack span{color:var(--moss)}
+  .tools-tags span,.tl-tools span,.proj-stack span{color:var(--moss);background:#ff4b260b;border-color:#ff4b2638}
+  .highlight-list li:before{color:var(--brass)}
+
+  /* Cinematic project showcase */
+  .projects-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:52px}
+  .projects-intro .section-title{margin:0}.projects-intro .section-sub{max-width:390px;text-align:right}
+  .projects{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;background:transparent;border:0;margin-top:0;perspective:1400px}
+  .project{min-height:420px;padding:0;background:linear-gradient(145deg,#1a1a1e,#0c0c0e);border:1px solid #ff4b261d;border-radius:18px;overflow:hidden;isolation:isolate;transition:transform .55s var(--ease),border-color .4s,box-shadow .5s}
+  .project:before{content:"";position:absolute;inset:0;width:auto;height:auto;border:0;opacity:1;transform:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),#ff4b261c,transparent 46%);z-index:-1}
+  .project:after{content:"";position:absolute;inset:0;width:auto;height:auto;border:0;opacity:.45;transform:none;background-image:linear-gradient(#ff4b260a 1px,transparent 1px),linear-gradient(90deg,#ff4b260a 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,#000,transparent 72%);z-index:-2}
+  .project:hover{transform:translateY(-10px) scale(1.012);border-color:#ff4b2665;box-shadow:0 30px 80px -38px #ff4b2688}
+  .project-inner{height:100%;padding:30px;display:flex;flex-direction:column;transform-style:preserve-3d}
+  .project:hover .project-inner{transform:translateZ(20px)}
+  .project-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+  .proj-num{margin:0;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--moss)}
+  .project-type{font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);border:1px solid #ffffff16;border-radius:999px;padding:7px 10px}
+  .project-visual{height:132px;margin-bottom:24px;position:relative;border:1px solid #ff4b2618;border-radius:12px;overflow:hidden;background:radial-gradient(circle at 65% 40%,#ff6b4a1b,transparent 28%),#0a0a0c}
+  .project-visual:before,.project-visual:after{content:"";position:absolute;inset:18px;border:1px solid #ff4b2655;clip-path:polygon(10% 26%,36% 4%,62% 18%,91% 7%,100% 55%,77% 91%,46% 76%,18% 100%,0 60%);animation:mapBreathe 5s ease-in-out infinite alternate}
+  .project-visual:after{inset:34px 58px;border-color:#ff6b4a80;animation-delay:-2s;animation-duration:7s}
+  .project-visual.species:before{clip-path:none;border:0;background:radial-gradient(circle at 17% 68%,#ff6b4a 0 3px,transparent 4px),radial-gradient(circle at 34% 32%,#ff4b26 0 4px,transparent 5px),radial-gradient(circle at 53% 58%,#ff4b26 0 3px,transparent 4px),radial-gradient(circle at 73% 24%,#ff6b4a 0 4px,transparent 5px),radial-gradient(circle at 86% 72%,#ff4b26 0 3px,transparent 4px);filter:drop-shadow(0 0 6px #ff4b26);animation:speciesDrift 6s ease-in-out infinite alternate}
+  .project-visual.species:after{inset:12px;clip-path:polygon(8% 32%,25% 10%,45% 18%,62% 7%,87% 23%,96% 54%,79% 82%,56% 93%,33% 79%,15% 91%,3% 57%);border-color:#ff4b2655}
+  .project-visual .scan{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--brass),transparent);box-shadow:0 0 12px var(--brass);animation:projectScan 3.8s ease-in-out infinite}
+  .proj-title{font-family:var(--serif);font-size:clamp(22px,2vw,31px);font-weight:400;line-height:1.08;letter-spacing:-.025em;margin-bottom:14px;color:var(--white)}
+  .proj-desc{font-size:12px;line-height:1.75;margin-bottom:22px}.proj-stack{margin-top:auto}
+  @keyframes mapBreathe{to{transform:scale(1.05) rotate(2deg);opacity:.65}}@keyframes projectScan{0%{top:10%;opacity:0}20%{opacity:1}80%{opacity:1}100%{top:90%;opacity:0}}@keyframes speciesDrift{to{transform:translate(8px,-5px) scale(1.04)}}
+  @media(max-width:800px){.projects{grid-template-columns:1fr}.projects-intro{display:block}.projects-intro .section-title{margin-bottom:24px}.projects-intro .section-sub{text-align:left}.project{min-height:390px}}
+
+  /* Tools & techniques dashboard */
+  .skills-lead{display:flex;justify-content:space-between;align-items:flex-end;gap:38px;margin-bottom:52px}
+  .skills-lead .section-title{margin:0}.skills-lead .section-sub{max-width:410px;text-align:right}
+  .skills-wrap{grid-template-columns:repeat(2,1fr);gap:14px;margin-top:0;counter-reset:skill}
+  .skill-group{counter-increment:skill;min-height:190px;padding:26px 28px;border:1px solid #ff4b261d;border-radius:14px;background:linear-gradient(145deg,#1a1a1e,#131316);overflow:hidden;isolation:isolate}
+  .skill-group:before{content:"0" counter(skill);position:absolute;right:22px;top:16px;width:auto;height:auto;border:0;font-family:var(--serif);font-size:52px;color:#ff4b260d;opacity:1;transform:none;z-index:-1}
+  .skill-group:after{content:"";position:absolute;left:0;bottom:0;width:var(--skill,80%);height:2px;border:0;background:linear-gradient(90deg,var(--moss),var(--brass));opacity:.7;transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
+  .skill-group:hover{transform:translateY(-6px);border-color:#ff4b2655;background:linear-gradient(145deg,#1a1a1e,#131316);box-shadow:0 24px 54px -36px #ff4b26}
+  .skill-group:hover:after{transform:scaleX(1)}
+  .skill-head{display:flex;align-items:center;gap:10px;margin-bottom:17px}
+  .skill-icon{width:8px;height:8px;background:var(--moss);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);box-shadow:0 0 8px #ff4b26}
+  .sg-label{margin:0;color:var(--white);font-size:11px}.sg-items{font-family:var(--mono);font-size:10px;line-height:2;color:#8f8f95}
+  .skill-meta{display:flex;justify-content:space-between;margin-top:20px;padding-top:14px;border-top:1px solid #ffffff0b;font-family:var(--mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#ff4b2688}
+  .skill-meta strong{color:var(--brass);font-weight:400}
+  @media(max-width:800px){.skills-lead{display:block}.skills-lead .section-title{margin-bottom:24px}.skills-lead .section-sub{text-align:left}.skills-wrap{grid-template-columns:1fr}}
+
+  /* Animated experience journey */
+  .experience-intro{display:grid;grid-template-columns:1.25fr .75fr;align-items:end;gap:48px;margin-bottom:34px}
+  .experience-intro .section-title{margin:0}.experience-copy .section-sub{margin-bottom:24px}
+  .exp-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ff4b2617;border:1px solid #ff4b2617;border-radius:12px;overflow:hidden}
+  .exp-stat{padding:15px 14px;background:#0d0d0f}.exp-stat strong{display:block;font-family:var(--serif);font-size:27px;font-weight:400;color:var(--brass);line-height:1}.exp-stat span{display:block;margin-top:6px;font-family:var(--mono);font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)}
+  .timeline{margin-top:50px;padding-left:66px;counter-reset:career}
+  .timeline-track,.timeline-fill{left:18px;width:2px;border-radius:999px}.timeline-track{background:#ff4b2618}.timeline-fill{background:linear-gradient(var(--moss),var(--brass));box-shadow:0 0 16px #ff4b2688}
+  .tl-item{counter-increment:career;margin-bottom:20px;padding:30px 34px;border:1px solid #ff4b2618;border-radius:16px;background:linear-gradient(145deg,#1a1a1e,#131316);overflow:hidden;isolation:isolate;transition:transform .55s var(--ease),border-color .45s,box-shadow .55s,background .45s}
+  .tl-item:last-child{padding-bottom:30px;margin-bottom:0}
+  .tl-item:before{content:"";left:-56px;top:39px;width:13px;height:13px;background:#0d0d0f;border:2px solid #ff4b26;border-radius:50%;box-shadow:0 0 0 7px #ff4b260c,0 0 16px #ff4b2644;transition:background .35s,box-shadow .35s,transform .45s var(--ease)}
+  .tl-item:after{content:"0" counter(career);position:absolute;right:24px;top:18px;font-family:var(--serif);font-size:68px;color:#ff4b260a;z-index:-1;transition:color .4s,transform .55s var(--ease)}
+  .tl-item:hover,.tl-item.active{transform:translateX(8px);border-color:#ff4b2655;background:linear-gradient(145deg,#1a1a1e,#131316);box-shadow:0 28px 65px -44px #ff4b26}
+  .tl-item:hover:before,.tl-item.active:before{background:var(--brass);border-color:var(--brass);transform:scale(1.18);box-shadow:0 0 0 8px #ff6b4a10,0 0 21px #ff6b4a88}
+  .tl-item:hover:after,.tl-item.active:after{color:#ff6b4a12;transform:translate(-5px,5px)}
+  .tl-period{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;margin-bottom:12px;border:1px solid #ff4b2628;border-radius:999px;background:#ff4b2609;font-size:8px;color:var(--moss)}
+  .tl-org{font-family:var(--serif);font-size:clamp(22px,2.4vw,31px);font-weight:400;line-height:1.12;letter-spacing:-.02em;margin-bottom:7px;max-width:780px}
+  .tl-role{color:var(--brass);font-size:9px;margin-bottom:20px}.tl-desc{display:grid;grid-template-columns:1fr;gap:9px;max-width:860px;margin-bottom:22px}
+  .tl-desc li{font-size:11px;line-height:1.65;padding-left:15px}.tl-desc li:before{content:"";top:8px;width:5px;height:5px;border-radius:50%;background:var(--moss);box-shadow:0 0 5px #ff4b26}
+  .tl-tools{padding-top:17px;border-top:1px solid #ffffff0b}.tl-tools span{border-radius:999px;padding:5px 10px}
+  @media(max-width:800px){.experience-intro{grid-template-columns:1fr}.timeline{padding-left:38px}.timeline-track,.timeline-fill{left:7px}.tl-item:before{left:-38px}.tl-desc{grid-template-columns:1fr}.tl-item{padding:25px 22px}.exp-summary{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:520px){.exp-summary{grid-template-columns:1fr}.tl-item:hover,.tl-item.active{transform:translateX(3px)}}
+
+  /* Contact finale */
+  .contact-section{min-height:100vh;padding-top:110px;padding-bottom:70px;overflow:hidden;isolation:isolate;background:radial-gradient(circle at 75% 48%,#1a1a1e88 0%,transparent 34%),linear-gradient(180deg,#0d0d0f,#07070a)}
+  .contact-section:before{content:"";position:absolute;inset:0;z-index:-2;background-image:linear-gradient(#ff4b260a 1px,transparent 1px),linear-gradient(90deg,#ff4b260a 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(circle at 70% 50%,#000,transparent 72%)}
+  .contact-section:after{content:"LET'S BUILD SOMETHING THAT MATTERS";position:absolute;left:50%;bottom:-.12em;transform:translateX(-50%);white-space:nowrap;z-index:-1;font-family:var(--serif);font-size:clamp(72px,12vw,175px);letter-spacing:-.05em;color:#ff4b2608;pointer-events:none}
+  .contact-inner{max-width:1180px}
+  .contact-stage{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:60px;min-height:700px}
+  .contact-copy{position:relative;z-index:2}
+  .availability-pill{display:inline-flex;align-items:center;gap:9px;margin-bottom:24px;padding:8px 12px;border:1px solid #ff4b2635;border-radius:999px;background:#ff4b260b;font-family:var(--mono);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--moss)}
+  .availability-pill i{width:6px;height:6px;border-radius:50%;background:var(--moss);box-shadow:0 0 10px var(--moss);animation:contactPulse 2s ease-in-out infinite}
+  .contact-heading{font-size:clamp(58px,7.6vw,110px);line-height:.82;letter-spacing:-.055em;margin-bottom:28px}
+  .contact-heading .accent{display:inline-block;color:var(--brass);font-style:italic;animation:contactWord 5s ease-in-out infinite}
+  .contact-sub{font-size:14px;max-width:600px;margin-bottom:34px}
+  .contact-links{gap:12px;margin-bottom:34px}.contact-links .cta-link{border-radius:999px;padding:15px 27px}.contact-links .cta-link:not(.outline){background:var(--moss);color:#07070a}.contact-links .cta-link:after{content:"↗";display:inline-block;margin-left:10px;transition:transform .3s var(--ease)}.contact-links .cta-link:hover:after{transform:translate(4px,-4px)}
+  .contact-social{gap:10px;margin-bottom:30px}.contact-social a{padding:8px 11px;border:1px solid #ffffff12;border-radius:999px}.contact-social a:hover{border-color:#ff4b2666;background:#ff4b260b}
+  .contact-meta{display:flex;flex-wrap:wrap;gap:12px 24px;padding-top:22px;border-top:1px solid #ffffff0d}.contact-coord,.contact-time{font-family:var(--mono);letter-spacing:.1em;color:#ff4b2688;font-size:8px}.contact-note{margin-top:13px;font-size:8px}
+  .contact-visual{position:relative;aspect-ratio:1;max-width:520px;justify-self:end;width:100%}
+  .signal-core{position:absolute;left:50%;top:50%;width:30px;height:30px;transform:translate(-50%,-50%);border-radius:50%;display:grid;place-items:center;background:#ff4b2608;border:1px solid #ff4b2665;box-shadow:0 0 22px #ff4b2622;animation:coreFloat 4s ease-in-out infinite}
+  .signal-core:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--moss);box-shadow:0 0 12px var(--moss)}
+  .signal-core:after{content:"";position:absolute;inset:-7px;border:1px solid #ff4b2622;border-radius:50%;animation:contactPulse 2.8s ease-in-out infinite}
+  .signal-ring{position:absolute;left:50%;top:50%;border:1px solid #ff4b2645;border-radius:50%;transform:translate(-50%,-50%);animation:signalSpin 18s linear infinite}
+  .signal-ring.r1{width:44%;height:44%}.signal-ring.r2{width:68%;height:68%;border-style:dashed;animation-duration:28s;animation-direction:reverse}.signal-ring.r3{width:92%;height:92%;border-color:#ff6b4a30;animation-duration:36s}
+  .signal-ring:before,.signal-ring:after{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:var(--moss);box-shadow:0 0 12px var(--moss)}
+  .signal-ring:before{left:50%;top:-4px}.signal-ring:after{left:12%;bottom:12%;background:var(--brass);box-shadow:0 0 12px var(--brass)}
+  .signal-sweep{position:absolute;left:50%;top:50%;width:46%;height:1px;transform-origin:left;background:linear-gradient(90deg,#ff4b26aa,transparent);animation:signalSpin 5s linear infinite;filter:drop-shadow(0 0 5px #ff4b26)}
+  .signal-label{position:absolute;font-family:var(--mono);font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:#ff4b2688}.signal-label.l1{left:2%;top:25%}.signal-label.l2{right:0;top:68%}.signal-label.l3{left:12%;bottom:8%}
+  @keyframes contactPulse{50%{opacity:.35;transform:scale(.75)}}@keyframes contactWord{50%{color:var(--moss);text-shadow:0 0 30px #ff4b2633}}@keyframes signalSpin{to{rotate:360deg}}@keyframes coreFloat{50%{transform:translate(-50%,-56%) scale(1.04)}}
+  @media(max-width:860px){.contact-stage{grid-template-columns:1fr;min-height:auto}.contact-visual{position:absolute;right:-22vw;top:20%;width:78vw;opacity:.25}.contact-copy{max-width:680px}.contact-heading{font-size:clamp(56px,14vw,96px)}}
+  @media(max-width:560px){.contact-section{padding-bottom:100px}.contact-links{flex-direction:column;align-items:flex-start}.contact-stage{min-height:760px}.contact-visual{top:45%;right:-36vw;width:100vw}}
+
+  /* About — spatial identity */
+  .about-section{min-height:100vh;overflow:hidden;background:radial-gradient(circle at 16% 35%,#1a1a1e55,transparent 32%),linear-gradient(180deg,#0a0a0b,#0d0d0f)}
+  .about-hero{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:72px;margin-bottom:58px}
+  .about-title{font-family:var(--serif);font-size:clamp(54px,7.1vw,100px);line-height:.88;letter-spacing:-.052em;color:var(--white);margin-bottom:28px}.about-title em{display:inline-block;color:var(--moss);font-weight:400;animation:aboutWord 6s ease-in-out infinite}
+  .about-lede{max-width:660px;color:var(--mist);font-size:15px;line-height:1.9}.about-lede strong{color:var(--white);font-weight:500}
+  .about-proof{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}.proof-pill{font-family:var(--mono);font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:var(--moss);padding:8px 11px;border:1px solid #ff4b2630;border-radius:999px;background:#ff4b2608}
+  .parcel-visual{position:relative;width:100%;max-width:490px;aspect-ratio:1;justify-self:end;display:grid;grid-template-columns:1.2fr .8fr 1.1fr 1fr;grid-template-rows:.8fr 1.15fr .9fr 1.1fr;gap:7px;padding:35px;transform:rotate(-4deg);filter:drop-shadow(0 30px 50px #0008)}
+  .parcel-visual:before{content:"PARCEL / QA / 95–100%";position:absolute;left:34px;top:8px;font-family:var(--mono);font-size:7px;letter-spacing:.17em;color:#ff4b2688}
+  .parcel-cell{position:relative;border:1px solid #ff4b2642;background:linear-gradient(145deg,#ff4b260d,#07070a);transition:background .45s,border-color .45s,transform .5s var(--ease);animation:parcelGlow 5s ease-in-out infinite}
+  .parcel-cell:nth-child(3n){animation-delay:-1.7s}.parcel-cell:nth-child(4n){animation-delay:-3.1s}.parcel-cell:nth-child(2){grid-row:span 2}.parcel-cell:nth-child(5){grid-column:span 2}.parcel-cell:nth-child(9){grid-row:span 2}.parcel-cell:nth-child(11){grid-column:span 2}
+  .parcel-cell:after{content:"";position:absolute;inset:6px;border:1px solid #ffffff08}
+  .parcel-visual:hover .parcel-cell{transform:translateY(-4px);border-color:#ff4b2680}.parcel-scan{position:absolute;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,var(--brass),transparent);box-shadow:0 0 13px var(--brass);animation:parcelScan 4.4s ease-in-out infinite}
+  .about-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:48px;counter-reset:aboutCard}.about-card{counter-increment:aboutCard;position:relative;min-height:210px;padding:27px 26px;border:1px solid #ff4b2618;border-radius:14px;background:linear-gradient(145deg,#1a1a1e,#131316);overflow:hidden;transition:transform .5s var(--ease),border-color .4s,box-shadow .5s}.about-card:hover{transform:translateY(-7px);border-color:#ff4b2655;box-shadow:0 26px 60px -42px #ff4b26}.about-card:before{content:"0" counter(aboutCard);position:absolute;right:18px;top:10px;font-family:var(--serif);font-size:58px;color:#ff4b260b}.about-card h3{font-family:var(--serif);font-size:25px;font-weight:400;color:var(--white);margin-bottom:13px}.about-card p{font-size:12px;line-height:1.75;color:var(--mist)}
+  .tools-row{border-top:1px solid #ff4b2618;border-bottom:1px solid #ff4b2618;padding:19px 0;margin-top:0;overflow:hidden}.tools-label{margin-bottom:14px}.tools-tags{flex-wrap:nowrap;width:max-content;animation:toolDrift 24s linear infinite}.tools-tags span{border-radius:999px;white-space:nowrap;color:var(--moss);border-color:#ff4b2632;background:#ff4b2608}
+  @keyframes aboutWord{50%{color:var(--brass);text-shadow:0 0 30px #ff6b4a22}}@keyframes parcelGlow{0%,100%{background:#ff4b2608}50%{background:#ff4b2620;border-color:#ff4b2678}}@keyframes parcelScan{0%{top:10%;opacity:0}18%{opacity:1}82%{opacity:1}100%{top:92%;opacity:0}}@keyframes toolDrift{to{transform:translateX(-18%)}}
+  @media(max-width:860px){.about-hero{grid-template-columns:1fr}.parcel-visual{position:absolute;right:-25vw;top:13%;width:72vw;opacity:.25;z-index:-1}.about-principles{grid-template-columns:1fr}.about-card{min-height:auto}.about-lede{max-width:720px}}
+  .about-portrait{position:relative;width:min(100%,420px);aspect-ratio:1;justify-self:end;padding:8px;border:1px solid #ffffff20;border-radius:18px;background:linear-gradient(145deg,#1a1a1e,#0b0b0d);box-shadow:0 34px 70px -30px #000,0 0 0 1px #ff6b4a16;overflow:visible;isolation:isolate;animation:portraitFloat 6.5s ease-in-out infinite;transition:border-color .45s,box-shadow .55s,transform .55s var(--ease)}.about-portrait:before{content:"";position:absolute;inset:-1px;border-radius:18px;z-index:2;pointer-events:none;background:linear-gradient(90deg,#ff6b4a 0 24px,transparent 24px calc(100% - 24px),#ff4b26 calc(100% - 24px)) top/100% 2px no-repeat,linear-gradient(90deg,#ff4b26 0 24px,transparent 24px calc(100% - 24px),#ff6b4a calc(100% - 24px)) bottom/100% 2px no-repeat;opacity:.8;animation:portraitFrame 3.8s ease-in-out infinite}.about-portrait:after{content:"GIS / QA / FIELD SCIENCE";position:absolute;right:16px;bottom:-15px;z-index:4;padding:8px 12px;border:1px solid #ffffff1f;border-radius:5px;background:#0a0a0bf2;backdrop-filter:blur(10px);font-family:var(--mono);font-size:7px;letter-spacing:.16em;color:#f4f3ef;white-space:nowrap;box-shadow:0 10px 24px #0008}.about-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 28%;border-radius:11px;background:#d5d5d5;filter:saturate(.82) contrast(1.07);transition:transform .8s var(--ease),filter .55s,clip-path .7s var(--ease);clip-path:inset(0)}.about-portrait:hover{border-color:#ff6b4a55;box-shadow:0 42px 85px -34px #000,0 0 0 1px #ff6b4a33}.about-portrait:hover img{transform:scale(1.018);filter:saturate(.95) contrast(1.09);clip-path:inset(5px)}.portrait-scan{position:absolute;z-index:3;left:9px;right:9px;height:1px;top:12%;background:linear-gradient(90deg,transparent,#ff6b4aaa 25%,#f4f3efcc 50%,#ff4b26aa 75%,transparent);box-shadow:0 0 10px #fff5;mix-blend-mode:screen;animation:portraitScan 5.2s ease-in-out infinite;pointer-events:none}@keyframes portraitFloat{50%{transform:translateY(-7px)}}@keyframes portraitFrame{0%,100%{opacity:.45}50%{opacity:1;filter:drop-shadow(0 0 6px #ff6b4a55)}}@keyframes portraitScan{0%,100%{top:10%;opacity:0}18%,82%{opacity:.65}50%{top:90%}}
+  @media(max-width:860px){.about-portrait{position:relative;right:auto;top:auto;width:min(82vw,390px);justify-self:center;margin-top:12px;opacity:1;z-index:1}.about-portrait:after{right:0}}
+
+  /* Projects — editorial case studies */
+  .projects-section{padding-top:130px;padding-bottom:130px;background:radial-gradient(circle at 75% 18%,#1a1a1e55,transparent 30%),linear-gradient(180deg,#101012,#09090b)}
+  .projects-intro{margin-bottom:70px}.projects-intro .section-sub{max-width:460px}
+  .projects{display:flex;flex-direction:column;gap:26px;border:0;background:transparent;perspective:1600px}
+  .project{min-height:470px;border-radius:22px;background:linear-gradient(135deg,#1a1a1e,#09130f);border:1px solid #ff4b2620;overflow:hidden}
+  .project-inner{display:grid;grid-template-columns:minmax(300px,.9fr) minmax(360px,1.1fr);grid-template-areas:"top top" "visual content";gap:24px 44px;padding:30px 32px;height:100%;align-items:center}
+  .project:nth-child(even) .project-inner{grid-template-columns:minmax(360px,1.1fr) minmax(300px,.9fr);grid-template-areas:"top top" "content visual"}
+  .project-top{grid-area:top;margin:0;padding-bottom:17px;border-bottom:1px solid #ffffff0b}.project-visual{grid-area:visual;height:320px;margin:0;border-radius:16px;background:radial-gradient(circle at 62% 38%,#ff4b2624,transparent 25%),linear-gradient(145deg,#131316,#07070a);transition:transform .65s var(--ease),filter .5s}
+  .project-content{grid-area:content;align-self:center}.project:hover .project-visual{transform:scale(1.025);filter:brightness(1.15)}
+  .project-type{color:var(--moss);border-color:#ff4b2630;background:#ff4b2608}.proj-title{font-size:clamp(30px,3.2vw,47px);line-height:1.02;margin-bottom:18px}.proj-desc{font-size:13px;line-height:1.8;margin-bottom:22px;max-width:620px}
+  .project-outcome{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding:13px 15px;border-left:2px solid var(--brass);background:#ff6b4a08;font-family:var(--mono);font-size:9px;line-height:1.6;letter-spacing:.05em;color:#c8b8b0}.project-outcome strong{color:var(--brass);font-weight:500;text-transform:uppercase;letter-spacing:.12em}
+  .proj-stack{margin-top:0}.project-visual:before{inset:32px;animation-duration:7s}.project-visual:after{inset:54px 78px;animation-duration:10s}.project-visual .scan{animation-duration:5s}
+  .project:nth-child(1) .project-visual{background:radial-gradient(circle at 58% 46%,#ff6b4a19,transparent 20%),linear-gradient(145deg,#0c0c0e,#07070a)}
+  .project:nth-child(2) .project-visual{background:radial-gradient(ellipse at 50% 60%,#ff4b2628,transparent 38%),linear-gradient(145deg,#131316,#07070a)}
+  .project:nth-child(3) .project-visual{background:radial-gradient(circle at 35% 35%,#ff4b2620,transparent 26%),linear-gradient(145deg,#0c0c0e,#07070a)}
+  .project:hover{transform:translateY(-9px);box-shadow:0 38px 95px -58px #ff4b26aa}
+  .results-visual{display:grid;grid-template-columns:1.35fr .75fr;grid-template-rows:1fr 1fr;gap:7px;padding:7px;background:#07070a!important}
+  .results-visual:before,.results-visual:after{display:none}.result-map{position:relative;overflow:hidden;border-radius:10px;background:#f6efcf;border:1px solid #ff4b2628}.result-map.primary{grid-row:1 / 3}.result-map img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .65s var(--ease),filter .5s}.result-map:hover img{transform:scale(1.025);filter:contrast(1.03)}
+  .result-map span{position:absolute;left:9px;bottom:9px;padding:6px 8px;border-radius:999px;background:#07070ae8;backdrop-filter:blur(8px);font-family:var(--mono);font-size:7px;letter-spacing:.11em;text-transform:uppercase;color:var(--white);border:1px solid #ff4b2635}.result-map span:after{content:" ↗";color:var(--moss)}
+  .results-note{margin-top:17px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:#ff4b2688;text-transform:uppercase}
+  .project-archive-link{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:11px 15px;border:1px solid #ff4b2655;border-radius:999px;font-family:var(--mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--moss);background:#ff4b260a;transition:transform .35s var(--ease),background .35s,border-color .35s,color .35s}
+  .project-archive-link:hover{transform:translateY(-3px);background:#ff4b2618;border-color:var(--moss);color:var(--white)}
+  .single-result{padding:8px;background:#07070a!important}.single-result:before,.single-result:after{display:none}.single-result .result-map{display:block;width:100%;height:100%}.single-result .result-map img{object-fit:contain}
+  /* Purpose-built zoning tools */
+  .tools-divider{display:flex;align-items:end;justify-content:space-between;gap:30px;margin:82px 0 28px;padding-top:34px;border-top:1px solid #ff4b2620}.tools-divider h3{font-family:var(--serif);font-size:clamp(32px,4vw,54px);font-weight:400;line-height:1;margin:0;color:var(--white)}.tools-divider p{max-width:430px;margin:0;text-align:right;font-size:12px;line-height:1.7;color:var(--mist)}
+  .custom-tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;counter-reset:customTool}.custom-tool{counter-increment:customTool;position:relative;min-height:210px;padding:26px 27px;border:1px solid #ff4b2620;border-radius:15px;background:linear-gradient(145deg,#101012,#09130f);overflow:hidden;transition:transform .5s var(--ease),border-color .4s,box-shadow .5s}.custom-tool:hover{transform:translateY(-7px);border-color:#ff4b2665;box-shadow:0 28px 65px -48px #ff4b26}.custom-tool:before{content:"0" counter(customTool);position:absolute;right:18px;top:8px;font-family:var(--serif);font-size:62px;color:#ff4b260b}.tool-purpose{font-family:var(--mono);font-size:8px;letter-spacing:.17em;text-transform:uppercase;color:var(--moss);margin-bottom:18px}.custom-tool h4{font-family:var(--serif);font-size:clamp(23px,2.5vw,31px);font-weight:400;line-height:1.05;margin:0 0 13px;color:var(--white)}.custom-tool p{max-width:520px;margin:0;font-size:11px;line-height:1.72;color:var(--mist)}.tool-status{display:inline-flex;align-items:center;gap:7px;margin-top:21px;padding:6px 9px;border:1px solid #ff4b2630;border-radius:999px;font-family:var(--mono);font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--moss);background:#ff4b2608}.tool-status:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--moss);box-shadow:0 0 7px var(--moss)}.tool-status.building{color:var(--brass);border-color:#ff6b4a35;background:#ff6b4a08}.tool-status.building:before{background:var(--brass);box-shadow:0 0 7px var(--brass);animation:contactPulse 2s ease-in-out infinite}.custom-tool.in-progress{border-style:dashed;background:linear-gradient(145deg,#141416,#0a0a0c)}
+  @media(max-width:800px){.tools-divider{align-items:flex-start;flex-direction:column}.tools-divider p{text-align:left}.custom-tools-grid{grid-template-columns:1fr}}
+  @media(max-width:850px){.project-inner,.project:nth-child(even) .project-inner{grid-template-columns:1fr;grid-template-areas:"top" "visual" "content"}.project{min-height:auto}.project-visual{height:250px}.projects-intro{margin-bottom:45px}}
+  @media(max-width:520px){.project-inner{padding:22px 20px}.project-visual{height:210px}.results-visual{height:320px;grid-template-columns:1fr 1fr;grid-template-rows:1.35fr .65fr}.result-map.primary{grid-column:1 / 3;grid-row:1}.proj-title{font-size:30px}}
+
+  /* Reference palette: editorial black, warm paper and signal orange */
+  body{background:#0a0a0b;color:#f4f3ef}
+  #bg-grid{background-image:linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px)!important}
+  #bg-blobs .b1,#bg-blobs .b3{background:#ff4b26!important;opacity:.06!important}#bg-blobs .b2{background:#fff!important;opacity:.025!important}
+  #cur-dot{background:#ff4b26!important;box-shadow:0 0 10px #ff4b26!important}
+  #cur-ring{filter:drop-shadow(0 0 6px #ff4b2670)!important;background:radial-gradient(circle at 50% 2px,#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 93% 25%,#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 93% 75%,#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 50% calc(100% - 2px),#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 7% 75%,#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 7% 25%,#ff4b26 0 1.8px,transparent 2.2px)!important}
+  body.cursor-hover #cur-ring{filter:drop-shadow(0 0 9px #ff4b26bb)!important}
+  #site-nav{background:linear-gradient(#0a0a0bf2 0%,#0000 100%)!important}.nav-logo,.chapter-tag,.eyebrow,.availability-pill,.tl-period,.sg-label,.proj-stack span,.project-type,.result-map span:after,.results-note,.project-archive-link,.tool-purpose,.tool-status,.footer a{color:#ff4b26!important}
+  .hero-section,.about-section,.experience-section,.projects-section,.skills-section,.contact-section{background:radial-gradient(circle at 76% 18%,#ff4b2610,transparent 31%),linear-gradient(180deg,#0a0a0b,#101012)!important}
+  .hero-name .accent,.about-title .accent,.contact-heading .accent,h1 em{color:#ff4b26!important}.hero-name .kinetic-char{--char-color:#f4f3ef}
+  .hero-shape line,.hero-shape path,.hero-shape polygon,.hero-shape circle{stroke:#ff4b26!important}.hero-shape circle{fill:#ff4b26!important}
+  .project,.skill-group,.tl-item,.about-card,.custom-tool,.contact-card{background:linear-gradient(145deg,#1a1a1e,#131316)!important;border-color:#ffffff14!important}
+  .project:hover,.skill-group:hover,.tl-item:hover,.about-card:hover,.custom-tool:hover{border-color:#ff4b2670!important;box-shadow:0 28px 70px -48px #ff4b2688!important}
+  .project:before{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),#ff4b2618,transparent 46%)!important}.project:after,.contact-section:before{background-image:linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px)!important}
+  .project-visual{background:radial-gradient(circle at 62% 38%,#ff4b2618,transparent 25%),linear-gradient(145deg,#171719,#0d0d0f)!important;border-color:#ffffff14!important}.results-visual,.single-result{background:#0a0a0b!important}
+  .project-outcome{border-left-color:#ff4b26!important;background:#ff4b2609!important;color:#c8c7c2}.project-outcome strong{color:#ff4b26!important}
+  .proj-stack span,.tl-tools span,.tools-tags span,.fact{color:#ff4b26!important;background:#ff4b260b!important;border-color:#ff4b2638!important}
+  .skill-icon,.tl-item:before,.availability-pill i,.tool-status:before{background:#ff4b26!important;box-shadow:0 0 9px #ff4b26!important}.skill-group:after,.timeline-fill{background:#ff4b26!important;box-shadow:0 0 10px #ff4b2660!important}
+  .project-archive-link,.availability-pill,.tool-status{color:#ff4b26!important;background:#ff4b2609!important;border-color:#ff4b2645!important}.project-archive-link:hover{background:#ff4b2618!important;border-color:#ff4b26!important;color:#f4f3ef!important}
+  .tools-divider,.tools-row,.project-top,.skill-meta,.tl-tools{border-color:#ffffff14!important}.custom-tool.in-progress{background:linear-gradient(145deg,#1a1a1e,#131316)!important}
+  .contact-orbit,.contact-ring{border-color:#ff4b2638!important}.contact-node{background:#ff4b26!important;box-shadow:0 0 12px #ff4b26!important}.cta-link{background:#ff4b26!important;border-color:#ff4b26!important;color:#0a0a0b!important}.cta-link.outline{background:transparent!important;color:#f4f3ef!important;border-color:#ffffff28!important}.cta-link:not(.outline):hover{box-shadow:0 10px 32px -10px #ff4b2680!important}
+
+  /* Proptech polish: field-science sections + cool data-infrastructure accent */
+  .hero-section{--accent:#ff6b4a;background:radial-gradient(circle at 78% 22%,#ff6b4a12,transparent 31%),linear-gradient(180deg,#0b0b0d,#101012)!important}
+  .about-section{--accent:#cc3d1f;background:radial-gradient(circle at 74% 20%,#cc3d1f13,transparent 30%),linear-gradient(180deg,#101012,#0b0b0d)!important}
+  .projects-section{--accent:#ff4b26;background:radial-gradient(circle at 75% 18%,#ff4b2610,transparent 30%),linear-gradient(180deg,#101012,#09090b)!important}
+  .hero-name .accent,.about-title .accent{color:#ff6b4a!important}.projects-section .chapter-tag,.projects-section .proj-stack span,.projects-section .project-type,.projects-section .project-archive-link{color:#ff4b26!important}
+  .skills-section{--accent:var(--trust);background:radial-gradient(circle at 82% 18%,#ff4b2618,transparent 34%),linear-gradient(180deg,#0d0d0f,#0a0a0c)!important}.skills-section .chapter-tag,.skills-section .sg-label,.skills-section .skill-meta strong,.skills-section .tool-purpose,.skills-section .tool-status{color:var(--trust)!important}
+  .skills-section .skill-icon,.skills-section .tool-status:before{background:var(--trust)!important;box-shadow:0 0 9px #ff4b26!important}.skills-section .skill-group:after{background:linear-gradient(90deg,#cc3d1f,var(--trust),#ff8a72)!important;box-shadow:0 0 10px #ff4b2666!important}
+  .skills-section .skill-group,.skills-section .custom-tool{background:linear-gradient(145deg,#141416,#0e0e10)!important;border-color:#ff4b2624!important}.skills-section .skill-group:hover,.skills-section .custom-tool:hover{border-color:#ff4b2670!important;box-shadow:0 28px 70px -48px #ff4b26aa!important}
+  .tl-desc li{color:#c0c0c3!important}.custom-tool p{color:#c0c0c3!important}
+  .custom-tools-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.custom-tool{min-height:195px;padding:21px 21px 19px}.custom-tool h4{font-size:clamp(21px,2vw,27px)}.custom-tool p{font-size:10px;line-height:1.68}.tool-status{position:relative;overflow:hidden}.tool-status:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 20%,#ffffff55 48%,transparent 75%);transform:translateX(-140%)}.custom-tool.tool-live .tool-status:after{animation:statusScan 1.15s var(--ease) .25s 1}.tool-detail{max-height:0;opacity:0;overflow:hidden;transform:translateY(7px);transition:max-height .4s var(--ease),opacity .35s,transform .4s var(--ease);margin-top:0;padding-top:0;border-top:1px solid transparent;font-family:var(--mono);font-size:8px;letter-spacing:.06em;color:#ff8a72}.custom-tool:hover .tool-detail,.custom-tool:focus-within .tool-detail{max-height:42px;opacity:1;transform:none;margin-top:14px;padding-top:11px;border-color:#ff4b262d}
+  .skill-group:after{transform:scaleX(0)!important}.skill-group.skill-live:after{transform:scaleX(1)!important}.skill-group.skill-live .skill-icon{animation:dataPing 1.6s ease-out 1}
+  .tl-item.active:before{animation:timelinePing 1.7s ease-out infinite}.section{position:relative}.section:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);transform:scaleX(0);opacity:.8;transition:transform 1.2s var(--ease)}.section.section-live:after{transform:scaleX(1)}
+  @keyframes statusScan{to{transform:translateX(140%)}}@keyframes dataPing{0%{transform:scale(.6)}45%{transform:scale(1.65)}100%{transform:scale(1)}}@keyframes timelinePing{0%{box-shadow:0 0 0 0 #ff6b4a80,0 0 12px #ff6b4a80}70%{box-shadow:0 0 0 11px #ff6b4a00,0 0 18px #ff6b4a55}100%{box-shadow:0 0 0 0 #ff6b4a00,0 0 12px #ff6b4a70}}
+  @media(max-width:900px){.custom-tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.custom-tools-grid{grid-template-columns:1fr}.custom-tool{min-height:auto}.tool-detail{max-height:42px;opacity:1;transform:none;margin-top:14px;padding-top:11px;border-color:#ff4b262d}}
+  /* Animated portrait constellation + balanced scale */
+  .about-portrait{width:min(100%,350px)!important;justify-self:center!important}
+  .portrait-geo{position:absolute;z-index:-1;pointer-events:none}.portrait-geo.ring-a{width:118%;height:72%;left:-9%;top:14%;border:1px solid #ff6b4a42;border-radius:50%;animation:geoOrbitA 10s linear infinite}.portrait-geo.ring-b{width:78%;height:122%;left:11%;top:-11%;border:1px solid #ff4b2642;border-radius:50%;animation:geoOrbitB 13s linear infinite}.portrait-geo.diamond{width:70px;height:70px;right:-43px;top:24px;border:1px solid #ff4b2666;transform:rotate(45deg);animation:geoDiamond 5.4s ease-in-out infinite}.portrait-geo.nodes{width:7px;height:7px;left:-25px;bottom:66px;border-radius:50%;background:#ff4b26;box-shadow:32px -245px 0 #ff4b26,328px -42px 0 #ff4b26,16px -98px 0 #ff6b4a;animation:geoNodes 3.8s ease-in-out infinite}.portrait-geo.cross{right:-29px;bottom:60px;width:25px;height:25px;background:linear-gradient(#ff6b4a 0 0) center/1px 100% no-repeat,linear-gradient(90deg,#ff6b4a 0 0) center/100% 1px no-repeat;animation:geoCross 7s linear infinite}.portrait-coord{position:absolute;left:-32px;top:44%;z-index:4;writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:7px;letter-spacing:.18em;color:#8f8f9588;white-space:nowrap}
+  @keyframes geoOrbitA{to{transform:rotate(360deg)}}@keyframes geoOrbitB{to{transform:rotate(-360deg)}}@keyframes geoDiamond{0%,100%{transform:rotate(45deg) scale(.9);opacity:.35}50%{transform:rotate(135deg) scale(1.08);opacity:.9;box-shadow:0 0 24px #ff4b2625}}@keyframes geoNodes{50%{transform:scale(1.5);filter:drop-shadow(0 0 8px #ff6b4a)}}@keyframes geoCross{to{transform:rotate(360deg)}}
+  @media(max-width:860px){.about-portrait{width:min(72vw,330px)!important}.portrait-geo.diamond{right:-22px}.portrait-geo.nodes{left:-14px}.portrait-geo.cross{right:-16px}}
+  /* Multicolor cursor matched to the field-science/data palette */
+  #cur-dot{background:#ff6b4a!important;box-shadow:0 0 10px #ff6b4a!important}
+  #cur-ring{filter:drop-shadow(0 0 6px #ff4b2670)!important;background:radial-gradient(circle at 50% 2px,#ff6b4a 0 1.8px,transparent 2.2px),radial-gradient(circle at 93% 25%,#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 93% 75%,#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 50% calc(100% - 2px),#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 7% 75%,#ff4b26 0 1.8px,transparent 2.2px),radial-gradient(circle at 7% 25%,#ff4b26 0 1.8px,transparent 2.2px)!important}
+  body.cursor-hover #cur-ring{filter:drop-shadow(0 0 8px #ff6b4a99)!important;animation:cursorOrbit 3.2s linear infinite,cursorColorPulse 2.4s ease-in-out infinite}@keyframes cursorColorPulse{0%,100%{scale:1}50%{scale:1.08;filter:drop-shadow(0 0 10px #ff4b26cc)}}
+</style>
+</head>
+<body>
+
+  <div id="bg-grid"></div>
+  <div id="bg-blobs"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+  <svg id="contour-field" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g class="minor"><path d="M-80 180C110 55 245 92 355 175S590 305 745 195 1025 58 1180 155 1450 282 1680 132"/><path d="M-70 225C120 105 250 136 365 214S590 337 750 238 1027 101 1187 194 1460 321 1670 178"/><path d="M-55 274C130 155 265 183 380 258S610 381 765 285 1040 150 1200 238 1470 364 1660 226"/><path d="M-40 326C142 212 280 235 397 305S625 425 785 334 1055 204 1216 286 1482 410 1650 280"/></g>
+    <g class="major"><path d="M-90 375C92 258 245 270 382 342S627 475 805 383 1090 245 1260 340 1510 456 1690 322"/><path d="M-100 610C65 480 242 455 400 550S685 703 850 582 1135 430 1304 535 1532 667 1700 565"/></g>
+    <g class="minor"><path d="M-90 430C80 310 240 318 390 395S655 520 820 430 1105 294 1275 388 1520 510 1685 380"/><path d="M-92 488C72 366 238 365 396 449S670 570 835 480 1120 343 1288 440 1530 565 1680 438"/><path d="M-96 548C68 422 240 412 402 501S680 630 844 530 1128 390 1297 488 1535 616 1710 500"/><path d="M-105 675C52 545 238 510 405 610S700 760 870 638 1150 486 1318 590 1550 720 1708 622"/><path d="M-112 744C45 610 238 570 416 674S720 824 890 705 1168 546 1335 652 1562 786 1700 694"/><path d="M-120 818C38 675 240 630 430 742S742 895 912 770 1190 612 1350 716 1570 852 1690 770"/></g>
+  </svg>
+  <div id="grain"></div>
+  <div id="cur-dot"></div>
+  <div id="cur-ring"></div>
+  <div id="progress-line"></div>
+
+  <nav id="site-nav">
+    <a href="#top" class="nav-mark">M<em>.</em>Ali</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="top" class="section hero-section" data-chapter="hero">
+    <canvas id="hex-canvas" aria-hidden="true"></canvas>
+    <svg class="geo-object" viewBox="0 0 600 600" aria-hidden="true">
+      <circle class="ripple ripple-1" cx="300" cy="300" r="118"/>
+      <circle class="ripple ripple-2" cx="300" cy="300" r="118"/>
+      <circle class="ripple ripple-3" cx="300" cy="300" r="118"/>
+      <circle class="rim" cx="300" cy="300" r="212"/>
+      <circle class="core" cx="300" cy="300" r="118"/>
+      <circle class="pin" cx="300" cy="300" r="4.5"/>
+    </svg>
+    <div id="reticle" hidden></div><span id="lat-val" hidden>34.0151</span><span id="lng-val" hidden>71.5249</span><span id="role-type" hidden></span>
+    <div class="hero-shell">
+      <div class="hero-label"><span class="live-dot"></span>34.0151° N · 71.5249° E · Peshawar, Pakistan · Open to remote work</div>
+      <h1 class="hero-name" aria-label="Muddasir Ali">
+        <span class="kinetic-line" data-text="MUDDASIR"></span>
+        <span class="kinetic-line" data-text="ALI"></span>
+      </h1>
+      <div class="fused-role"><strong>GIS Analyst</strong><span class="role-sep"></span>Remote Sensing<span class="role-sep"></span>Spatial Data</div>
+      <p class="hero-statement">I turn messy municipal sources into clean, audit-ready spatial data — zoning, parcels, and land-use, digitized and QA'd at scale for teams across the USA, Canada, and beyond.</p>
+      <div class="hero-actions"><a class="cta-link" href="#projects">View my work ↗</a><a class="cta-link outline" href="#contact">Contact me</a></div>
+      <div class="hero-stats">
+        <div class="h-stat"><span class="h-num" data-count="2000" data-suffix="+">0</span><span class="h-label">Maps digitized</span></div>
+        <div class="h-stat"><span class="h-num" data-static="95–100%">0</span><span class="h-label">Spatial accuracy</span></div>
+        <div class="h-stat"><span class="h-num" data-count="3" data-suffix="×">0</span><span class="h-label">Employee of month</span></div>
+      </div>
+    </div>
+    <div class="cursor-coord" id="cursorCoord">CURSOR → —</div>
+    <svg class="elevation-line" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="elevGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ff4b26" stop-opacity="0"/><stop offset="25%" stop-color="#ff4b26" stop-opacity=".65"/><stop offset="65%" stop-color="#ff4b26" stop-opacity=".42"/><stop offset="100%" stop-color="#ff6b4a" stop-opacity="0"/></linearGradient></defs><path d="M0,80 L0,63 C75,60 112,43 170,49 C240,57 290,25 355,31 C430,38 468,12 548,20 C625,28 684,5 760,15 C840,26 900,45 970,29 C1050,11 1112,37 1180,34 C1260,30 1340,55 1440,46 L1440,80 Z" fill="url(#elevGrad)"/></svg>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about" class="section about-section" data-chapter="about">
+    <div class="container">
+      <div class="chapter-tag fade-up">About</div>
+      <div class="about-hero fade-up delay-1">
+        <div><h2 class="about-title">I make messy spatial data <em>defensible.</em></h2><p class="about-lede">I work where municipal source maps, parcel geometry, and rigorous QA meet. At <strong>Nook Office Solutions</strong>, I turn fragmented zoning sources into clean, audit-ready datasets used across the USA, Canada, and other international regions.</p><div class="about-proof"><span class="proof-pill">2,000+ maps</span><span class="proof-pill">7,000+ cities sourced</span><span class="proof-pill">95–100% accuracy</span><span class="proof-pill">92% KPI</span></div></div>
+        <figure class="about-portrait"><span class="portrait-geo ring-a" aria-hidden="true"></span><span class="portrait-geo ring-b" aria-hidden="true"></span><span class="portrait-geo diamond" aria-hidden="true"></span><span class="portrait-geo nodes" aria-hidden="true"></span><span class="portrait-geo cross" aria-hidden="true"></span><span class="portrait-coord" aria-hidden="true">34.0151° N · 71.5249° E</span><img src="assets/thumbs/muddasir-portrait.jpg" alt="Professional portrait of Muddasir Ali" width="640" height="800" decoding="async"><i class="portrait-scan" aria-hidden="true"></i></figure>
+      </div>
+      <div class="about-principles fade-up delay-2">
+        <article class="about-card"><h3>Source With Authority.</h3><p>I research municipal and county portals, REST services, and current map sources so every dataset begins with evidence that can be traced and trusted.</p></article>
+        <article class="about-card"><h3>Build With Precision.</h3><p>Georeferencing, topology validation, and detailed checks for gaps, overlaps, and slivers keep parcel and zoning geometry accurate at scale.</p></article>
+        <article class="about-card"><h3>Deliver With Context.</h3><p>Experience in disaster mapping, crop classification, NDVI analysis, and field collection helps me see beyond geometry to the decisions a map must support.</p></article>
+      </div>
+      <div class="tools-row fade-up delay-3">
+        <div class="tools-label">Working Stack</div>
+        <div class="tools-tags">
+          <span>ArcGIS Pro</span><span>ArcMap</span><span>QGIS</span><span>Google Earth Engine</span>
+          <span>KoboCollect</span><span>Leaflet</span><span>Mapbox</span><span>Web Scraping</span>
+          <span>AI-Assisted Automation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPERIENCE ═══ -->
+  <section id="experience" class="section experience-section" data-chapter="experience">
+    <div class="container">
+      <div class="chapter-tag fade-up">Experience</div>
+      <div class="experience-intro fade-up delay-1">
+        <h2 class="section-title">Five Years.<br>One Spatial Journey.</h2>
+        <div class="experience-copy"><p class="section-sub">From provincial disaster response to international zoning pipelines — each role sharpened the same core skill: accurate, defensible spatial data under real deadlines.</p><div class="exp-summary"><div class="exp-stat"><strong>6</strong><span>Assignments</span></div><div class="exp-stat"><strong>2K+</strong><span>Maps Digitized</span></div><div class="exp-stat"><strong>3×</strong><span>Recognition</span></div></div></div>
+      </div>
+
+      <div class="timeline fade-up delay-2">
+        <div class="timeline-track"></div>
+        <div class="timeline-fill" id="tl-fill"></div>
+
+        <div class="tl-item active">
+          <div class="tl-period">September 2025 – Present</div>
+          <div class="tl-org">Nook Office Solutions</div>
+          <div class="tl-role">GIS Analyst</div>
+          <ul class="tl-desc">
+            <li>Digitize, update, and QA parcel and zoning shapefiles across international regions including the USA and Canada, maintaining 95–100% spatial accuracy</li>
+            <li>Georeference source maps and imagery, ensuring minimal RMS error before digitization begins</li>
+            <li>Build and maintain QA workflows to detect topology errors, geometry slivers, gaps, and overlays across large parcel/zoning datasets</li>
+            <li>Audit new team members' digitization output for accuracy and consistency as part of internal QA checks</li>
+            <li>Source the most current zoning and parcel maps by researching and scraping authoritative municipal/county GIS portals (e.g., MapGeo) and REST feature services</li>
+            <li>Identify and log updated data source links for 7,000+ cities, maintaining a 92% KPI over one year</li>
+            <li>Digitized and QA'd 2,000+ maps to date; recognized as Employee of the Month three times for accuracy and output</li>
+            <li>Collaborate cross-functionally with the broader data science and GIS team to align on zoning data standards and workflow improvements</li>
+          </ul>
+          <div class="tl-tools"><span>Zoning &amp; Parcel Data</span><span>Topology QA</span><span>REST Services</span><span>Web Scraping</span></div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-period">March 2025 – September 2025</div>
+          <div class="tl-org">Excise, Taxation &amp; Narcotics Control Department, KP</div>
+          <div class="tl-role">GIS Associate</div>
+          <ul class="tl-desc">
+            <li>Conducted field surveys using GPS and KoboCollect to capture property and land data</li>
+            <li>Digitized surveyed property boundaries and linked spatial data to official government records</li>
+            <li>Verified field-collected data against existing records to ensure accuracy and completeness</li>
+            <li>Passed a competitive GIS technical assessment to be appointed into the role</li>
+          </ul>
+          <div class="tl-tools"><span>GPS Survey</span><span>KoboCollect</span><span>ArcMap</span></div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-period">July 2024 – March 2025 <span style="opacity:.6">(earlier stint: June – October 2022)</span></div>
+          <div class="tl-org">Crop Reporting Services, Directorate of Agriculture, KP</div>
+          <div class="tl-role">GIS Intern</div>
+          <ul class="tl-desc">
+            <li>Performed supervised classification of crop lands across 7 merged districts, D.I. Khan, Charsadda, and surrounding areas of KP</li>
+            <li>Digitized major crop classification layers and prepared final classification outputs</li>
+            <li>Compiled and mapped rainfall, minimum, and maximum temperature data from province-wide Excel datasets</li>
+            <li>Conducted time-series NDVI analysis using Google Earth Engine, ArcGIS Pro, and ArcMap for crop monitoring and image stacking</li>
+            <li>Led a land suitability analysis for tomato and pea cultivation using soil nitrogen content, pH level, and soil type as key parameters</li>
+            <li>(2022 stint) Digitized crop land boundaries for Bajaur district in support of provincial crop reporting</li>
+          </ul>
+          <div class="tl-tools"><span>Google Earth Engine</span><span>NDVI</span><span>ArcGIS Pro</span><span>Supervised Classification</span></div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-period">May 2023 – June 2024</div>
+          <div class="tl-org">Provincial Disaster Management Authority (PDMA), KP</div>
+          <div class="tl-role">GIS Intern</div>
+          <ul class="tl-desc">
+            <li>Produced hazard maps for landslide and flood risk assessment across affected districts</li>
+            <li>Digitized flood-affected areas, including damaged/destroyed bridges and damaged vs. undamaged housing structures</li>
+            <li>Mapped warehouse locations distributing relief aid to flood-affected communities</li>
+            <li>Supported emergency response planning through timely, accurate spatial data delivery during active disaster events</li>
+          </ul>
+          <div class="tl-tools"><span>Hazard Mapping</span><span>ArcGIS Pro</span><span>Damage Assessment</span></div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-period">Early 2023 (through March 2023)</div>
+          <div class="tl-org">Survey of Pakistan (SOP), Peshawar</div>
+          <div class="tl-role">GIS Intern</div>
+          <ul class="tl-desc">
+            <li>Supported ongoing GIS/survey operations under the department's technical team</li>
+            <li>Gained exposure to national-level survey and mapping standards and protocols</li>
+          </ul>
+          <div class="tl-tools"><span>Survey Standards</span><span>Field Mapping</span></div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-period">4th Semester, 2022 (6 months)</div>
+          <div class="tl-org">Board of Revenue, KP</div>
+          <div class="tl-role">GIS Intern</div>
+          <ul class="tl-desc">
+            <li>Assisted in GIS lab operations related to land records and revenue mapping</li>
+            <li>Gained early foundational exposure to government land administration GIS systems</li>
+          </ul>
+          <div class="tl-tools"><span>Land Records</span><span>Revenue Mapping</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROJECTS ═══ -->
+  <section id="projects" class="section projects-section" data-chapter="projects">
+    <div class="container">
+      <div class="chapter-tag fade-up">Featured Projects</div>
+      <div class="projects-intro fade-up delay-1"><h2 class="section-title">Selected Work.<br>Measured Impact.</h2><p class="section-sub">Four case studies showing how I move from an open spatial question to a defensible method, clear evidence, and a decision-ready map.</p></div>
+
+      <div class="projects fade-up delay-2">
+        <div class="project" data-tilt>
+          <div class="project-inner">
+            <div class="project-top"><div class="proj-num">PROJECT 01</div><span class="project-type">Seismic Intelligence</span></div>
+            <div class="project-visual results-visual"><a class="result-map primary" href="assets/awara-results/combined-precursors.png" target="_blank" rel="noopener"><img src="assets/thumbs/combined-precursors.jpg" alt="Combined multi-precursor analysis of the 2013 Awaran earthquake" width="884" height="1000" loading="lazy" decoding="async"><span>Combined analysis</span></a><a class="result-map" href="assets/awara-results/study-area.jpg" target="_blank" rel="noopener"><img src="assets/thumbs/study-area.jpg" alt="Awaran district earthquake study area and fault line" width="1000" height="773" loading="lazy" decoding="async"><span>Study area</span></a><a class="result-map" href="assets/awara-results/lst-anomaly-map.jpg" target="_blank" rel="noopener"><img src="assets/thumbs/lst-anomaly-map.jpg" alt="Pre-seismic land surface temperature anomaly map" width="773" height="1000" loading="lazy" decoding="async"><span>LST anomaly</span></a></div>
+            <div class="project-content"><div class="proj-title">Awaran Earthquake — Pre-Seismic Anomaly Detection</div><p class="proj-desc">Investigated whether satellite-observed geophysical behaviour contained meaningful signals before the Mw 7.7 Awaran earthquake. Five parameters were evaluated through statistical, machine-learning, and time-series models to separate potential precursors from ordinary variation.</p><div class="project-outcome"><strong>Outcome</strong><span>A comparative anomaly framework for identifying and communicating pre-seismic patterns across spatial maps and daily time series.</span></div><div class="proj-stack"><span>Remote Sensing</span><span>Anomaly Models</span><span>Google Earth Engine</span></div><a class="project-archive-link" href="awaran-results.html" target="_blank" rel="noopener">Explore all 23 research outputs <span>↗</span></a></div>
+          </div>
+        </div>
+        <div class="project" data-tilt>
+          <div class="project-inner">
+            <div class="project-top"><div class="proj-num">PROJECT 02</div><span class="project-type">Disaster Mapping</span></div>
+            <div class="project-visual results-visual"><a class="result-map primary" href="assets/sindh-flood-results/flood-04.png" target="_blank" rel="noopener"><img src="assets/thumbs/flood-04.jpg" alt="Sindh 2022 flood extent mapped from satellite imagery" width="1000" height="693" loading="lazy" decoding="async"><span>Flood extent</span></a><a class="result-map" href="assets/sindh-flood-results/ndbi-04.png" target="_blank" rel="noopener"><img src="assets/thumbs/ndbi-04.jpg" alt="NDBI change during the Sindh flood period" width="1000" height="638" loading="lazy" decoding="async"><span>NDBI change</span></a><a class="result-map" href="assets/sindh-flood-results/ndvi-04.png" target="_blank" rel="noopener"><img src="assets/thumbs/ndvi-04.jpg" alt="NDVI change during the Sindh flood period" width="1000" height="624" loading="lazy" decoding="async"><span>NDVI change</span></a></div>
+            <div class="project-content"><div class="proj-title">Sindh Floods 2022 — Impact &amp; Damage Assessment</div><p class="proj-desc">Combined Sentinel-2 imagery with NDVI, NDBI, and flood-extent mapping to trace environmental change from the pre-flood months through the 2022 event. The resulting sequence communicates shifting vegetation, built-up signatures, and inundation across Sindh.</p><div class="project-outcome"><strong>Outcome</strong><span>A multi-temporal evidence set supporting damage assessment, land-cover classification, and future flood-susceptibility modelling.</span></div><div class="proj-stack"><span>Sentinel-2</span><span>NDVI</span><span>NDBI</span><span>Flood Mapping</span></div><a class="project-archive-link" href="sindh-flood-results.html" target="_blank" rel="noopener">Explore all 22 flood outputs <span>↗</span></a></div>
+          </div>
+        </div>
+        <div class="project" data-tilt>
+          <div class="project-inner">
+            <div class="project-top"><div class="proj-num">PROJECT 03</div><span class="project-type">Site Intelligence</span></div>
+            <div class="project-visual single-result"><a class="result-map" href="assets/landfill-results/landfill-site-selection.png" target="_blank" rel="noopener"><img src="assets/landfill-results/landfill-site-selection.png" alt="Landfill site suitability selection map" width="850" height="1100" loading="lazy" decoding="async"><span>Suitability result</span></a></div>
+            <div class="project-content"><div class="proj-title">Peshawar Landfill Site Suitability Study</div><p class="proj-desc">Built a multi-criteria suitability model for responsible waste-disposal siting. Environmental and accessibility factors were weighted through AHP, normalized, and combined through weighted overlay.</p><div class="project-outcome"><strong>Outcome</strong><span>A ranked suitability surface highlighting the strongest candidate zones for further assessment.</span></div><div class="proj-stack"><span>AHP</span><span>Weighted Overlay</span><span>ArcGIS Pro</span></div><div class="results-note">Select the map to open the full-resolution suitability layout</div></div>
+          </div>
+        </div>
+        <div class="project" data-tilt>
+          <div class="project-inner">
+            <div class="project-top"><div class="proj-num">PROJECT 04</div><span class="project-type">Species Distribution</span></div>
+            <div class="project-visual results-visual"><a class="result-map primary" href="assets/termite-results/species-distribution.png" target="_blank" rel="noopener"><img src="assets/thumbs/species-distribution.jpg" alt="Distribution of four Reticulitermes species across China" width="1000" height="773" loading="lazy" decoding="async"><span>Four-species distribution</span></a><a class="result-map" href="assets/termite-results/r-flaviceps.png" target="_blank" rel="noopener"><img src="assets/termite-results/r-flaviceps.png" alt="Reticulitermes flaviceps colonies in Sichuan and Shaanxi" width="1200" height="900" loading="lazy" decoding="async"><span>R. flaviceps</span></a><a class="result-map" href="assets/termite-results/r-aculabialis.png" target="_blank" rel="noopener"><img src="assets/termite-results/r-aculabialis.png" alt="Asexual queen succession of Reticulitermes aculabialis" width="1200" height="900" loading="lazy" decoding="async"><span>R. aculabialis</span></a></div>
+            <div class="project-content"><div class="proj-title">Reticulitermes Species Distribution in China</div><p class="proj-desc">Supported a Chinese postdoctoral researcher by converting documented records of <em>R. aculabialis</em>, <em>R. chinensis</em>, <em>R. flaviceps</em>, and <em>R. labralis</em> into a consistent spatial dataset and comparative distribution map.</p><div class="project-outcome"><strong>Outcome</strong><span>Publication-ready research cartography revealing geographic overlap and separation among four termite species.</span></div><div class="proj-stack"><span>Biogeography</span><span>Species Records</span><span>China</span><span>Research Cartography</span></div><div class="results-note">Select any result map to open the full-resolution layout</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SKILLS ═══ -->
+  <section id="skills" class="section skills-section" data-chapter="skills">
+    <div class="container">
+      <div class="chapter-tag fade-up">Full Capability Stack</div>
+      <div class="skills-lead fade-up delay-1"><h2 class="section-title">Skills &amp;<br>Techniques.</h2><p class="section-sub">The geospatial methods I use to turn complex source data into accurate, repeatable, and defensible spatial evidence.</p></div>
+
+      <div class="skills-wrap fade-up delay-2">
+        <div class="skill-group" style="--skill:94%">
+          <div class="skill-head"><span class="skill-icon"></span><div class="sg-label">GIS Platforms</div></div>
+          <div class="sg-items">ArcGIS Pro · ArcMap · QGIS · Google Earth Engine (GEE) · KoboCollect/KoboToolbox · GPS Field Data Collection</div>
+          <div class="skill-meta"><span>Core Stack</span><strong>Production Ready</strong></div>
+        </div>
+        <div class="skill-group" style="--skill:90%">
+          <div class="skill-head"><span class="skill-icon"></span><div class="sg-label">Remote Sensing &amp; Spatial Analysis</div></div>
+          <div class="sg-items">Supervised Classification · Land Suitability Analysis (AHP, Weighted Overlay) · NDVI/NDBI/NDWI Analysis · Time-Series Image Analysis · Image Stacking · Sentinel-2 Imagery Processing · Random Forest Classification · Hazard &amp; Risk Mapping</div>
+          <div class="skill-meta"><span>Analysis</span><strong>Advanced</strong></div>
+        </div>
+        <div class="skill-group" style="--skill:98%">
+          <div class="skill-head"><span class="skill-icon"></span><div class="sg-label">Data Digitization &amp; QA</div></div>
+          <div class="sg-items">Digitization · Georeferencing (RMS Error Minimization) · Topology Validation · Sliver/Gap/Overlap Detection · Shapefile Updates &amp; Maintenance · Parcel &amp; Zoning Data QA · Data Accuracy Auditing</div>
+          <div class="skill-meta"><span>Accuracy Focus</span><strong>95–100%</strong></div>
+        </div>
+        <div class="skill-group" style="--skill:86%">
+          <div class="skill-head"><span class="skill-icon"></span><div class="sg-label">Data Sourcing &amp; Automation</div></div>
+          <div class="sg-items">Web Scraping (Municipal/County GIS Portals, REST Feature Services) · Data Freshness Tracking · AI-Assisted Coding &amp; Automation · Workflow Automation for Data Pipelines</div>
+          <div class="skill-meta"><span>Workflow</span><strong>Automated</strong></div>
+        </div>
+        <div class="skill-group" style="--skill:78%">
+          <div class="skill-head"><span class="skill-icon"></span><div class="sg-label">Web Mapping &amp; Development</div></div>
+          <div class="sg-items">Leaflet · Mapbox · HTML · CSS · JavaScript (Basics)</div>
+          <div class="skill-meta"><span>Interactive Maps</span><strong>Applied</strong></div>
+        </div>
+        <div class="skill-group" style="--skill:84%">
+          <div class="skill-head"><span class="skill-icon"></span><div class="sg-label">Data &amp; Reporting</div></div>
+          <div class="sg-items">Excel Data Processing (Climate/Rainfall Datasets) · Spatial Data Linking to Official Records · KPI &amp; Accuracy Reporting</div>
+          <div class="skill-meta"><span>Communication</span><strong>Decision Ready</strong></div>
+        </div>
+      </div>
+
+      <div class="tools-divider fade-up delay-2"><div><div class="chapter-tag">Purpose-Built Systems</div><h3>Zoning Tools.</h3></div><p>Focused utilities I use to accelerate zoning QA, locate source data, recover map information, and reduce repetitive production work.</p></div>
+      <div class="custom-tools-grid fade-up delay-3">
+        <article class="custom-tool"><div class="tool-purpose">Zoning QA · Geometry Integrity</div><h4>Sliver Identification</h4><p>Finds narrow, unintended polygon fragments that can appear during digitization, editing, or boundary reconciliation.</p><div class="tool-detail">Pipeline: geometry thresholds · area/width checks · flagged output</div><span class="tool-status">Operational</span></article>
+        <article class="custom-tool"><div class="tool-purpose">Zoning QA · Topology</div><h4>Overlap Detection</h4><p>Flags zoning polygons that occupy the same space so conflicting coverage can be reviewed and corrected efficiently.</p><div class="tool-detail">Pipeline: spatial intersection · duplicate coverage · QA report</div><span class="tool-status">Operational</span></article>
+        <article class="custom-tool"><div class="tool-purpose">Zoning QA · Coverage</div><h4>Gap Detection</h4><p>Locates uncovered spaces between adjoining zoning polygons and helps verify continuous, complete geographic coverage.</p><div class="tool-detail">Pipeline: coverage envelope · difference analysis · gap polygons</div><span class="tool-status">Operational</span></article>
+        <article class="custom-tool"><div class="tool-purpose">REST Services · Acquisition</div><h4>Data Downloader</h4><p>Downloads available layers from REST services and turns discovered service endpoints into reusable local source data.</p><div class="tool-detail">Handles: service discovery · layer selection · local export</div><span class="tool-status">Operational</span></article>
+        <article class="custom-tool"><div class="tool-purpose">MapGeo · Source Recovery</div><h4>GeoMap Scraper</h4><p>Collects zoning map information from MapGeo sources when conventional downloads are unavailable or incomplete.</p><div class="tool-detail">Handles: map discovery · tile recovery · source logging</div><span class="tool-status">Operational</span></article>
+        <article class="custom-tool"><div class="tool-purpose">Directories · Structured Extraction</div><h4>Data Extraction Engine</h4><p>Extracts useful zoning and source information from directory-style datasets and organizes it for downstream GIS workflows.</p><div class="tool-detail">Handles: directory traversal · metadata parsing · structured output</div><span class="tool-status">Operational</span></article>
+        <article class="custom-tool in-progress"><div class="tool-purpose">Auto Digitizing · Active Development</div><h4>Zone Digitizer</h4><p>An assisted auto-digitizing system being developed to convert zoning source maps into editable spatial boundaries. Screenshots and validated results will be added when ready.</p><div class="tool-detail">Development focus: boundary extraction · cleanup · editable vectors</div><span class="tool-status building">In progress</span></article>
+      </div>
+
+      <div class="education-block fade-up delay-3">
+        <div>
+          <div class="edu-degree">BS Geomatics (GIS &amp; Remote Sensing)</div>
+          <div class="edu-school">University of Peshawar · 2020–2024</div>
+        </div>
+        <div class="edu-elect">Electives: Land Information Systems<br>Advanced Photogrammetry</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact" class="section contact-section" data-chapter="contact">
+    <div class="container contact-inner">
+      <div class="contact-stage fade-up">
+        <div class="contact-copy">
+          <div class="chapter-tag">Start A Conversation</div>
+          <div class="availability-pill"><i></i>Available for remote opportunities</div>
+          <h2 class="contact-heading">Have spatial data?<br>Let's make it <span class="accent">matter.</span></h2>
+          <p class="contact-sub">Whether it is a zoning pipeline, a remote-sensing study, or a map that needs to hold up under scrutiny, I bring the careful spatial thinking that turns source data into confident decisions.</p>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/muddasir-ali317/" class="cta-link" target="_blank" rel="noopener">Message me on LinkedIn</a>
+            <a href="assets/muddasir-ali-cv.pdf" class="cta-link outline" download="Muddasir-Ali-CV.pdf">Download CV</a>
+          </div>
+          <div class="contact-social">
+            <a href="https://www.linkedin.com/in/muddasir-ali317/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/muddasirali317" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <div class="contact-meta"><div class="contact-coord">34.0151° N · 71.5249° E · Peshawar, Pakistan</div><div class="contact-time" id="contact-time">PKT · --:--</div></div>
+        </div>
+        <div class="contact-visual" aria-hidden="true">
+          <div class="signal-ring r3"></div><div class="signal-ring r2"></div><div class="signal-ring r1"></div><div class="signal-sweep"></div><div class="signal-core"></div>
+          <span class="signal-label l1">Spatial signal</span><span class="signal-label l2">Open channel</span><span class="signal-label l3">Peshawar · PK</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Muddasir Ali · GIS Analyst · Built with care</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var chapters = [
+    {id:'hero',accent:'#ff6b4a'},
+    {id:'about',accent:'#ff4b26'},
+    {id:'experience',accent:'#ff4b26'},
+    {id:'projects',accent:'#ff4b26'},
+    {id:'skills',accent:'#ff6b4a'},
+    {id:'contact',accent:'#ff4b26'}
+  ];
+  var progressLine = document.getElementById('progress-line');
+  var navLinks = document.querySelectorAll('#site-nav .nav-links a');
+  progressLine.style.background = chapters[0].accent;
+
+  var sectionObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      var id = entry.target.getAttribute('data-chapter');
+      var ch = chapters.find(function(c){return c.id===id;});
+      if(ch){
+        progressLine.style.background = ch.accent;
+        navLinks.forEach(function(a){
+          a.classList.toggle('active', a.getAttribute('href') === '#'+entry.target.id);
+        });
+      }
+    });
+  }, {threshold:.35});
+  document.querySelectorAll('section[data-chapter]').forEach(function(s){ sectionObserver.observe(s); });
+
+  // fade-up reveal with per-container stagger
+  document.querySelectorAll('.container').forEach(function(container){
+    var groups = [
+      container.querySelectorAll(':scope > .fade-up'),
+    ];
+  });
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    });
+  }, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+
+  document.querySelectorAll('.fade-up').forEach(function(el, i){
+    if(!el.style.transitionDelay){
+      var localIndex = 0;
+      var parent = el.parentElement;
+      var siblings = parent ? Array.prototype.filter.call(parent.children, function(c){return c.classList.contains('fade-up');}) : [el];
+      localIndex = siblings.indexOf(el);
+      el.style.transitionDelay = Math.min(localIndex * 0.1, 0.5) + 's';
+    }
+    revealObserver.observe(el);
+  });
+  document.querySelectorAll('.hero-name').forEach(function(el){ revealObserver.observe(el); });
+
+  // stagger reveal for grid children (timeline items, projects, skill groups)
+  [document.querySelectorAll('.tl-item'), document.querySelectorAll('.project'), document.querySelectorAll('.skill-group')].forEach(function(list){
+    list.forEach(function(el, i){
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity .7s var(--ease), transform .7s var(--ease)';
+      el.style.transitionDelay = Math.min(i*0.08,0.4)+'s';
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.style.opacity='1';
+            entry.target.style.transform='translateY(0)';
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {threshold:.15});
+      obs.observe(el);
+    });
+  });
+
+  // nav smooth scroll
+  navLinks.forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(a.getAttribute('href'));
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  // nav hide on scroll down, progress bar width
+  var lastY = 0;
+  var nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    nav.classList.toggle('hidden', y > lastY && y > 100);
+    lastY = y;
+    var docH = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docH > 0 ? y / docH : 0;
+    progressLine.style.transform = 'scaleX(' + Math.min(pct,1) + ')';
+  }, {passive:true});
+
+  // count-up stats
+  var counters = document.querySelectorAll('.h-num[data-count]');
+  var countObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      var el = entry.target;
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var start = null;
+      var duration = 1400;
+      function step(ts){
+        if(!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var val = Math.floor(eased * target);
+        el.textContent = val.toLocaleString() + suffix;
+        if(progress < 1) requestAnimationFrame(step);
+        else el.textContent = target.toLocaleString() + suffix;
+      }
+      requestAnimationFrame(step);
+      countObserver.unobserve(el);
+    });
+  }, {threshold:.4});
+  counters.forEach(function(c){ countObserver.observe(c); });
+  document.querySelectorAll('.h-num[data-static]').forEach(function(el){
+    el.textContent = el.getAttribute('data-static');
+  });
+
+  // hero role typing effect
+  var roles = ['GIS Analyst','Zoning & Parcel Data Specialist','Remote Sensing Analyst','Geospatial Data Scientist'];
+  var roleEl = document.getElementById('role-type');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion){
+    roleEl.textContent = roles[0] + ' · Open to Remote Opportunities';
+  } else {
+    var ri = 0, ci = 0, deleting = false;
+    function typeLoop(){
+      var word = roles[ri];
+      if(!deleting){
+        ci++;
+        roleEl.innerHTML = word.slice(0,ci) + '<span class="type-cursor"></span>';
+        if(ci === word.length){ deleting = true; setTimeout(typeLoop, 1400); return; }
+      } else {
+        ci--;
+        roleEl.innerHTML = word.slice(0,ci) + '<span class="type-cursor"></span>';
+        if(ci === 0){ deleting = false; ri = (ri+1) % roles.length; }
+      }
+      setTimeout(typeLoop, deleting ? 35 : 65);
+    }
+    typeLoop();
+  }
+
+  // timeline draw-on-scroll fill
+  var tlFill = document.getElementById('tl-fill');
+  var tlTrack = document.querySelector('.timeline');
+  if(tlFill && tlTrack){
+    window.addEventListener('scroll', function(){
+      var rect = tlTrack.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var total = rect.height;
+      var visible = Math.min(Math.max(vh*0.75 - rect.top, 0), total);
+      tlFill.style.height = visible + 'px';
+    }, {passive:true});
+  }
+
+  // highlight the experience card currently crossing the reading zone
+  var timelineItems = document.querySelectorAll('.tl-item');
+  var timelineFocusObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      timelineItems.forEach(function(item){ item.classList.remove('active'); });
+      entry.target.classList.add('active');
+    });
+  }, {threshold:.42, rootMargin:'-18% 0px -30% 0px'});
+  timelineItems.forEach(function(item){ timelineFocusObserver.observe(item); });
+
+  // purposeful section, skill-fill and QA status activation
+  if(!reduceMotion){
+    var capabilityObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        if(entry.target.classList.contains('skill-group')) entry.target.classList.add('skill-live');
+        if(entry.target.classList.contains('custom-tool')) entry.target.classList.add('tool-live');
+        if(entry.target.classList.contains('section')) entry.target.classList.add('section-live');
+        capabilityObserver.unobserve(entry.target);
+      });
+    }, {threshold:.22, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.skill-group,.custom-tool,.section').forEach(function(el){ capabilityObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.skill-group').forEach(function(el){ el.classList.add('skill-live'); });
+    document.querySelectorAll('.section').forEach(function(el){ el.classList.add('section-live'); });
+  }
+
+  // fine-pointer only interactions
+  var fine = window.matchMedia('(pointer: fine)').matches;
+  if(fine && !reduceMotion){
+    document.body.classList.add('cursor-ready');
+    var dot = document.getElementById('cur-dot');
+    var ring = document.getElementById('cur-ring');
+    var mx=window.innerWidth/2,my=window.innerHeight/2, dx=mx,dy=my,rx=mx,ry=my;
+    window.addEventListener('mousemove', function(e){
+      mx = e.clientX; my = e.clientY;
+    });
+    function ringLoop(){
+      dx += (mx-dx)*0.28; dy += (my-dy)*0.28;
+      rx += (mx-rx)*0.105; ry += (my-ry)*0.105;
+      dot.style.left = dx+'px'; dot.style.top = dy+'px';
+      ring.style.left = rx+'px'; ring.style.top = ry+'px';
+      requestAnimationFrame(ringLoop);
+    }
+    ringLoop();
+    document.querySelectorAll('a, .project, .skill-group, .custom-tool, .about-portrait, .h-stat').forEach(function(el){
+      el.addEventListener('mouseenter', function(){ document.body.classList.add('cursor-hover'); });
+      el.addEventListener('mouseleave', function(){ document.body.classList.remove('cursor-hover'); });
+    });
+
+    // magnetic buttons
+    document.querySelectorAll('.cta-link').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        var relX = e.clientX - r.left - r.width/2;
+        var relY = e.clientY - r.top - r.height/2;
+        btn.style.transform = 'translate(' + (relX*0.25) + 'px,' + (relY*0.35) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){ btn.style.transform = 'translate(0,0)'; });
+    });
+
+    // tilt cards
+    document.querySelectorAll('[data-tilt]').forEach(function(card){
+      var inner = card.querySelector('.project-inner');
+      var visual = card.querySelector('.project-visual');
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left)/r.width - 0.5;
+        var py = (e.clientY - r.top)/r.height - 0.5;
+        inner.style.transform = 'rotateY(' + (px*8) + 'deg) rotateX(' + (-py*8) + 'deg) translateZ(6px)';
+        if(visual) visual.style.transform = 'translate(' + (-px*10) + 'px,' + (-py*8) + 'px) scale(1.035)';
+      });
+      card.addEventListener('mouseleave', function(){ inner.style.transform = 'rotateY(0) rotateX(0)'; if(visual) visual.style.transform = ''; });
+    });
+
+    // hero coordinate reticle
+    var heroSection = document.getElementById('top');
+    var reticle = document.getElementById('reticle');
+    var latVal = document.getElementById('lat-val');
+    var lngVal = document.getElementById('lng-val');
+    heroSection.addEventListener('mousemove', function(e){
+      var r = heroSection.getBoundingClientRect();
+      reticle.style.left = (e.clientX - r.left) + 'px';
+      reticle.style.top = (e.clientY - r.top) + 'px';
+      var fx = (e.clientX - r.left)/r.width - 0.5;
+      var fy = (e.clientY - r.top)/r.height - 0.5;
+      latVal.textContent = (34.0151 - fy*0.06).toFixed(4);
+      lngVal.textContent = (71.5249 + fx*0.06).toFixed(4);
+    });
+  }
+})();
+</script>
+<script>
+(function(){
+  "use strict";
+  var chars=[];
+  document.querySelectorAll('.kinetic-line').forEach(function(line,lineIndex){
+    line.getAttribute('data-text').split('').forEach(function(letter,index){
+      var span=document.createElement('span');
+      span.className='kinetic-char'; span.textContent=letter;
+      span.style.animationDelay=(.28+lineIndex*.22+index*.045)+'s';
+      line.appendChild(span);
+      chars.push({el:span,x:0,y:0,s:1,r:0,tx:0,ty:0,ts:1,tr:0});
+    });
+  });
+
+  var mx=-9999,my=-9999,reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.addEventListener('mousemove',function(e){
+    mx=e.clientX;my=e.clientY;
+    var coord=document.getElementById('cursorCoord');
+    if(coord){
+      var lat=(34.0151+(0.5-e.clientY/window.innerHeight)*.08).toFixed(4);
+      var lon=(71.5249+(e.clientX/window.innerWidth-.5)*.08).toFixed(4);
+      coord.textContent='CURSOR  →  N '+lat+'°  E '+lon+'°';
+    }
+  },{passive:true});
+
+  document.querySelectorAll('.project').forEach(function(card){
+    card.addEventListener('mousemove',function(e){
+      var r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+      card.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+    });
+  });
+
+  var contactTime=document.getElementById('contact-time');
+  function updateContactTime(){
+    if(!contactTime) return;
+    contactTime.textContent='PKT · '+new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Karachi',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+  }
+  updateContactTime();setInterval(updateContactTime,30000);
+  var contactSection=document.getElementById('contact');
+  var contactVisual=document.querySelector('.contact-visual');
+  if(contactSection && contactVisual && !reduce){
+    contactSection.addEventListener('mousemove',function(e){
+      var r=contactSection.getBoundingClientRect();
+      var px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+      contactVisual.style.translate=(px*18).toFixed(1)+'px '+(py*18).toFixed(1)+'px';
+    });
+    contactSection.addEventListener('mouseleave',function(){contactVisual.style.translate='0 0';});
+  }
+  var aboutSection=document.getElementById('about'),parcelVisual=document.querySelector('.about-portrait');
+  if(aboutSection && parcelVisual && !reduce){
+    aboutSection.addEventListener('mousemove',function(e){
+      var r=aboutSection.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+      parcelVisual.style.translate=(px*16).toFixed(1)+'px '+(py*13).toFixed(1)+'px';
+    });
+    aboutSection.addEventListener('mouseleave',function(){parcelVisual.style.translate='0 0';});
+  }
+
+  /* Scroll choreography for the hero name */
+  var hero=document.getElementById('top');
+  var heroName=document.querySelector('.hero-name');
+  var scrollQueued=false;
+  function updateHeroScroll(){
+    scrollQueued=false;
+    if(!hero || !heroName || reduce) return;
+    var distance=Math.max(hero.offsetHeight*.92,1);
+    var raw=Math.min(Math.max(window.scrollY/distance,0),1);
+    var p=raw*raw*(3-2*raw);
+    heroName.style.opacity=(1-p*.96).toFixed(3);
+    heroName.style.transform='translate3d(0,'+(-p*72).toFixed(1)+'px,0) scale('+(1-p*.09).toFixed(3)+')';
+    heroName.style.filter='blur('+(p*4.5).toFixed(2)+'px)';
+  }
+  window.addEventListener('scroll',function(){
+    if(!scrollQueued){scrollQueued=true;requestAnimationFrame(updateHeroScroll);}
+  },{passive:true});
+  updateHeroScroll();
+
+  function animateLetters(){
+    chars.forEach(function(c){
+      var b=c.el.getBoundingClientRect(),dx=mx-(b.left+b.width/2),dy=my-(b.top+b.height/2),d=Math.sqrt(dx*dx+dy*dy),f=d<145?Math.pow(1-d/145,1.7):0;
+      if(f){var a=Math.atan2(dy,dx);c.tx=-Math.cos(a)*f*13;c.ty=-Math.sin(a)*f*13-f*22;c.ts=1+f*.16;c.tr=f*6*(dx>0?1:-1)}else{c.tx=0;c.ty=0;c.ts=1;c.tr=0}
+      c.x+=(c.tx-c.x)*.16;c.y+=(c.ty-c.y)*.16;c.s+=(c.ts-c.s)*.16;c.r+=(c.tr-c.r)*.16;
+      c.el.style.transform='translate('+c.x.toFixed(2)+'px,'+c.y.toFixed(2)+'px) scale('+c.s.toFixed(3)+') rotate('+c.r.toFixed(2)+'deg)';
+    });
+  }
+
+  if(!reduce){setTimeout(function letterTick(){animateLetters();requestAnimationFrame(letterTick)},1500);}
+  if(!window.THREE || reduce) return;
+  var canvas=document.getElementById('hex-canvas'),renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  var scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(48,1,.1,100);camera.position.z=8;
+  scene.add(new THREE.AmbientLight(0x661e14,.7));
+  var light=new THREE.PointLight(0xff4b26,1.4,18);light.position.set(-3,2,5);scene.add(light);
+  var gold=new THREE.DirectionalLight(0xff6b4a,.85);gold.position.set(4,6,4);scene.add(gold);
+  var group=new THREE.Group();
+  function prism(r,h){return new THREE.CylinderGeometry(r,r,h,6,1)}
+  function wire(r,h,color,opacity){var g=prism(r,h),m=new THREE.LineBasicMaterial({color:color,transparent:true,opacity:opacity});return new THREE.LineSegments(new THREE.EdgesGeometry(g),m)}
+  var coreGeo=prism(1.45,.42),core=new THREE.Mesh(coreGeo,new THREE.MeshPhongMaterial({color:0x661e14,transparent:true,opacity:.14,side:THREE.DoubleSide,shininess:70}));
+  var coreWire=wire(1.45,.42,0xff4b26,.9),mid=wire(2.45,.16,0x661e14,.5),outer=wire(3.45,.08,0x661e14,.2),vertical=wire(2.05,.1,0xff6b4a,.25),diagonal=wire(2.9,.1,0xff4b26,.15);
+  mid.rotation.set(.28,Math.PI/6,0);outer.rotation.set(.46,Math.PI/12,0);vertical.rotation.set(0,.35,Math.PI/2);diagonal.rotation.set(Math.PI/2,0,Math.PI/6);
+  group.add(core,coreWire,mid,outer,vertical,diagonal);group.position.set(3,.15,0);group.rotation.x=.72;scene.add(group);
+  var px=0,py=0,tpx=0,tpy=0,t=0;
+  document.addEventListener('mousemove',function(e){tpx=(e.clientX/window.innerWidth-.5)*.5;tpy=(e.clientY/window.innerHeight-.5)*.3},{passive:true});
+  function resize(){var r=document.getElementById('top').getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();group.position.x=innerWidth<900?1.7:3}
+  resize();window.addEventListener('resize',resize);
+  function tick(){requestAnimationFrame(tick);t+=.007;px+=(tpx-px)*.05;py+=(tpy-py)*.05;group.rotation.y=t*.34+px;group.rotation.x=.72+py;core.rotation.y=-t*.55;coreWire.rotation.y=-t*.55;vertical.rotation.y=t*.28+.35;outer.material.opacity=.13+Math.sin(t*.9)*.07;light.position.x=Math.cos(t*.65)*3.5;light.position.z=Math.sin(t*.65)*3.5+2;renderer.render(scene,camera)}
+  tick();
+})();
+</script>
+</body>
+</html>
