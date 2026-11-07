@@ -2574,7 +2574,7 @@
     <div class="container">
       <div class="chapter-tag fade-up">04 · Featured Projects</div>
       <h2 class="section-title fade-up delay-1">Selected Work,<br><em>Measured</em> Impact.</h2>
-      <p class="section-sub fade-up delay-2">Four case studies showing how I move from an open spatial question to a
+      <p class="section-sub fade-up delay-2">Five case studies showing how I move from an open spatial question to a
         defensible method, clear evidence, and a decision-ready map.</p>
 
       <article class="proj-card fade-up delay-3">
@@ -2763,6 +2763,60 @@
           <span class="proj-note">Select any result map to open the full-resolution layout</span>
         </div>
       </article>
+
+      <article class="proj-card fade-up delay-3">
+        <div class="proj-media">
+          <a class="proj-shot" href="assets/zoning-monitor/map-bozeman-layers.png" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/thumbs/zoning-map.jpg" alt="Bozeman, MT zoning drawn by zone code in the change viewer"
+              width="1000" height="750" loading="lazy" decoding="async">
+            <span class="scan-sweep" aria-hidden="true"></span>
+            <figcaption>Zoning map viewer</figcaption>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
+          </a>
+          <a class="proj-shot" href="assets/zoning-monitor/overview.png" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/thumbs/zoning-overview.jpg" alt="Monitoring dashboard with the status of every city"
+              width="1000" height="750" loading="lazy" decoding="async">
+            <span class="scan-sweep" aria-hidden="true"></span>
+            <figcaption>Monitoring dashboard</figcaption>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
+          </a>
+          <a class="proj-shot" href="assets/zoning-monitor/map-calumet-city.png" target="_blank" rel="noopener"
+            data-cursor-label="View">
+            <img src="assets/thumbs/zoning-calumet.jpg" alt="Dense regional zoning layer around Calumet City, IL"
+              width="1000" height="750" loading="lazy" decoding="async">
+            <span class="scan-sweep" aria-hidden="true"></span>
+            <figcaption>Regional layer</figcaption>
+            <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span>
+          </a>
+        </div>
+        <div class="proj-copy">
+          <div class="proj-head"><span class="proj-num">PROJECT 05</span><span class="proj-type">Zoning
+              Automation</span></div>
+          <h3 class="proj-title">Zoning Change Monitor — Automated Detection Across US Cities</h3>
+          <p class="proj-desc">Built a Python system that checks city zoning layers published on ArcGIS REST services
+            and reports exactly which cities changed and what changed: boundaries, new or removed zone codes,
+            attributes, schema, or a broken source. It filters out republishing noise such as reordered features,
+            renumbered IDs and split polygons, and only reports "unchanged" after verifying it.</p>
+          <div class="proj-outcome"><strong>Outcome</strong><span>Change polygons, priority scores and an interactive
+              review map, so the data team re-processes only the cities that changed. Stress-tested on 500 simulated
+              cities with every one classified correctly.</span></div>
+          <div class="proj-stack"><span>Python</span><span>GeoPandas</span><span>ArcGIS REST</span><span>SQLite</span>
+            <span>Leaflet</span></div>
+          <a class="proj-archive" href="zoning-monitor-results.html" target="_blank" rel="noopener">Explore the full
+            tool →</a>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -2872,6 +2926,7 @@
         <div class="footer-col-label">Research Archives</div>
         <a href="awaran-results.html" target="_blank" rel="noopener">Awaran Study</a>
         <a href="sindh-flood-results.html" target="_blank" rel="noopener">Sindh Floods</a>
+        <a href="zoning-monitor-results.html" target="_blank" rel="noopener">Zoning Monitor</a>
         <a href="mailto:hello@example.com">Email Me</a>
       </div>
     </div>
